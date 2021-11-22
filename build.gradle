@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+plugins.apply("java")
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+java.sourceCompatibility = JavaVersion.VERSION_15
+
+application.mainClass.set("Launcher")
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
