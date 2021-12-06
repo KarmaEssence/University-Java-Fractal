@@ -1,17 +1,46 @@
-import java.awt.image.BufferedImage;
-import java.io.*;
-import javax.imageio.ImageIO;
-
 public class JuliaTest {
-	private double coodX1 = -2.1, coodX2 = 0.6, coodY1 = -1.2, coodY2 = 1.2;
-	private int tailleImageMax = 300;
-	private int iteration_max = 500;
-	private double tailleImageX = (coodX2-coodX1)*tailleImageMax;
-	private double tailleImageY = (coodY2-coodY1)*tailleImageMax;
+	private double x1, x2, y1, y2, currentX, currentY;
+	private int iteration;
+	protected boolean test;
 
-	public JuliaTest(){}
+	public JuliaTest(double x, double y){
+		x1 = x;
+		y1 = y;
+	}
+
+	public void complex(double i, double j){
+		currentX = (((double)i*2)/800)-1;
+		currentY = (((double)j*2)/800)-1;
+	}
+
+	public boolean verifCood(double x, double y, int iteration){
+		int compteur = 0;
+		x = x1;
+		y = y1;
+		while(iteration-- > 0){
+			double newX = (currentX * currentX) - (currentY * currentY) + x;
+			double newY = (2 * currentX * currentY) + y;
+			currentX = newX;
+			currentY = newY;
+			compteur++;
+			if(currentX * currentX + currentX * currentY > 4 ) return test = false;
+		}
+		return true;
+	}
+
+	public double getX2(){
+		return x2;
+	}
+
+	public double getY2(){
+		return y2;
+	}
+
+	public int getIteration(){
+		return iteration;
+	}
 	
-	public void testJulia(double constante1, double constante2){
+	/*public void testJulia(double constante1, double constante2){
 		var img = new BufferedImage(1000, 1000, BufferedImage.TYPE_INT_RGB);
 		int r = 64;
 		int g = 64;
@@ -40,5 +69,6 @@ public class JuliaTest {
 		}catch (IOException e){
 			e.printStackTrace();
 		}
-	}
+	}*/
+
 }
