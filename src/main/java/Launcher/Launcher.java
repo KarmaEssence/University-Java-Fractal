@@ -1,26 +1,87 @@
 package Launcher;
 
 
+import Utils.ComplexOperation;
 import org.apache.commons.math3.complex.Complex;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.function.Function;
 
 public class Launcher {
+
+    static int MAX_ITER=1000, RADIUS=2;
+    public static int divergenceIndex(Complex z0, Function<Complex, Complex> f) {
+        int ite = 0;
+        Complex zn = ComplexOperation.makeCopieOf(z0);
+
+        // sortie de boucle si divergence
+         while(ite < MAX_ITER && (int)ComplexOperation.makeModuleOperation(zn) <= RADIUS) {
+             zn = f.apply(zn);
+             ite++;
+         }
+        return ite;
+    }
+
 
     public static void main(String[] args){
 
         Complex c = new Complex(-(0.7269), 0.1889);
-        
-        var img= new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
-        int r = 64; int g = 224; int b = 208; //turquoise
-        int col = (r << 16) | (g << 8) | b;
-        img.setRGB((int) c.getReal(),(int) c.getImaginary(),col);
-        File f = new File("./MyFile.png");
+
+        //Rectangle dans le plan complex
+        Complex pointA = new Complex(-1, 1);
+        Complex pointB = new Complex(1, -1);
+
+        //Pas de discretisation
+        double pas = 0.0001;
+
+        //Calcul de la longueur et de la largeur du rectangle complexe :
+        double lengthComplex = Math.abs(pointA.getReal() - pointB.getReal());
+        double widthComplex = Math.abs(pointA.getImaginary() - pointB.getImaginary());
+
+        //Calcul de la longueur et de la largeur pour les dimensions de l'image :
+        int length = (int)(lengthComplex / pas);
+        int width = (int)(widthComplex / pas);
+
+        System.out.println(length);
+        System.out.println(width);
+
+        //Creation de la fonction qui calcule f
+        Function<Complex, Complex> f = (Complex z) -> c.add(z.multiply(z));
+
+        //Creation de l'image :
+        var img= new BufferedImage(length, width, BufferedImage.TYPE_INT_RGB);
+
+        for(int i = 0; i < width; i++){
+            for(int j = 0; j < length; j++){
+
+                //calcul de l'indice de divergence
+                double complexX = -1 + pas * j;
+                double complexY = -1 + pas * i;
+                Complex zk = new Complex(complexX, complexY);
+                int index = divergenceIndex(zk, f);
+                //System.out.println(index);
+
+                int color;
+                //divergence
+                if(index < MAX_ITER){
+                    color = ((index % 256) << 16) | (((index + 80) % 256) << 8) | ((index + 160) % 256);
+
+
+                //convergence
+                }else{
+                    int r = 64; int g = 224; int b = 208; //turquoise
+                    color = (r << 16) | (g << 8) | b;
+                }
+                img.setRGB(j,i,color);
+            }
+        }
+
+        File file = new File("./MyFile.png");
         try{
-            ImageIO.write(img, "PNG", f);
+            ImageIO.write(img, "PNG", file);
         }catch (IOException e){
             e.printStackTrace();
         }
