@@ -1,15 +1,12 @@
 package Fractal;
 
-import Utils.ComplexeImg;
-import Utils.ComplexeRectangle;
+import Utils.complex.ComplexRectangle;
 import org.apache.commons.math3.complex.Complex;
-
-import java.util.function.Function;
 
 public class JuliaSet extends Fractal{
 
-    public JuliaSet(String function, Complex constant, ComplexeRectangle complexeRectangle, Double discretizationStape){
-        super(function, constant, complexeRectangle, discretizationStape);
+    public JuliaSet(String function, Complex constant, ComplexRectangle complexRectangle, Double discretizationStape){
+        super(function, constant, complexRectangle, discretizationStape);
     }
 
     public void writeJuliaFractalOnImage(){
@@ -39,7 +36,7 @@ public class JuliaSet extends Fractal{
     }
 
     public void makeJuliaFractal(){
-        if(function != null && constant != null && complexeRectangle != null){
+        if(function != null && constant != null && complexRectangle != null){
             writeJuliaFractalOnImage();
         }
     }

@@ -1,22 +1,22 @@
-package Utils;
+package Utils.complex;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class ComplexeImg {
+public class ComplexImg {
     private BufferedImage image;
     private Double discretizationStape;
     private Integer imageLength;
     private Integer imageHeight;
 
-    public ComplexeImg(ComplexeRectangle complexeRectangle, Double discretizationStape){
+    public ComplexImg(ComplexRectangle complexRectangle, Double discretizationStape){
         this.discretizationStape = discretizationStape;
 
         //Calcul de la longueur et de la largeur du rectangle complexe :
-        double lengthComplex = Math.abs(complexeRectangle.getPointA().getReal() - complexeRectangle.getPointB().getReal());
-        double widthComplex = Math.abs(complexeRectangle.getPointA().getImaginary() - complexeRectangle.getPointB().getImaginary());
+        double lengthComplex = Math.abs(complexRectangle.getPointA().getReal() - complexRectangle.getPointB().getReal());
+        double widthComplex = Math.abs(complexRectangle.getPointA().getImaginary() - complexRectangle.getPointB().getImaginary());
 
         //Calcul de la longueur et de la largeur pour les dimensions de l'image :
         imageLength = (int)(lengthComplex / discretizationStape);

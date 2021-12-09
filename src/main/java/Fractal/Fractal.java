@@ -1,8 +1,8 @@
 package Fractal;
 
-import Utils.ComplexOperation;
-import Utils.ComplexeImg;
-import Utils.ComplexeRectangle;
+import Utils.complex.ComplexOperation;
+import Utils.complex.ComplexImg;
+import Utils.complex.ComplexRectangle;
 import org.apache.commons.math3.complex.Complex;
 
 import java.util.function.Function;
@@ -14,16 +14,16 @@ public abstract class Fractal {
 
     protected Complex z;
     protected Complex constant;
-    protected ComplexeRectangle complexeRectangle;
+    protected ComplexRectangle complexRectangle;
     protected Integer divergeIndex;
-    protected ComplexeImg image;
+    protected ComplexImg image;
     protected Function<Complex, Complex> function;
 
-    public Fractal(String function, Complex constant, ComplexeRectangle complexeRectangle, Double discretizationStape){
+    public Fractal(String function, Complex constant, ComplexRectangle complexRectangle, Double discretizationStape){
         this.constant = constant;
-        this.complexeRectangle = complexeRectangle;
+        this.complexRectangle = complexRectangle;
         divergeIndex = -1;
-        image = new ComplexeImg(complexeRectangle, discretizationStape);
+        image = new ComplexImg(complexRectangle, discretizationStape);
         this.function = makeFunction(function);
 
     }
