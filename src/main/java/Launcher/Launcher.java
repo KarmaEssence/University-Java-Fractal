@@ -28,14 +28,17 @@ public class Launcher {
 
     public static void main(String[] args){
 
-        Complex c = new Complex(-(0.7269), 0.1889);
+        //Complex c = new Complex(-(0.7269), 0.1889); ok
+        //Complex c = new Complex(0.3, 0.5); ok
+        Complex c = new Complex(0.285, 0.01);
+        //Complex c = new Complex(0.285, 0.013); ok
 
         //Rectangle dans le plan complex
         Complex pointA = new Complex(-1, 1);
         Complex pointB = new Complex(1, -1);
 
         //Pas de discretisation
-        double pas = 0.0001;
+        double pas = 0.001;
 
         //Calcul de la longueur et de la largeur du rectangle complexe :
         double lengthComplex = Math.abs(pointA.getReal() - pointB.getReal());
@@ -48,18 +51,18 @@ public class Launcher {
         System.out.println(length);
         System.out.println(width);
 
-        //Creation de la fonction qui calcule f
+        //Creation de la fonction qui calcule f : f(z) = z^2 + c
         Function<Complex, Complex> f = (Complex z) -> c.add(z.multiply(z));
 
         //Creation de l'image :
         var img= new BufferedImage(length, width, BufferedImage.TYPE_INT_RGB);
 
-        for(int i = 0; i < width; i++){
-            for(int j = 0; j < length; j++){
+        for(int i = 0; i < length; i++){
+            for(int j = 0; j < width; j++){
 
                 //calcul de l'indice de divergence
-                double complexX = -1 + pas * j;
-                double complexY = -1 + pas * i;
+                double complexX = -1 + pas * j; // changer le -1 en fonction du point en bas à gauche du rectangle
+                double complexY = 1 - pas * i; // changer le -1 en fonction du point en bas à gauche du rectangle
                 Complex zk = new Complex(complexX, complexY);
                 int index = divergenceIndex(zk, f);
                 //System.out.println(index);
@@ -67,7 +70,7 @@ public class Launcher {
                 int color;
                 //divergence
                 if(index < MAX_ITER){
-                    color = ((index % 256) << 16) | (((index + 80) % 256) << 8) | ((index + 160) % 256);
+                    color = ((index % 256) << 16) | (((index + 85) % 256) << 8) | ((index + 170) % 256);
 
 
                 //convergence
