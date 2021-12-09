@@ -5,10 +5,6 @@ import Utils.ComplexeImg;
 import Utils.ComplexeRectangle;
 import org.apache.commons.math3.complex.Complex;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.function.Function;
 
 public abstract class Fractal {
@@ -19,18 +15,16 @@ public abstract class Fractal {
     protected Complex z;
     protected Complex constant;
     protected ComplexeRectangle complexeRectangle;
-    //private Integer discretizationStape;
     protected Integer divergeIndex;
     protected ComplexeImg image;
     protected Function<Complex, Complex> function;
-    //private BufferedImage image;
 
-    public Fractal(String function, Complex constant, ComplexeRectangle complexeRectangle, Integer discretizationStape){
+    public Fractal(String function, Complex constant, ComplexeRectangle complexeRectangle, Double discretizationStape){
         this.constant = constant;
         this.complexeRectangle = complexeRectangle;
         divergeIndex = -1;
         image = new ComplexeImg(complexeRectangle, discretizationStape);
-        makeFunction(function);
+        this.function = makeFunction(function);
 
     }
 

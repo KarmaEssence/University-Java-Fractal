@@ -1,7 +1,9 @@
 package Launcher;
 
 
+import Fractal.JuliaSet;
 import Utils.ComplexOperation;
+import Utils.ComplexeRectangle;
 import org.apache.commons.math3.complex.Complex;
 
 import javax.imageio.ImageIO;
@@ -26,9 +28,9 @@ public class Launcher {
     }
 
     public static void juliaTest1(){
-        //Complex c = new Complex(-(0.7269), 0.1889); ok
+        Complex c = new Complex(-(0.7269), 0.1889);
         //Complex c = new Complex(0.3, 0.5); ok
-        Complex c = new Complex(0.285, 0.01);
+        //Complex c = new Complex(0.285, 0.001);
         //Complex c = new Complex(0.285, 0.013); ok
 
         //Rectangle dans le plan complex
@@ -89,7 +91,11 @@ public class Launcher {
     }
 
     public static void juliaTest2(){
-
+        String function = "z^2 + c";
+        Complex c = new Complex(-(0.7269), 0.1889);
+        ComplexeRectangle cr = new ComplexeRectangle(-1, 1, 1, -1);
+        JuliaSet juliaSet = new JuliaSet(function, c, cr, 0.01);
+        juliaSet.makeJuliaFractal();
     }
 
     public static void main(String[] args){

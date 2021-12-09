@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 public class JuliaSet extends Fractal{
 
-    public JuliaSet(String function, Complex constant, ComplexeRectangle complexeRectangle, Integer discretizationStape){
+    public JuliaSet(String function, Complex constant, ComplexeRectangle complexeRectangle, Double discretizationStape){
         super(function, constant, complexeRectangle, discretizationStape);
     }
 
@@ -23,7 +23,6 @@ public class JuliaSet extends Fractal{
                 int index = divergenceIndex(function);
 
                 int color;
-
                 //divergence
                 if(index < MAX_ITER){
                     color = ((index % 256) << 16) | (((index + 85) % 256) << 8) | ((index + 170) % 256);
@@ -36,10 +35,11 @@ public class JuliaSet extends Fractal{
                 image.getImage().setRGB(j,i,color);
             }
         }
+        image.saveFractal();
     }
 
     public void makeJuliaFractal(){
-        if(function != null && z != null && constant != null && complexeRectangle != null){
+        if(function != null && constant != null && complexeRectangle != null){
             writeJuliaFractalOnImage();
         }
     }

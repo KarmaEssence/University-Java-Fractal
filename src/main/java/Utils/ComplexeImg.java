@@ -7,11 +7,11 @@ import java.io.IOException;
 
 public class ComplexeImg {
     private BufferedImage image;
-    private Integer discretizationStape;
+    private Double discretizationStape;
     private Integer imageLength;
     private Integer imageHeight;
 
-    public ComplexeImg(ComplexeRectangle complexeRectangle, Integer discretizationStape){
+    public ComplexeImg(ComplexeRectangle complexeRectangle, Double discretizationStape){
         this.discretizationStape = discretizationStape;
 
         //Calcul de la longueur et de la largeur du rectangle complexe :
@@ -28,7 +28,7 @@ public class ComplexeImg {
         return image;
     }
 
-    public Integer getDiscretizationStape() {
+    public Double getDiscretizationStape() {
         return discretizationStape;
     }
 
@@ -42,7 +42,6 @@ public class ComplexeImg {
 
     public void saveFractal(){
         if(image == null) return;
-
         File file = new File("./MyFile.png");
         try{
             ImageIO.write(image, "PNG", file);

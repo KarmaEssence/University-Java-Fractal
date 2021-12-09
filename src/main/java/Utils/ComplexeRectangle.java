@@ -6,7 +6,7 @@ public class ComplexeRectangle {
     private Complex pointA;
     private Complex pointB;
 
-    public ComplexeRectangle(Double x1, Double y1, Double x2, Double y2){
+    public ComplexeRectangle(Integer x1, Integer y1, Integer x2, Integer y2){
         pointA = new Complex(x1, y1);
         pointB = new Complex(x2, y2);
     }
