@@ -25,9 +25,7 @@ public class Launcher {
         return ite;
     }
 
-
-    public static void main(String[] args){
-
+    public static void juliaTest1(){
         //Complex c = new Complex(-(0.7269), 0.1889); ok
         //Complex c = new Complex(0.3, 0.5); ok
         Complex c = new Complex(0.285, 0.01);
@@ -73,7 +71,7 @@ public class Launcher {
                     color = ((index % 256) << 16) | (((index + 85) % 256) << 8) | ((index + 170) % 256);
 
 
-                //convergence
+                    //convergence
                 }else{
                     int r = 64; int g = 224; int b = 208; //turquoise
                     color = (r << 16) | (g << 8) | b;
@@ -89,4 +87,15 @@ public class Launcher {
             e.printStackTrace();
         }
     }
+
+    public static void juliaTest2(){
+
+    }
+
+    public static void main(String[] args){
+        //juliaTest1(); //Pour les test
+        juliaTest2();
+    }
+
+
 }
