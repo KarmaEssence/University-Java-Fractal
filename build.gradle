@@ -16,7 +16,7 @@ version '1.0-SNAPSHOT'
 
 java.sourceCompatibility = JavaVersion.VERSION_15
 
-application.mainClass.set("Launcher")
+application.mainClass.set("Launcher/Launcher")
 
 repositories {
     mavenCentral()
