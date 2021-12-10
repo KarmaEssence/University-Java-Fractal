@@ -31,7 +31,7 @@ public class HostPage {
         System.out.println("Welcome to the Fractal project");
         System.out.println();
         printSpace(12);
-        System.out.println("This game was reproduced by the KarmaEssence and Ibbo");
+        System.out.println("This application was made by KarmaEssence and Ibbo");
         printSepator();
     }
 

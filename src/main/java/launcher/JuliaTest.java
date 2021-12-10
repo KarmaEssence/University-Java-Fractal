@@ -93,7 +93,7 @@ public class JuliaTest {
         String function = "z^2 + c";
         Complex c = new Complex(-(0.7269), 0.1889);
         ComplexRectangle cr = new ComplexRectangle(-1, 1, 1, -1);
-        JuliaSet juliaSet = new JuliaSet(function, c, cr, 0.01);
+        JuliaSet juliaSet = new JuliaSet(function, c, cr, 0.001);
         juliaSet.makeFractal();
     }
 

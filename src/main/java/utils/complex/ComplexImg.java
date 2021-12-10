@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class ComplexImg {
     private BufferedImage image;
@@ -42,11 +43,40 @@ public class ComplexImg {
 
     public void saveFractal(){
         if(image == null) return;
-        File file = new File("./MyFile.png");
+        System.out.println("Generating image ...");
+        directoryExist();
+        File file = new File("./data/fractal_image/" + giveNewFilename() + ".png");
         try{
             ImageIO.write(image, "PNG", file);
         }catch (IOException e){
             e.printStackTrace();
         }
+        System.out.println();
+        System.out.println("The image has been generated");
+    }
+
+    /**
+     * Verifie que le repertoire existe.
+     */
+    private static void directoryExist(){
+        String path = System.getProperty("user.dir");
+        path+= "/data/fractal_image";
+        File dir = new File(path);
+        if(!dir.exists()){
+            dir.mkdir();
+        }
+    }
+
+    private String giveNewFilename(){
+        File dir = new File("./data/fractal_image");
+        File[] files = dir.listFiles();
+        int max = 0;
+        for(int i = 0; i < Objects.requireNonNull(files).length; i++){
+            String temp = files[i].getName().split("\\.")[0];
+            int valueFile = Integer.parseInt(temp);
+            if(valueFile > max)
+                max = valueFile;
+        }
+        return String.valueOf(max + 1);
     }
 }

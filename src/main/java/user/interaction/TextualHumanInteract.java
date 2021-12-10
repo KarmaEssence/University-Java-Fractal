@@ -37,8 +37,8 @@ public class TextualHumanInteract implements HumanInteract {
 			System.out.println();
 			System.out.println("Do you want continue or quit ?(c/q)");
 			answer = scanner.nextLine();
-			if(iterationOfReadSomething > 0)
-				answer = scanner.nextLine();
+			/*if(iterationOfReadSomething > 0)
+				answer = scanner.nextLine();*/
 			if(answer.equals("q"))System.exit(0);
 			iterationOfReadSomething += 1;
 		}
