@@ -1,8 +1,8 @@
-package Fractal;
+package fractal;
 
-import Utils.complex.ComplexOperation;
-import Utils.complex.ComplexImg;
-import Utils.complex.ComplexRectangle;
+import utils.complex.ComplexOperation;
+import utils.complex.ComplexImg;
+import utils.complex.ComplexRectangle;
 import org.apache.commons.math3.complex.Complex;
 
 import java.util.function.Function;

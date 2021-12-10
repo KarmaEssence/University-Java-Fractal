@@ -1,4 +1,4 @@
-package Utils.other;
+package utils.other;
 
 public class ShellPrinting {
 

@@ -1,4 +1,4 @@
-package Utils.complex;
+package utils.complex;
 
 import org.apache.commons.math3.complex.Complex;
 

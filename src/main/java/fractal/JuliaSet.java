@@ -1,6 +1,6 @@
-package Fractal;
+package fractal;
 
-import Utils.complex.ComplexRectangle;
+import utils.complex.ComplexRectangle;
 import org.apache.commons.math3.complex.Complex;
 
 public class JuliaSet extends Fractal{

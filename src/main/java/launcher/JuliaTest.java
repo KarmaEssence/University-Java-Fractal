@@ -1,8 +1,8 @@
-package Launcher;
+package launcher;
 
-import Fractal.JuliaSet;
-import Utils.complex.ComplexOperation;
-import Utils.complex.ComplexRectangle;
+import fractal.JuliaSet;
+import utils.complex.ComplexOperation;
+import utils.complex.ComplexRectangle;
 import org.apache.commons.math3.complex.Complex;
 
 import javax.imageio.ImageIO;
