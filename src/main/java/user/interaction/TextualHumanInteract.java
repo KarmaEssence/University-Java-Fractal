@@ -51,14 +51,20 @@ public class TextualHumanInteract implements HumanInteract {
 		return createPoint();
 	}
 
+	private String getValueAnswer(String part){
+		String answer = "nothing";
+		while(!checkValue(answer)){
+			System.out.println("-> Enter a " + part + " part value: ");
+			answer = scanner.nextLine();
+		}
+		return answer;
+	}
+
 	private Complex createPoint(){
 		System.out.println();
-		System.out.println("-> Enter a real part value: ");
-		String answer = scanner.nextLine();
-		double realPart = stringIntoValue(answer);
-		System.out.println("-> Enter a imaginary value: ");
-		answer = scanner.nextLine();
-		double imaginaryPart = stringIntoValue(answer);
+		double realPart = stringIntoValue(getValueAnswer("real"));
+		double imaginaryPart = stringIntoValue(getValueAnswer("imaginary"));
+
 		System.out.println();
 		return new Complex(realPart, imaginaryPart);
 	}
@@ -126,9 +132,10 @@ public class TextualHumanInteract implements HumanInteract {
 	public boolean checkValue(String s){
 		if(s.length()==0)return false;
 		for(int i=0;i<s.length();i++){
-			if(s.charAt(0)>=49 && s.charAt(0)<57)return true;
+			if(!((s.charAt(i)>47 && s.charAt(i)<58) || s.charAt(i) == '.')) return false;
+			//if(s.charAt(i)< 48 || s.charAt(i) > 57 || s.charAt(i) != '.') return false;
 		}
-		return false;
+		return true;
 	}
 
 	/**
