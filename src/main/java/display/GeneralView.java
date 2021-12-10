@@ -52,4 +52,8 @@ public class GeneralView{
 		return user.discretizationStape();
 	}
 
+	public String chooseSet() {
+		return user.chooseSet();
+	}
+
 }

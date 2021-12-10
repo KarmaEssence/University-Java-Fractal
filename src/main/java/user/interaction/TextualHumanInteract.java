@@ -2,6 +2,7 @@ package user.interaction;
 import org.apache.commons.math3.complex.Complex;
 import utils.complex.ComplexRectangle;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -44,6 +45,21 @@ public class TextualHumanInteract implements HumanInteract {
 		return true;
 	}
 
+	private boolean setIsChoosed(String answer){
+		answer = answer.toLowerCase(Locale.ROOT);
+		return answer.equals("julia");
+	}
+
+	@Override
+	public String chooseSet() {
+		String answer = "nothing";
+		while(!setIsChoosed(answer)){
+			System.out.println("-> Enter a set for fractal (julia): ");
+			answer = scanner.nextLine();
+		}
+		return answer;
+	}
+
 	@Override
 	public Complex getConstant() {
 		System.out.println();
@@ -84,12 +100,13 @@ public class TextualHumanInteract implements HumanInteract {
 	}
 
 	@Override
-	public Double discretizationStape() {
-		System.out.println("-> Enter a discretizationStape value: ");
-		if (scanner.hasNextDouble()) {
-			return scanner.nextDouble();
+	public double discretizationStape() {
+		String answer = "nothing";
+		while(!checkValue(answer)) {
+			System.out.println("-> Enter a discretizationStape value: ");
+			answer = scanner.nextLine();
 		}
-		return null;
+		return stringIntoValue(answer);
 	}
 
 	/**
@@ -98,15 +115,15 @@ public class TextualHumanInteract implements HumanInteract {
 	 * @return retourne le premier caractere
 	 * transforme en entier.
 	 */
-	public int stringIntoValue(String s){
-		if(!checkArg(s))return -1;
-		int res;
-		if((s.charAt(0)>=49 && s.charAt(0)<=57)){
-			res = Integer.valueOf(s);
+	public double stringIntoValue(String s){
+		double res = Double.parseDouble(s);
+		System.out.println(res);
+		/*if(s.charAt(0) == '-'){
+			res = -1 * Integer.parseInt(s);
 		}else{
 			res = Integer.valueOf(s.charAt(0))%32;
-		}
-		return res-1;
+		}*/
+		return res;
 	}
 
 	/**
@@ -130,9 +147,12 @@ public class TextualHumanInteract implements HumanInteract {
 	 * respecte le format,false sinon.
 	 */
 	public boolean checkValue(String s){
-		if(s.length()==0)return false;
+		if(s.length()==0) return false;
+		if(s.charAt(0) != '-' && s.contains("-")) return false;
+
 		for(int i=0;i<s.length();i++){
-			if(!((s.charAt(i)>47 && s.charAt(i)<58) || s.charAt(i) == '.')) return false;
+			if(!((s.charAt(i)>47 && s.charAt(i)<58) || s.charAt(i) == '.' || s.charAt(i) == '-'))
+				return false;
 			//if(s.charAt(i)< 48 || s.charAt(i) > 57 || s.charAt(i) != '.') return false;
 		}
 		return true;

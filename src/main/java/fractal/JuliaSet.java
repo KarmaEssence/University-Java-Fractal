@@ -9,7 +9,7 @@ public class JuliaSet extends Fractal{
         super(function, constant, complexRectangle, discretizationStape);
     }
 
-    public void writeJuliaFractalOnImage(){
+    private void writeJuliaFractalOnImage(){
         for(int i = 0; i < image.getImageLength(); i++){
             for(int j = 0; j < image.getImageHeight(); j++){
 
@@ -35,7 +35,8 @@ public class JuliaSet extends Fractal{
         image.saveFractal();
     }
 
-    public void makeJuliaFractal(){
+    @Override
+    public void makeFractal(){
         if(function != null && constant != null && complexRectangle != null){
             writeJuliaFractalOnImage();
         }

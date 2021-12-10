@@ -29,4 +29,8 @@ public class User {
         return humanInteract.getConstant();
     }
 
+    public String chooseSet() {
+        return humanInteract.chooseSet();
+    }
+
 }

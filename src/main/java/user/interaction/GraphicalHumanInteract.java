@@ -10,6 +10,11 @@ public class GraphicalHumanInteract implements HumanInteract {
     }
 
     @Override
+    public String chooseSet() {
+        return null;
+    }
+
+    @Override
     public Complex getConstant() {
         return null;
     }
@@ -20,8 +25,8 @@ public class GraphicalHumanInteract implements HumanInteract {
     }
 
     @Override
-    public Double discretizationStape() {
-        return null;
+    public double discretizationStape() {
+        return 0.0;
     }
 
     @Override

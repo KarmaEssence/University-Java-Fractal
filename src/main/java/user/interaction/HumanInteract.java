@@ -15,6 +15,7 @@ public interface HumanInteract {
 	 * false sinon.
 	 */
 	boolean chooseToPlay();
+	String chooseSet();
 
 	Complex getConstant();
 
@@ -24,7 +25,7 @@ public interface HumanInteract {
 	 */
 	ComplexRectangle position();
 
-	Double discretizationStape();
+	double discretizationStape();
 
 	/**
 	 * Pose une question a l utilisateur.

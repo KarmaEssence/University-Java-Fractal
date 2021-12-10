@@ -53,4 +53,6 @@ public abstract class Fractal {
         return iteration;
     }
 
+    public void makeFractal() {}
+
 }

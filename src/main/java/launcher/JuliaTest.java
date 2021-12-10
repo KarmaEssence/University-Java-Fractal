@@ -94,7 +94,7 @@ public class JuliaTest {
         Complex c = new Complex(-(0.7269), 0.1889);
         ComplexRectangle cr = new ComplexRectangle(-1, 1, 1, -1);
         JuliaSet juliaSet = new JuliaSet(function, c, cr, 0.01);
-        juliaSet.makeJuliaFractal();
+        juliaSet.makeFractal();
     }
 
 }

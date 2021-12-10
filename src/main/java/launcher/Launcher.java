@@ -2,6 +2,7 @@ package launcher;
 
 import display.GeneralView;
 import fractal.Fractal;
+import fractal.JuliaSet;
 import org.apache.commons.math3.complex.Complex;
 import utils.complex.ComplexRectangle;
 
@@ -10,10 +11,22 @@ public class Launcher {
     private Fractal fractal;
 
     public void makeFractal(){
-        String function;
+
+        String set = generalView.chooseSet();
         Complex c = generalView.getConstant();
+
+        System.out.println("real partt : " + c.getReal());
+        System.out.println("imaginary partt : " + c.getImaginary());
+
         ComplexRectangle complexRectangle = generalView.chooseComplexeRectangle();
-        Double discretizationStape = generalView.discretizationStape();
+        double discretizationStape = generalView.discretizationStape();
+        System.out.println("pas : " + discretizationStape);
+        if(set.equals("julia")) {
+            fractal = new JuliaSet("z^2 + c", c, complexRectangle, discretizationStape);
+            fractal.makeFractal();
+        }
+        //peut etre un else avec l'ensemble de Mandelbrot
+
 
     }
 
