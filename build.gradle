@@ -18,6 +18,10 @@ java.sourceCompatibility = JavaVersion.VERSION_15
 
 application.mainClass.set("launcher/Launcher")
 
+run {
+    standardInput = System.in
+}
+
 repositories {
     mavenCentral()
 }

@@ -28,10 +28,10 @@ public class HostPage {
     public static void print(){
         printSepator();
         printSpace(24);
-        System.out.println("Welcome to the PetRescueSaga");
+        System.out.println("Welcome to the Fractal project");
         System.out.println();
-        printSpace(19);
-        System.out.println("This game was reproduced by the Group57");
+        printSpace(12);
+        System.out.println("This game was reproduced by the KarmaEssence and Ibbo");
         printSepator();
     }
 
