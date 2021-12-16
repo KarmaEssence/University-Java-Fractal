@@ -14,8 +14,8 @@ public class JuliaSet extends Fractal{
             for(int j = 0; j < image.getImageHeight(); j++){
 
                 //calcul de l'indice de divergence
-                double complexX = -1 + image.getDiscretizationStape() * j; // changer le -1 en fonction du point en bas à gauche du rectangle
-                double complexY = 1 -  image.getDiscretizationStape() * i; // changer le -1 en fonction du point en bas à gauche du rectangle
+                double complexX = -1 + discretizationStape * j; // changer le -1 en fonction du point en bas à gauche du rectangle
+                double complexY = 1 -  discretizationStape * i; // changer le -1 en fonction du point en bas à gauche du rectangle
                 z = new Complex(complexX, complexY);
                 int index = divergenceIndex(function);
 

@@ -37,8 +37,6 @@ public class TextualHumanInteract implements HumanInteract {
 			System.out.println();
 			System.out.println("Do you want continue or quit ?(c/q)");
 			answer = scanner.nextLine();
-			/*if(iterationOfReadSomething > 0)
-				answer = scanner.nextLine();*/
 			if(answer.equals("q"))System.exit(0);
 			iterationOfReadSomething += 1;
 		}
@@ -153,7 +151,6 @@ public class TextualHumanInteract implements HumanInteract {
 		for(int i=0;i<s.length();i++){
 			if(!((s.charAt(i)>47 && s.charAt(i)<58) || s.charAt(i) == '.' || s.charAt(i) == '-'))
 				return false;
-			//if(s.charAt(i)< 48 || s.charAt(i) > 57 || s.charAt(i) != '.') return false;
 		}
 		return true;
 	}

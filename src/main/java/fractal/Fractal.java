@@ -15,17 +15,28 @@ public abstract class Fractal {
     protected Complex z;
     protected Complex constant;
     protected ComplexRectangle complexRectangle;
-    //protected Integer divergeIndex;
+    protected Double discretizationStape;
     protected ImageConfig image;
     protected Function<Complex, Complex> function;
 
     public Fractal(String function, Complex constant, ComplexRectangle complexRectangle, Double discretizationStape){
+        this.discretizationStape = discretizationStape;
         this.constant = constant;
         this.complexRectangle = complexRectangle;
-        //divergeIndex = -1;
         image = new ImageConfig(complexRectangle, discretizationStape);
+
         this.function = makeFunction(function);
 
+
+
+    }
+
+    public Complex getConstant() { return constant; }
+
+    public ComplexRectangle getComplexRectangle() { return complexRectangle; }
+
+    public Double getDiscretizationStape() {
+        return discretizationStape;
     }
 
     public boolean fonctionStrIsGoodFormat(String str){
@@ -53,6 +64,6 @@ public abstract class Fractal {
         return iteration;
     }
 
-    public void makeFractal() {}
+    public abstract void makeFractal();
 
 }

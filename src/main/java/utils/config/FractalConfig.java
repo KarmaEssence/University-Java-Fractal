@@ -30,12 +30,6 @@ public class FractalConfig {
     @JsonSerializable
     public final Double discretizationStape;
 
-    /*@JsonSerializable
-    private final Integer imageLength;
-
-    @JsonSerializable
-    private final Integer imageHeight;*/
-
     public static class Builder {
         private final Double constantX;
         private final Double constantY;
@@ -44,25 +38,6 @@ public class FractalConfig {
         private final Double pointBX;
         private final Double pointBY;
         private final Double discretizationStape;
-        /*private final Integer imageLength;
-        private final Integer imageHeight;*/
-
-        /*public Builder(Double constantX, Double constantY,
-                       Double pointAX, Double pointAY,
-                       Double pointBX, Double pointBY,
-                       Double discretizationStape, Integer imageLength,
-                       Integer imageHeight){
-
-            this.constantX = constantX;
-            this.constantY = constantY;
-            this.pointAX = pointAX;
-            this.pointAY = pointAY;
-            this.pointBX = pointBX;
-            this.pointBY = pointBY;
-            this.discretizationStape = discretizationStape;
-            this.imageLength = imageLength;
-            this.imageHeight = imageHeight;
-        }*/
 
         public Builder(Complex c, ComplexRectangle rectangle, Double discretizationStape){
 
@@ -73,8 +48,11 @@ public class FractalConfig {
             this.pointBX = rectangle.getPointB().getReal();
             this.pointBY = rectangle.getPointB().getImaginary();
             this.discretizationStape = discretizationStape;
-            /*this.imageLength = imageLength;
-            this.imageHeight = imageHeight;*/
+        }
+
+        public Builder(Fractal fractal){
+            this(fractal.getConstant(), fractal.getComplexRectangle(),
+                    fractal.getDiscretizationStape());
         }
 
         public FractalConfig build() {
@@ -98,8 +76,6 @@ public class FractalConfig {
         this.pointBX = builder.pointBX;
         this.pointBY = builder.pointBY;
         this.discretizationStape = builder.discretizationStape;
-        /*this.imageLength = builder.imageLength;
-        this.imageHeight = builder.imageHeight;*/
     }
     
 }

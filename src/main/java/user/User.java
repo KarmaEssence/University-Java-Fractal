@@ -7,7 +7,7 @@ import user.interaction.TextualHumanInteract;
 import utils.complex.ComplexRectangle;
 
 public class User {
-    private HumanInteract humanInteract;
+    private final HumanInteract humanInteract;
 
     public User(boolean isShellInteract){
         humanInteract = (isShellInteract)? new TextualHumanInteract(): new GraphicalHumanInteract();
