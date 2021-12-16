@@ -51,12 +51,18 @@ public class MainController extends Controller {
             Controller.model = model;
         }
 
+        if(model.getWishImg() != null){
+            fractalImage.setImage(model.getWishImg());
+        }
+
         newMenuItem.setOnAction(event -> {
             model.changeScene("newFractal");
         });
 
         openFractal.setOnAction(event ->{
-            try {
+            model.changeScene("openFractal");
+
+            /*try {
                 System.out.println("Test");
                 System.out.println(System.getProperty("user.dir") + "/data/fractal_image/2.png");
                 FileInputStream inputstream = new FileInputStream(System.getProperty("user.dir") + "/data/fractal_image/1.png");
@@ -72,9 +78,9 @@ public class MainController extends Controller {
                 /*fractalImage.setFitHeight(455);
                 fractalImage.setFitWidth(500);*/
 
-            } catch (FileNotFoundException e) {
+            /*} catch (FileNotFoundException e) {
                 e.printStackTrace();
-            }
+            }*/
         });
 
         closeFractal.setOnAction(event -> {
