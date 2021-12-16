@@ -55,16 +55,11 @@
           <items>
             <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
+            <MenuItem fx:id="openFractal" mnemonicParsing="false" text="Open…" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <MenuItem fx:id="closeFractal" mnemonicParsing="false" text="Close" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem fx:id="quitApp" mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
         <Menu fx:id="helpOptions" mnemonicParsing="false" text="Help">
@@ -89,7 +84,7 @@
           <content>
             <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="656.0">
                      <children>
-                        <ImageView fitHeight="536.0" fitWidth="659.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="fractalImage" fitHeight="551.0" fitWidth="659.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
             </AnchorPane>
           </content>
