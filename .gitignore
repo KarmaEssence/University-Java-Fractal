@@ -27,4 +27,6 @@ hs_err_pid*
 .idea
 build
 *.png
+fractal_config
+fractal_image
 
