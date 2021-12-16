@@ -54,7 +54,7 @@ public class NewFractalController extends Controller {
     @FXML
     private Button backButton;
 
-    private boolean juliaSetIsSelected;
+    //private boolean juliaSetIsSelected;
 
     private boolean checkValue(String s){
         return CheckStringFormat.checkValue(s);
@@ -86,7 +86,7 @@ public class NewFractalController extends Controller {
     private void makeFractal(){
         Fractal fractal;
 
-        if(juliaSetIsSelected){
+        if(juliaCheckbox.isSelected()){
 
             fractal = new JuliaSet(makeConstante(),
                     makeRectangle(), Double.parseDouble(discretizationStape.getText()));
@@ -108,12 +108,9 @@ public class NewFractalController extends Controller {
 
     @Override
     public void initPage(Model model) {
-        juliaCheckbox.setOnAction(event -> {
-            juliaSetIsSelected = !juliaSetIsSelected;
-        });
 
         newButton.setOnAction(event -> {
-            if(checkIfFieldsAreGoodFormat() && juliaSetIsSelected){
+            if(checkIfFieldsAreGoodFormat() && juliaCheckbox.isSelected()){
                 errorMessage.setText("");
                 makeFractal();
                 model.changeScene("main");
