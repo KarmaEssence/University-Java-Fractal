@@ -8,7 +8,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.graphical.guihandler.controllers.NewFractalController">
    <children>
       <Text layoutX="238.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make your Fractal :" wrappingWidth="152.853515625">
@@ -73,8 +72,9 @@
       </Pane>
       <Label layoutX="126.0" layoutY="414.0" prefHeight="17.0" prefWidth="144.0" text="Your discretization stape :" />
       <TextField fx:id="discretizationStape" layoutX="315.0" layoutY="410.0" prefHeight="25.0" prefWidth="56.0" />
-      <Button fx:id="newButton" layoutX="211.0" layoutY="485.0" mnemonicParsing="false" text="New" />
-      <Button fx:id="clearFieldButton" layoutX="323.0" layoutY="485.0" mnemonicParsing="false" text="Clear field" />
+      <Button fx:id="newButton" layoutX="159.0" layoutY="485.0" mnemonicParsing="false" text="New" />
+      <Button fx:id="clearFieldButton" layoutX="279.0" layoutY="485.0" mnemonicParsing="false" text="Clear field" />
       <Text fx:id="errorMessage" fill="WHITE" layoutX="218.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.13671875" />
+      <Button fx:id="backButton" layoutX="418.0" layoutY="485.0" mnemonicParsing="false" text="Back " />
    </children>
 </Pane>

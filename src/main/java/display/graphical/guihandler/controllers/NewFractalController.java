@@ -51,6 +51,9 @@ public class NewFractalController extends Controller {
     @FXML
     private Text errorMessage;
 
+    @FXML
+    private Button backButton;
+
     private boolean juliaSetIsSelected;
 
     private boolean checkValue(String s){
@@ -116,13 +119,16 @@ public class NewFractalController extends Controller {
                 model.changeScene("main");
                 clearFields();
             }else{
-                System.out.println("Testtttt");
                 errorInPage(0);
             }
         });
 
         clearFieldButton.setOnAction(event -> {
             clearFields();
+        });
+
+        backButton.setOnAction(event -> {
+            model.changeScene("main");
         });
     }
 

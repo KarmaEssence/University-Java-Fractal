@@ -24,6 +24,9 @@ public class OpenFractalController extends Controller {
     @FXML
     private Text errorMessage;
 
+    @FXML
+    private Button backButton;
+
     @Override
     public void initPage(Model model) {
         openButton.setOnAction(event -> {
@@ -37,11 +40,17 @@ public class OpenFractalController extends Controller {
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-
+                filename.clear();
                 model.changeScene("main");
             }else{
                 errorInPage(1);
             }
+        });
+
+        backButton.setOnAction(event -> {
+            filename.clear();
+            errorMessage.setText("");
+            model.changeScene("main");
         });
 
     }

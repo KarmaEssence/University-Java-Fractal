@@ -61,29 +61,10 @@ public class MainController extends Controller {
 
         openFractal.setOnAction(event ->{
             model.changeScene("openFractal");
-
-            /*try {
-                System.out.println("Test");
-                System.out.println(System.getProperty("user.dir") + "/data/fractal_image/2.png");
-                FileInputStream inputstream = new FileInputStream(System.getProperty("user.dir") + "/data/fractal_image/1.png");
-                fractalImage.setImage(new Image(inputstream));
-                System.out.println(fractalImage.getFitHeight());
-                System.out.println(fractalImage.getFitWidth());
-
-                //Setting the position of the image
-                /*fractalImage.setX(50);
-                fractalImage.setY(25);*/
-
-                //setting the fit height and width of the image view
-                /*fractalImage.setFitHeight(455);
-                fractalImage.setFitWidth(500);*/
-
-            /*} catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }*/
         });
 
         closeFractal.setOnAction(event -> {
+            model.setWishImg(null);
             fractalImage.setImage(null);
         });
 
