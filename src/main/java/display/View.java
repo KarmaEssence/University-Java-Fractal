@@ -7,11 +7,6 @@ package display;
 public abstract class View{
 
 	/**
-	 * Affiche la page d accueil.
-	 */
-	public abstract void printHostPage();
-
-	/**
 	 * Retourne le type de vue choisie.
 	 * @return type de vue
 	 */
@@ -24,13 +19,6 @@ public abstract class View{
 	public abstract void print();
 
 	/**
-	 * Fais un resume du niveau, en fonction du boolean
-	 * affiche different type de resume.
-	 * @param bool pour choisir le type de description.
-	 */
-	public abstract void summarize(boolean bool);
-
-	/**
 	 * Cree le message d erreur.
 	 * @param type type du message d erreur.
 	 */
@@ -38,18 +26,9 @@ public abstract class View{
 		String title = "";
 		String message = "";
 		switch (type){
-			case 0:
-				title ="Wrong number of Level";
-				message = "Level does not exist";
-				break;
-			case 1:
-				title ="Indestructible block";
-				message = "This element can't be destroyed !";
-				break;
-			case 2:
+			default:
 				title ="Change your value";
 				message = "You cannot choose this!";
-				break;
 		}
 		printErrorMessage(title,message);
 	}

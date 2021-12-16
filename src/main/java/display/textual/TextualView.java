@@ -13,7 +13,7 @@ public class TextualView extends View {
 	 * Affiche la page d accueil.
 	 */
 	@Override
-	public void printHostPage() {
+	public void print() {
 		HostPage.print();
 	}
 
@@ -25,21 +25,6 @@ public class TextualView extends View {
 	public String typeOfView(){
 		return "Textual";
 	}
-
-	/**
-	 * Met a jour l affichage pour correspondre a celui
-	 * du plateau courant.
-	 */
-	@Override
-	public void print(){}
-
-	/**
-	 * Fais un resume du niveau, en fonction du boolean
-	 * affiche different type de resume.
-	 * @param bool pour choisir le type de description.
-	 */
-	@Override
-	public void summarize(boolean bool){}
 
 	/**
 	 * Affiche le message d erreur.

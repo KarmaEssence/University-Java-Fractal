@@ -36,8 +36,8 @@ public class GeneralView{
 		return user.chooseToPlay();
 	}
 
-	public void displayHostPage(){
-		view.printHostPage();
+	public void display(){
+		view.print();
 	}
 
 	public Complex getConstant() {
