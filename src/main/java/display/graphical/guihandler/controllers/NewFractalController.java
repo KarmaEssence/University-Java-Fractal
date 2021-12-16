@@ -8,9 +8,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.apache.commons.math3.complex.Complex;
 import utils.complex.ComplexRectangle;
+import utils.config.FractalConfig;
+import utils.config.ImageConfig;
+import utils.other.CheckStringFormat;
 
 public class NewFractalController extends Controller {
 
@@ -45,11 +49,21 @@ public class NewFractalController extends Controller {
     private Button clearFieldButton;
 
     @FXML
-    private static Text errorMessage;
+    private Text errorMessage;
+
+    private boolean juliaSetIsSelected;
+
+    private boolean checkValue(String s){
+        return CheckStringFormat.checkValue(s);
+    }
 
     //todo: Reprendre les fonctions de la classe TextualHumanInteract
     private boolean checkIfFieldsAreGoodFormat(){
-        return true;
+        return checkValue(constanteX.getText()) && checkValue(constanteY.getText())
+                && checkValue(pointAX.getText()) && checkValue(pointAY.getText())
+                && checkValue(pointBX.getText()) && checkValue(pointBY.getText())
+                && checkValue(discretizationStape.getText());
+
     }
 
     private Complex makeComplexe(String real, String imaginary){
@@ -67,34 +81,54 @@ public class NewFractalController extends Controller {
     }
 
     private void makeFractal(){
-        Fractal fractal = null;
-        if(juliaCheckbox.isSelected()){
+        Fractal fractal;
+
+        if(juliaSetIsSelected){
 
             fractal = new JuliaSet(makeConstante(),
                     makeRectangle(), Double.parseDouble(discretizationStape.getText()));
+            fractal.saveFractalImage();
+            new FractalConfig.Builder(fractal).buildAndSave();
+            model.setFractal(fractal);
+            juliaCheckbox.setSelected(false);
         }
-        model.setFractal(fractal);
+
+    }
+
+    private void clearFields(){
+        juliaCheckbox.setSelected(false);
+        constanteX.clear(); constanteY.clear();
+        pointAX.clear(); pointAY.clear();
+        pointBX.clear(); pointBY.clear();
+        discretizationStape.clear();
     }
 
     @Override
     public void initPage(Model model) {
+        juliaCheckbox.setOnAction(event -> {
+            juliaSetIsSelected = !juliaSetIsSelected;
+        });
+
         newButton.setOnAction(event -> {
-            if(checkIfFieldsAreGoodFormat()){
-                makeFractal();
+            if(checkIfFieldsAreGoodFormat() && juliaSetIsSelected){
                 errorMessage.setText("");
+                makeFractal();
                 model.changeScene("main");
-                model.showScene();
+                clearFields();
             }else{
+                System.out.println("Testtttt");
                 errorInPage(0);
             }
+        });
+
+        clearFieldButton.setOnAction(event -> {
+            clearFields();
         });
     }
 
     @Override
     public void errorInPage(int error) {
         errorMessage.setText("Wrong content in one of all field");
-        model.changeScene("newFractal");
-        model.showScene();
-
+        errorMessage.setFill(Color.RED);
     }
 }

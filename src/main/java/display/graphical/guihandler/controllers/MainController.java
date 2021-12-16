@@ -31,9 +31,12 @@ public class MainController extends Controller {
 
     @Override
     public void initPage(Model model) {
+        if(this.model == null){
+            this.model = model;
+        }
+
         newMenuItem.setOnAction(event -> {
             model.changeScene("newFractal");
-            model.showScene();
         });
     }
 

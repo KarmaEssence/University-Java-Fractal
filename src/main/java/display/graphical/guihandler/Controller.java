@@ -6,7 +6,7 @@ public abstract class Controller{
 
     protected Pane panel;
 
-    protected Model model;
+    protected static Model model;
 
     protected static boolean isConnected;
 

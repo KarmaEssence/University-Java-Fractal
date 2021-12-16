@@ -1,6 +1,7 @@
 package user.interaction;
 import org.apache.commons.math3.complex.Complex;
 import utils.complex.ComplexRectangle;
+import utils.other.CheckStringFormat;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -67,7 +68,7 @@ public class TextualHumanInteract implements HumanInteract {
 
 	private String getValueAnswer(String part){
 		String answer = "nothing";
-		while(!checkValue(answer)){
+		while(!CheckStringFormat.checkValue(answer)){
 			System.out.println("-> Enter a " + part + " part value: ");
 			answer = scanner.nextLine();
 		}
@@ -76,8 +77,8 @@ public class TextualHumanInteract implements HumanInteract {
 
 	private Complex createPoint(){
 		System.out.println();
-		double realPart = stringIntoValue(getValueAnswer("real"));
-		double imaginaryPart = stringIntoValue(getValueAnswer("imaginary"));
+		double realPart = CheckStringFormat.stringIntoValue(getValueAnswer("real"));
+		double imaginaryPart = CheckStringFormat.stringIntoValue(getValueAnswer("imaginary"));
 
 		System.out.println();
 		return new Complex(realPart, imaginaryPart);
@@ -100,59 +101,11 @@ public class TextualHumanInteract implements HumanInteract {
 	@Override
 	public double discretizationStape() {
 		String answer = "nothing";
-		while(!checkValue(answer)) {
+		while(!CheckStringFormat.checkValue(answer)) {
 			System.out.println("-> Enter a discretizationStape value: ");
 			answer = scanner.nextLine();
 		}
-		return stringIntoValue(answer);
-	}
-
-	/**
-	 * Transforme les informations en coordonnee pour la grille.
-	 * @param s une chaine de caractere.
-	 * @return retourne le premier caractere
-	 * transforme en entier.
-	 */
-	public double stringIntoValue(String s){
-		double res = Double.parseDouble(s);
-		System.out.println(res);
-		/*if(s.charAt(0) == '-'){
-			res = -1 * Integer.parseInt(s);
-		}else{
-			res = Integer.valueOf(s.charAt(0))%32;
-		}*/
-		return res;
-	}
-
-	/**
-	 * Verification du format de la reponse entre par le joueur.
-	 * @param s une chaine de caractere.
-	 * @return true si la chaine de caractere
-	 * respecte le format,false sinon.
-	 */
-	public boolean checkArg(String s){
-		if(s.length()!=1)return false;
-		return ((s.charAt(0)>=49 && s.charAt(0)<=57)
-				|| (s.charAt(0)>=65 && s.charAt(0)<=90)
-				|| (s.charAt(0)>=97 && s.charAt(0)<=122));
-	}
-
-	/**
-	 * Verifie que le paramètre donne
-	 * contienne un entier entre 0 et 9.
-	 * @param s une chaine de caractere.
-	 * @return true si la chaine de caractere
-	 * respecte le format,false sinon.
-	 */
-	public boolean checkValue(String s){
-		if(s.length()==0) return false;
-		if(s.charAt(0) != '-' && s.contains("-")) return false;
-
-		for(int i=0;i<s.length();i++){
-			if(!((s.charAt(i)>47 && s.charAt(i)<58) || s.charAt(i) == '.' || s.charAt(i) == '-'))
-				return false;
-		}
-		return true;
+		return CheckStringFormat.stringIntoValue(answer);
 	}
 
 	/**

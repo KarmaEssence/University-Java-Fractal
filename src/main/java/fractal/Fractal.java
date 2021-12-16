@@ -31,6 +31,11 @@ public abstract class Fractal {
 
     }
 
+    public void saveFractalImage(){
+        makeFractal();
+        //image.saveFractal();
+    }
+
     public Complex getConstant() { return constant; }
 
     public ComplexRectangle getComplexRectangle() { return complexRectangle; }
