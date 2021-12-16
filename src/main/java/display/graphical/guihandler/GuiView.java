@@ -8,7 +8,7 @@ public class GuiView extends Application {
     @Override
     public void start(Stage primaryStage) {
         Model model = new Model();
-        model.changeScene("home");
+        model.changeScene("main");
         model.showScene();
     }
 }

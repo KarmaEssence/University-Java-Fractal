@@ -1,12 +1,12 @@
 package display.graphical.guihandler;
 
+import display.graphical.guihandler.controllers.MainController;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.util.*;
 
 public class Model {
     private final Stage currentStage;
@@ -28,13 +28,13 @@ public class Model {
     }
 
     private void initController(){
-        /*try{
-            FXMLLoader homeLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/home.fxml")));
-            listOfScene.put("home", new Scene(homeLoader.load()));
-            HomeController homeController = homeLoader.getController();
-            controllers.add(homeController);
+        try{
+            FXMLLoader mainLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/main.fxml")));
+            listOfScene.put("main", new Scene(mainLoader.load()));
+            MainController mainController = mainLoader.getController();
+            controllers.add(mainController);
 
-            FXMLLoader signinLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/signin.fxml")));
+            /*FXMLLoader signinLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/signin.fxml")));
             listOfScene.put("signin", new Scene(signinLoader.load()));
             SignInController signinController = signinLoader.getController();
             controllers.add(signinController);
@@ -57,11 +57,11 @@ public class Model {
             FXMLLoader graphLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/graphs.fxml")));
             listOfScene.put("graph", new Scene(graphLoader.load()));
             GraphController graphController = graphLoader.getController();
-            controllers.add(graphController);
+            controllers.add(graphController);*/
 
         }catch (IOException e){
             e.printStackTrace();
-        }*/
+        }
     }
 
     public Scene getScene(String name){
@@ -69,9 +69,9 @@ public class Model {
     }
 
     public Controller getController(String name){
-        /*if(name.equals("home"))
+        if(name.equals("main"))
             return controllers.get(0);
-        if(name.equals("signin"))
+        /*if(name.equals("signin"))
             return controllers.get(1);
         if(name.equals("connection"))
             return controllers.get(2);
@@ -93,9 +93,9 @@ public class Model {
     }
 
     public void changeScene(String name){
-        /*scenes.add(currentStage.getScene());
+        scenes.add(currentStage.getScene());
         getController(name).initPage(this);
-        currentStage.setScene(getScene(name));*/
+        currentStage.setScene(getScene(name));
     }
 
     /*public void initUser(String pseudo, String password, String mail){
