@@ -39,8 +39,6 @@ public class Launcher {
         JuliaTest.juliaTest2();
 
         Launcher launcher = new Launcher();
-        File file = new File("./dossier/file.txt");
-        System.out.println(file.getName());
 
         /*if(args.length == 1){
             launcher.generalView = new GeneralView(args[0]);

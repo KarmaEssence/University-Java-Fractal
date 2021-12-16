@@ -4,6 +4,7 @@ import fractal.JuliaSet;
 import utils.complex.ComplexOperation;
 import utils.complex.ComplexRectangle;
 import org.apache.commons.math3.complex.Complex;
+import utils.config.FractalConfig;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -95,6 +96,8 @@ public class JuliaTest {
         ComplexRectangle cr = new ComplexRectangle(-1, 1, 1, -1);
         JuliaSet juliaSet = new JuliaSet(function, c, cr, 0.001);
         juliaSet.makeFractal();
+        FractalConfig.Builder builder = new FractalConfig.Builder(c, cr, 0.001);
+        builder.buildAndSave();
     }
 
 }

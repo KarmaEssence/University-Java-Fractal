@@ -1,4 +1,6 @@
-package utils.complex;
+package utils.config;
+
+import utils.complex.ComplexRectangle;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -6,13 +8,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
-public class ComplexImg {
+public class ImageConfig {
     private BufferedImage image;
     private Double discretizationStape;
     private Integer imageLength;
     private Integer imageHeight;
 
-    public ComplexImg(ComplexRectangle complexRectangle, Double discretizationStape){
+    public ImageConfig(ComplexRectangle complexRectangle, Double discretizationStape){
         this.discretizationStape = discretizationStape;
 
         //Calcul de la longueur et de la largeur du rectangle complexe :
@@ -44,8 +46,9 @@ public class ComplexImg {
     public void saveFractal(){
         if(image == null) return;
         System.out.println("Generating image ...");
-        directoryExist();
-        File file = new File("./data/fractal_image/" + giveNewFilename() + ".png");
+        FileData.directoryExist("/data/fractal_image");
+        File file = new File("./data/fractal_image/" +
+                FileData.giveNewFilename("./data/fractal_image") + ".png");
         try{
             ImageIO.write(image, "PNG", file);
         }catch (IOException e){
@@ -58,7 +61,7 @@ public class ComplexImg {
     /**
      * Verifie que le repertoire existe.
      */
-    private static void directoryExist(){
+    /*private static void directoryExist(){
         String path = System.getProperty("user.dir");
         path+= "/data/fractal_image";
         File dir = new File(path);
@@ -78,5 +81,5 @@ public class ComplexImg {
                 max = valueFile;
         }
         return String.valueOf(max + 1);
-    }
+    }*/
 }
