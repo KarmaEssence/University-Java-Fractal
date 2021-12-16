@@ -5,8 +5,8 @@ import org.apache.commons.math3.complex.Complex;
 
 public class JuliaSet extends Fractal{
 
-    public JuliaSet(String function, Complex constant, ComplexRectangle complexRectangle, Double discretizationStape){
-        super(function, constant, complexRectangle, discretizationStape);
+    public JuliaSet(Complex constant, ComplexRectangle complexRectangle, Double discretizationStape){
+        super("z^2 + c", constant, complexRectangle, discretizationStape);
     }
 
     private void writeJuliaFractalOnImage(){

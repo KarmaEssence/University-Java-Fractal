@@ -11,6 +11,11 @@ public class ComplexRectangle {
         pointB = new Complex(x2, y2);
     }
 
+    public ComplexRectangle(Complex pointA, Complex pointB){
+        this.pointA = pointA;
+        this.pointB = pointB;
+    }
+
     public Complex getPointA() {
         return pointA;
     }

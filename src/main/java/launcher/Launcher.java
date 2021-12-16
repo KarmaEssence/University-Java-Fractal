@@ -26,7 +26,7 @@ public class Launcher{
         double discretizationStape = generalView.discretizationStape();
 
         if(set.equals("julia")) {
-            fractal = new JuliaSet("z^2 + c", c, complexRectangle, discretizationStape);
+            fractal = new JuliaSet(c, complexRectangle, discretizationStape);
             fractal.makeFractal();
         }
         //peut etre un else avec l'ensemble de Mandelbrot
@@ -63,6 +63,9 @@ public class Launcher{
             launcher.generalView = new GeneralView("graphical");
             executeGraphicalOption(launcher);
         }
+
+        System.out.println("Test");
+        System.exit(0);
 
         /*if(args.length == 1 && args[0].equals("graphical")){
             launcher.generalView.display();

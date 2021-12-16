@@ -1,6 +1,8 @@
 package display.graphical.guihandler;
 
 import display.graphical.guihandler.controllers.MainController;
+import display.graphical.guihandler.controllers.NewFractalController;
+import fractal.Fractal;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -9,6 +11,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class Model {
+    private Fractal fractal;
     private final Stage currentStage;
     private final ArrayList<Scene> scenes;
     private final Map<String, Scene> listOfScene;
@@ -34,34 +37,22 @@ public class Model {
             MainController mainController = mainLoader.getController();
             controllers.add(mainController);
 
-            /*FXMLLoader signinLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/signin.fxml")));
-            listOfScene.put("signin", new Scene(signinLoader.load()));
-            SignInController signinController = signinLoader.getController();
-            controllers.add(signinController);
-
-            FXMLLoader connectLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/connection.fxml")));
-            listOfScene.put("connection", new Scene(connectLoader.load()));
-            ConnectionController connectionController = connectLoader.getController();
-            controllers.add(connectionController);
-
-            FXMLLoader homeConnectionLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/homeConnected.fxml")));
-            listOfScene.put("homeConnection", new Scene(homeConnectionLoader.load()));
-            HomeConnectionController homeConnectionController = homeConnectionLoader.getController();
-            controllers.add(homeConnectionController);
-
-            FXMLLoader runModeLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/runMode.fxml")));
-            listOfScene.put("runMode", new Scene(runModeLoader.load()));
-            RunModeController runModeController = runModeLoader.getController();
-            controllers.add(runModeController);
-
-            FXMLLoader graphLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/graphs.fxml")));
-            listOfScene.put("graph", new Scene(graphLoader.load()));
-            GraphController graphController = graphLoader.getController();
-            controllers.add(graphController);*/
+            FXMLLoader newFractalLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/newFractal.fxml")));
+            listOfScene.put("newFractal", new Scene(newFractalLoader.load()));
+            NewFractalController newFractalController = newFractalLoader.getController();
+            controllers.add(newFractalController);
 
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public Fractal getFractal() {
+        return fractal;
+    }
+
+    public void setFractal(Fractal fractal) {
+        this.fractal = fractal;
     }
 
     public Scene getScene(String name){
@@ -71,9 +62,9 @@ public class Model {
     public Controller getController(String name){
         if(name.equals("main"))
             return controllers.get(0);
-        /*if(name.equals("signin"))
+        if(name.equals("newFractal"))
             return controllers.get(1);
-        if(name.equals("connection"))
+        /*if(name.equals("connection"))
             return controllers.get(2);
         if(name.equals("homeConnection"))
             return controllers.get(3);
