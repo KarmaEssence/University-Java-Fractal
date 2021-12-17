@@ -1,13 +1,8 @@
 package launcher;
 
 import display.GeneralView;
-import display.graphical.guihandler.GuiView;
 import fractal.Fractal;
 import fractal.JuliaSet;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.stage.Stage;
 import org.apache.commons.math3.complex.Complex;
 import utils.complex.ComplexRectangle;
 import utils.config.FractalConfig;
@@ -48,6 +43,7 @@ public class Launcher{
 
     public static void executeGraphicalOption(Launcher launcher){
         launcher.generalView.display();
+        System.exit(0);
     }
 
     public static void main(String[] args){
@@ -66,26 +62,5 @@ public class Launcher{
             launcher.generalView = new GeneralView("graphical");
             executeGraphicalOption(launcher);
         }
-
-        System.out.println("Test");
-        System.exit(0);
-
-        /*if(args.length == 1 && args[0].equals("graphical")){
-            launcher.generalView.display();
-        }else{
-            boolean wantToPlay = true;
-            while(wantToPlay){
-                launcher.generalView.display();
-                wantToPlay = launcher.generalView.chooseToPlay();
-                launcher.makeFractal();
-                if(args.length == 1 && args[0].equals("shell"))
-                    System.exit(0);
-            }
-
-        }*/
-
-
-
-
     }
 }
