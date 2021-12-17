@@ -45,8 +45,6 @@ public class OpenFractalController extends Controller {
         JsonReader jr = JsonReader.createReaderInstance(System.getProperty("user.dir") + "/data/fractal_config/" + filename.getText() + ".json");
         assert jr != null;
         model.setFractalConfig((FractalConfig) jr.deserialize());
-        System.out.println(model.getFractalConfig().constantX);
-        System.out.println(model.getFractalConfig().discretizationStape);
     }
 
     @Override

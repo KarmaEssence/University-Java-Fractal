@@ -9,6 +9,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -40,6 +41,31 @@ public class MainController extends Controller {
     private Font fractalParametersFont;
 
     @FXML
+    private Text setChoice;
+
+    @FXML
+    private Text constanteX;
+
+    @FXML
+    private Text constanteY;
+
+    @FXML
+    private Text pointAX;
+
+    @FXML
+    private Text pointAY;
+
+    @FXML
+    private Text pointBX;
+
+    @FXML
+    private Text pointBY;
+
+    @FXML
+    private Text discretizationStape;
+
+
+    @FXML
     private ImageView fractalImage;
 
     @FXML
@@ -51,7 +77,7 @@ public class MainController extends Controller {
             Controller.model = model;
         }
 
-        if(model.getWishImg() != null){
+        if(model.getWishImg() != null && model.getFractalConfig() != null){
             fractalImage.setImage(model.getWishImg());
         }
 

@@ -46,6 +46,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.graphical.guihandler.controllers.MainController">
   <children>
@@ -78,6 +79,38 @@
                 <Font fx:id="fractalParametersFont" size="18.0" />
               </font>
             </Label>
+                  <Pane layoutY="48.0" prefHeight="47.0" prefWidth="222.0">
+                     <children>
+                        <Label layoutX="22.0" layoutY="15.0" prefHeight="17.0" prefWidth="119.0" text="Your type of fractal :" />
+                        <Text fx:id="setChoice" layoutX="141.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Choosed" wrappingWidth="68.9921875" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="11.0" layoutY="104.0" prefHeight="69.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your constante :" wrappingWidth="91.0" />
+                        <Label layoutX="31.0" layoutY="26.0" text="Real part : " />
+                        <Label layoutY="47.0" text="Imaginary part : " />
+                        <Text fx:id="constanteX" layoutX="109.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Undefined" wrappingWidth="68.9921875" />
+                        <Text fx:id="constanteY" layoutX="109.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Undefined" wrappingWidth="68.9921875" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="11.0" layoutY="188.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="9.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your rectangle :" wrappingWidth="91.0" />
+                        <Text layoutX="32.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Point A :" />
+                        <Text layoutX="33.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Point B :" />
+                        <Label layoutX="47.0" layoutY="65.0" text="Real part : " />
+                        <Label layoutX="16.0" layoutY="92.0" text="Imaginary part :" />
+                        <Label layoutX="47.0" layoutY="147.0" text="Real part : " />
+                        <Label layoutX="19.0" layoutY="178.0" text="Imaginary part :" />
+                        <Text fx:id="pointAX" layoutX="110.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Undefined" wrappingWidth="68.9921875" />
+                        <Text fx:id="pointAY" layoutX="110.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Undefined" wrappingWidth="68.9921875" />
+                        <Text fx:id="pointBX" layoutX="110.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Undefined" wrappingWidth="68.9921875" />
+                        <Text fx:id="pointBY" layoutX="110.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Undefined" wrappingWidth="68.9921875" />
+                     </children>
+                  </Pane>
+                  <Label layoutX="11.0" layoutY="437.0" prefHeight="17.0" prefWidth="144.0" text="Your discretization stape :" />
+                  <Text fx:id="discretizationStape" layoutX="153.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Undefined" wrappingWidth="68.9921875" />
           </children>
         </AnchorPane>
         <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
