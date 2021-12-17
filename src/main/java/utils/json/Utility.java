@@ -1,5 +1,7 @@
 package utils.json;
 
+import utils.other.CheckStringFormat;
+
 import java.util.List;
 import java.util.Map;
 
@@ -42,8 +44,10 @@ public class Utility {
     protected static Object findGoodObject(String firstVal){
         if(firstVal.length() == 1 && isCharacter(firstVal.charAt(0))){
             return firstVal.charAt(0);
-        }else if(isDigit(firstVal)){
+        }else if(isDigit(firstVal)) {
             return Integer.valueOf(firstVal);
+        }else if(CheckStringFormat.checkValue(firstVal)){
+            return Double.valueOf(firstVal);
         }else if(firstVal.equals("true") || firstVal.equals("false")){
             return (firstVal.equals("true"));
         }else{

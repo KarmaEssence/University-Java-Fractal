@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import utils.config.FractalConfig;
 
 import java.io.IOException;
 import java.util.*;
@@ -16,6 +17,7 @@ import java.util.*;
 public class Model {
     private Fractal fractal;
     private Image wishImg;
+    private FractalConfig fractalConfig;
     private final Stage currentStage;
     private final ArrayList<Scene> scenes;
     private final Map<String, Scene> listOfScene;
@@ -76,6 +78,14 @@ public class Model {
         return listOfScene.get(name);
     }
 
+    public FractalConfig getFractalConfig() {
+        return fractalConfig;
+    }
+
+    public void setFractalConfig(FractalConfig fractalConfig) {
+        this.fractalConfig = fractalConfig;
+    }
+
     public Controller getController(String name){
         if(name.equals("main"))
             return controllers.get(0);
@@ -83,12 +93,8 @@ public class Model {
             return controllers.get(1);
         if(name.equals("openFractal"))
             return controllers.get(2);
-        /*if(name.equals("homeConnection"))
-            return controllers.get(3);
-        if(name.equals("runMode"))
-            return controllers.get(4);
-        if(name.equals("graph"))
-            return controllers.get(5);*/
+        /*if(name.equals("help"))
+            return controllers.get(3);*/
         return null;
     }
 
@@ -105,16 +111,4 @@ public class Model {
         getController(name).initPage(this);
         currentStage.setScene(getScene(name));
     }
-
-    /*public void initUser(String pseudo, String password, String mail){
-        user = new User(pseudo, password, mail);
-    }
-
-    public void setUser(User user){
-        this.user = user;
-    }
-
-    public User getUser(){
-        return user;
-    }*/
 }

@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import utils.config.FractalConfig;
+import utils.json.JsonReader;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,19 +29,34 @@ public class OpenFractalController extends Controller {
     @FXML
     private Button backButton;
 
+
+    private void getImageFromFile(){
+        try {
+            FileInputStream inputStream = new FileInputStream(System.getProperty("user.dir") +
+                    "/data/fractal_image/" + filename.getText() + ".png");
+            model.setWishImg(new Image(inputStream));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getConfigFromFile(){
+        System.out.println(System.getProperty("user.dir") + "/data/fractal_config/" + filename.getText() + ".json");
+        JsonReader jr = JsonReader.createReaderInstance(System.getProperty("user.dir") + "/data/fractal_config/" + filename.getText() + ".json");
+        assert jr != null;
+        model.setFractalConfig((FractalConfig) jr.deserialize());
+        System.out.println(model.getFractalConfig().constantX);
+        System.out.println(model.getFractalConfig().discretizationStape);
+    }
+
     @Override
     public void initPage(Model model) {
         openButton.setOnAction(event -> {
             File file = new File(System.getProperty("user.dir") + "/data/fractal_image/" + filename.getText() + ".png");
             System.out.println(System.getProperty("user.dir") + "/data/fractal_image/" + filename.getText() + ".png");
             if(file.exists()){
-                try {
-                    FileInputStream inputstream = new FileInputStream(System.getProperty("user.dir") +
-                            "/data/fractal_image/" + filename.getText() + ".png");
-                    model.setWishImg(new Image(inputstream));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+                getImageFromFile();
+                getConfigFromFile();
                 filename.clear();
                 model.changeScene("main");
             }else{

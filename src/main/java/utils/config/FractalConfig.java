@@ -10,25 +10,25 @@ import utils.json.annotation.JsonSerializable;
 public class FractalConfig {
     
     @JsonSerializable
-    public final Double constantX;
+    public Double constantX;
 
     @JsonSerializable
-    public final Double constantY;
+    public Double constantY;
 
     @JsonSerializable
-    public final Double pointAX;
+    public Double pointAX;
 
     @JsonSerializable
-    public final Double pointAY;
+    public Double pointAY;
 
     @JsonSerializable
-    public final Double pointBX;
+    public Double pointBX;
 
     @JsonSerializable
-    public final Double pointBY;
+    public Double pointBY;
 
     @JsonSerializable
-    public final Double discretizationStape;
+    public Double discretizationStape;
 
     public static class Builder {
         private final Double constantX;
@@ -77,5 +77,7 @@ public class FractalConfig {
         this.pointBY = builder.pointBY;
         this.discretizationStape = builder.discretizationStape;
     }
+
+    public FractalConfig(){}
     
 }
