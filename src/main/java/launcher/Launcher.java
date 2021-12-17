@@ -38,8 +38,11 @@ public class Launcher{
     public static void executeShellOption(Launcher launcher){
         launcher.generalView.display();
         boolean wantToPlay = launcher.generalView.chooseToPlay();
-        if(wantToPlay)
+        while(wantToPlay){
             launcher.makeFractal();
+            launcher.generalView.display();
+            wantToPlay = launcher.generalView.chooseToPlay();
+        }
         System.exit(0);
     }
 
@@ -55,9 +58,9 @@ public class Launcher{
 
         if(args.length == 1){
             launcher.generalView = new GeneralView(args[0]);
-            if(args[0].equals("shell"))
+            if(args[0].equals("shell")){
                 executeShellOption(launcher);
-            else
+            }else
                 executeGraphicalOption(launcher);
         }else{
             launcher.generalView = new GeneralView("graphical");
@@ -85,17 +88,4 @@ public class Launcher{
 
 
     }
-
-
-    /*@Override
-    public void start(Stage primaryStage){
-        try {
-            Label label = new Label("Hello world");
-            Scene scene = new Scene(label);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }*/
 }
