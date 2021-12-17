@@ -54,8 +54,6 @@ public class NewFractalController extends Controller {
     @FXML
     private Button backButton;
 
-    //private boolean juliaSetIsSelected;
-
     private boolean checkValue(String s){
         return CheckStringFormat.checkValue(s);
     }

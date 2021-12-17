@@ -74,6 +74,7 @@ public class MainController extends Controller {
 
     private void displayFractalConfig(){
         FractalConfig config = model.getFractalConfig();
+        setChoice.setText(config.setChoice);
         constanteX.setText(String.valueOf(config.constantX));
         constanteY.setText(String.valueOf(config.constantY));
         pointAX.setText(String.valueOf(config.pointAX));
@@ -81,9 +82,11 @@ public class MainController extends Controller {
         pointBX.setText(String.valueOf(config.pointBX));
         pointBY.setText(String.valueOf(config.pointBY));
         discretizationStape.setText(String.valueOf(config.discretizationStape));
+
     }
 
     private void clearTextField(){
+        setChoice.setText("No Choosed");
         constanteX.setText("Undefined");
         constanteY.setText("Undefined");
         pointAX.setText("Undefined");
@@ -91,7 +94,6 @@ public class MainController extends Controller {
         pointBX.setText("Undefined");
         pointBY.setText("Undefined");
         discretizationStape.setText("Undefined");
-
     }
 
     @Override

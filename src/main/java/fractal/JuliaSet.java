@@ -7,6 +7,8 @@ public class JuliaSet extends Fractal{
 
     public JuliaSet(Complex constant, ComplexRectangle complexRectangle, Double discretizationStape){
         super("z^2 + c", constant, complexRectangle, discretizationStape);
+        super.setChoice = "julia";
+
     }
 
     private void writeJuliaFractalOnImage(){

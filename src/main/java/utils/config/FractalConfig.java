@@ -8,7 +8,10 @@ import utils.json.annotation.JsonSerializable;
 
 @JsonSerializable
 public class FractalConfig {
-    
+
+    @JsonSerializable
+    public String setChoice;
+
     @JsonSerializable
     public Double constantX;
 
@@ -31,6 +34,7 @@ public class FractalConfig {
     public Double discretizationStape;
 
     public static class Builder {
+        private final String setChoice;
         private final Double constantX;
         private final Double constantY;
         private final Double pointAX;
@@ -39,7 +43,7 @@ public class FractalConfig {
         private final Double pointBY;
         private final Double discretizationStape;
 
-        public Builder(Complex c, ComplexRectangle rectangle, Double discretizationStape){
+        public Builder(String setChoice, Complex c, ComplexRectangle rectangle, Double discretizationStape){
 
             this.constantX = c.getReal();
             this.constantY = c.getImaginary();
@@ -48,10 +52,11 @@ public class FractalConfig {
             this.pointBX = rectangle.getPointB().getReal();
             this.pointBY = rectangle.getPointB().getImaginary();
             this.discretizationStape = discretizationStape;
+            this.setChoice = setChoice;
         }
 
         public Builder(Fractal fractal){
-            this(fractal.getConstant(), fractal.getComplexRectangle(),
+            this(fractal.getSetChoice() ,fractal.getConstant(), fractal.getComplexRectangle(),
                     fractal.getDiscretizationStape());
         }
 
@@ -76,6 +81,7 @@ public class FractalConfig {
         this.pointBX = builder.pointBX;
         this.pointBY = builder.pointBY;
         this.discretizationStape = builder.discretizationStape;
+        this.setChoice = builder.setChoice;
     }
 
     public FractalConfig(){}

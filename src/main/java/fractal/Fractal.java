@@ -12,6 +12,7 @@ public abstract class Fractal {
     protected static final int MAX_ITER = 1000;
     protected static final int RADIUS = 2;
 
+    protected String setChoice;
     protected Complex z;
     protected Complex constant;
     protected ComplexRectangle complexRectangle;
@@ -33,7 +34,14 @@ public abstract class Fractal {
 
     public void saveFractalImage(){
         makeFractal();
-        //image.saveFractal();
+    }
+
+    public String getSetChoice() {
+        return setChoice;
+    }
+
+    public void setSetChoice(String setChoice) {
+        this.setChoice = setChoice;
     }
 
     public Complex getConstant() { return constant; }

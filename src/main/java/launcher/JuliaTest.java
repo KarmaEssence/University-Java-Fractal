@@ -95,7 +95,7 @@ public class JuliaTest {
         ComplexRectangle cr = new ComplexRectangle(-1, 1, 1, -1);
         JuliaSet juliaSet = new JuliaSet(c, cr, 0.001);
         juliaSet.makeFractal();
-        FractalConfig.Builder builder = new FractalConfig.Builder(c, cr, 0.001);
+        FractalConfig.Builder builder = new FractalConfig.Builder("julia",c, cr, 0.001);
         builder.buildAndSave();
     }
 
