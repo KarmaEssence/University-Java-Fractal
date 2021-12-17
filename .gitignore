@@ -26,7 +26,6 @@ hs_err_pid*
 .gradle
 .idea
 build
-*.png
 fractal_config
 fractal_image
 
