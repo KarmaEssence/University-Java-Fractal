@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import utils.config.FractalConfig;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -71,6 +72,28 @@ public class MainController extends Controller {
     @FXML
     private Label versionApp;
 
+    private void displayFractalConfig(){
+        FractalConfig config = model.getFractalConfig();
+        constanteX.setText(String.valueOf(config.constantX));
+        constanteY.setText(String.valueOf(config.constantY));
+        pointAX.setText(String.valueOf(config.pointAX));
+        pointAY.setText(String.valueOf(config.pointAY));
+        pointBX.setText(String.valueOf(config.pointBX));
+        pointBY.setText(String.valueOf(config.pointBY));
+        discretizationStape.setText(String.valueOf(config.discretizationStape));
+    }
+
+    private void clearTextField(){
+        constanteX.setText("Undefined");
+        constanteY.setText("Undefined");
+        pointAX.setText("Undefined");
+        pointAY.setText("Undefined");
+        pointBX.setText("Undefined");
+        pointBY.setText("Undefined");
+        discretizationStape.setText("Undefined");
+
+    }
+
     @Override
     public void initPage(Model model) {
         if(Controller.model == null){
@@ -78,10 +101,12 @@ public class MainController extends Controller {
         }
 
         if(model.getWishImg() != null && model.getFractalConfig() != null){
+            displayFractalConfig();
             fractalImage.setImage(model.getWishImg());
         }
 
         newMenuItem.setOnAction(event -> {
+            clearTextField();
             model.changeScene("newFractal");
         });
 
@@ -90,6 +115,7 @@ public class MainController extends Controller {
         });
 
         closeFractal.setOnAction(event -> {
+            clearTextField();
             model.setWishImg(null);
             fractalImage.setImage(null);
         });

@@ -56,6 +56,7 @@ public class OpenFractalController extends Controller {
                 getImageFromFile();
                 getConfigFromFile();
                 filename.clear();
+                errorMessage.setText("");
                 model.changeScene("main");
             }else{
                 errorInPage(1);

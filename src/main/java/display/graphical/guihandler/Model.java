@@ -32,7 +32,7 @@ public class Model {
 
         currentStage.setTitle("University-Java-Fractal");
         currentStage.setResizable(false);
-        //currentStage.getIcons().add(Utility.getImageFromFolder("calculator_icone.png"));
+        //currentStage.getIcons().add(Utility.getImageFromFolder(""));
 
     }
 
@@ -93,8 +93,6 @@ public class Model {
             return controllers.get(1);
         if(name.equals("openFractal"))
             return controllers.get(2);
-        /*if(name.equals("help"))
-            return controllers.get(3);*/
         return null;
     }
 
