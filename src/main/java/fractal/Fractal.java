@@ -28,8 +28,6 @@ public abstract class Fractal {
 
         this.function = makeFunction(function);
 
-
-
     }
 
     public void saveFractalImage(){
