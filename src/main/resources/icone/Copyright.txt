@@ -1,0 +1,6 @@
+Copyright :
+
+logoApp : 
+
+ - Author : Bohdan Burmich
+ - Found on : https://thenounproject.com/icon/fractal-224062/

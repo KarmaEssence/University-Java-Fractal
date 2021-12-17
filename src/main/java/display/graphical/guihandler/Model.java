@@ -32,7 +32,7 @@ public class Model {
 
         currentStage.setTitle("University-Java-Fractal");
         currentStage.setResizable(false);
-        //currentStage.getIcons().add(Utility.getImageFromFolder(""));
+        currentStage.getIcons().add(Utility.getImageFromFolder("appLogo.png"));
 
     }
 
