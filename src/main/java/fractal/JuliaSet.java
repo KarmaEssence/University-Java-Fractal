@@ -79,7 +79,7 @@ public class JuliaSet extends Fractal{
                                     image.getImage().setRGB(b,a,color);
                                 }));*/
 
-        long startTime = System.nanoTime();
+        /*long startTime = System.nanoTime();
 
         int[][] results = IntStream.range(0, image.getImageLength())
                 .parallel()
@@ -95,9 +95,16 @@ public class JuliaSet extends Fractal{
 
         for(int i = 0; i < results.length; i++){
             for(int j = 0; j < results[i].length; j++){
-                image.getImage().setRGB(j,i,results[i][j]);
+                image.getImage().setRGB(i,j,results[i][j]);
             }
-        }
+        }*/
+
+        IntStream.range(0, image.getImageLength())
+                .parallel()
+                .forEach(a ->
+                        IntStream.range(0, image.getImageHeight())
+                        .parallel()
+                                .forEach(b -> image.getImage().setRGB(b,a,getColorOfPixel(a, b))));
 
         image.saveFractal();
     }
