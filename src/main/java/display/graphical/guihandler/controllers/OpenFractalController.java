@@ -41,7 +41,6 @@ public class OpenFractalController extends Controller {
     }
 
     private void getConfigFromFile(){
-        System.out.println(System.getProperty("user.dir") + "/data/fractal_config/" + filename.getText() + ".json");
         JsonReader jr = JsonReader.createReaderInstance(System.getProperty("user.dir") + "/data/fractal_config/" + filename.getText() + ".json");
         assert jr != null;
         model.setFractalConfig((FractalConfig) jr.deserialize());
@@ -51,7 +50,6 @@ public class OpenFractalController extends Controller {
     public void initPage(Model model) {
         openButton.setOnAction(event -> {
             File file = new File(System.getProperty("user.dir") + "/data/fractal_image/" + filename.getText() + ".png");
-            System.out.println(System.getProperty("user.dir") + "/data/fractal_image/" + filename.getText() + ".png");
             if(file.exists()){
                 getImageFromFile();
                 getConfigFromFile();

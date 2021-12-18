@@ -84,7 +84,6 @@ public class JsonReader {
     private Object makeSubObject(String classType) throws ClassNotFoundException, NoSuchMethodException,
             IllegalAccessException, InvocationTargetException, InstantiationException, IOException {
         classType = classType.replace("\"", "");
-        System.out.println("makeList classType : " + classType);
         Class getClass = Class.forName(classType);
         Object res = getClass.getConstructor().newInstance();
         Field[] resFields = res.getClass().getFields();
@@ -118,7 +117,6 @@ public class JsonReader {
             Object[] item = cleanValue(line);
             System.out.println("In While : " + item[0] + " Value in while : " + item[1] );
             if(checkString[1].equals("[")){
-                System.out.println("Je suis ici");
                 item[1] = makeListObject(cleanString(flux.readLine())[1]);
                 list.add(item[1]);
             }else if(!checkString[1].equals("{") && !checkString[0].equals("")) {
