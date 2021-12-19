@@ -23,24 +23,20 @@ public abstract class View{
 	 * @param type type du message d erreur.
 	 */
 	public void makeAnErrorMessage(int type){
-		String title = "";
 		String message = "";
 		switch (type){
 			case 1 :
-				title ="Wrong discretization stape";
 				message = "You cannot choose an discretization stape inferior of 0.0009";
 				break;
 			default:
-				title ="Change your value";
 				message = "You cannot choose this!";
 		}
-		printErrorMessage(title,message);
+		printErrorMessage(message);
 	}
 
 	/**
 	 * Affiche le message d erreur.
-	 * @param title titre du message d erreur.
 	 * @param message message d erreur.
 	 */
-	public abstract void printErrorMessage(String title,String message);
+	public abstract void printErrorMessage(String message);
 }

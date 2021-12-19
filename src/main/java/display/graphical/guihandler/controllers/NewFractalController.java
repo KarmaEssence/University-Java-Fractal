@@ -56,6 +56,7 @@ public class NewFractalController extends Controller {
     private Button backButton;
 
     private boolean checkValue(String s){
+        System.out.println(s + " " + CheckStringFormat.checkValue(s));
         return CheckStringFormat.checkValue(s);
     }
 
@@ -81,7 +82,6 @@ public class NewFractalController extends Controller {
         Fractal fractal;
 
         if(juliaCheckbox.isSelected()){
-
             fractal = new JuliaSet(makeConstante(),
                     makeRectangle(), Double.parseDouble(discretizationStape.getText()));
             fractal.saveFractalImage();
@@ -98,19 +98,27 @@ public class NewFractalController extends Controller {
         pointAX.clear(); pointAY.clear();
         pointBX.clear(); pointBY.clear();
         discretizationStape.clear();
+        errorMessage.setText("");
     }
 
     @Override
     public void initPage(Model model) {
 
         newButton.setOnAction(event -> {
-            if(checkIfFieldsAreGoodFormat() && juliaCheckbox.isSelected()){
+            System.out.println(checkIfFieldsAreGoodFormat());
+            if(checkIfFieldsAreGoodFormat() && juliaCheckbox.isSelected()
+            && !(Double.parseDouble(discretizationStape.getText()) < 0.001)){
                 errorMessage.setText("");
                 makeFractal();
-                model.changeScene("main");
                 clearFields();
+                model.changeScene("main");
             }else{
-                errorInPage(0);
+                if(!juliaCheckbox.isSelected())
+                    errorInPage(1);
+                else if (Double.parseDouble(discretizationStape.getText()) < 0.001)
+                    errorInPage(2);
+                else
+                    errorInPage(0);
             }
         });
 
@@ -125,7 +133,12 @@ public class NewFractalController extends Controller {
 
     @Override
     public void errorInPage(int error) {
-        errorMessage.setText("Wrong content in one of all field");
+        if(error == 1)
+            errorMessage.setText("Please select a set");
+        else if(error == 2)
+            errorMessage.setText("You cannot choose an discretization stape inferior of 0.0009");
+        else
+            errorMessage.setText("Wrong content in one of all field");
         errorMessage.setFill(Color.RED);
     }
 }

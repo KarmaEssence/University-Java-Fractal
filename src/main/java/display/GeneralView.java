@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class GeneralView{
-	private View view;
+	private final View view;
 
 	/**
 	 * Cree une instance contenant un joueur et une vue.

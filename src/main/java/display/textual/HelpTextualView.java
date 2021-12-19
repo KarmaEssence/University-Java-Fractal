@@ -15,7 +15,7 @@ public class HelpTextualView extends View {
     }
 
     @Override
-    public void printErrorMessage(String title, String message) {
+    public void printErrorMessage(String message) {
         System.out.println("");
     }
 }

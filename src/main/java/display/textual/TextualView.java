@@ -28,11 +28,10 @@ public class TextualView extends View {
 
 	/**
 	 * Affiche le message d erreur.
-	 * @param title titre du message d erreur.
 	 * @param message message d erreur.
 	 */
 	@Override
-	public void printErrorMessage(String title, String message) {
+	public void printErrorMessage(String message) {
 		System.out.println(message);
 	}
 }

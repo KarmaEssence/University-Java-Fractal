@@ -23,7 +23,7 @@ public class GraphicalView extends View {
     public String typeOfView() { return "Graphical"; }
 
     @Override
-    public void printErrorMessage(String title, String message) {
-
+    public void printErrorMessage(String message) {
+        System.out.println("");
     }
 }
