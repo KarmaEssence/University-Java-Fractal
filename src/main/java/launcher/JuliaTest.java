@@ -92,7 +92,8 @@ public class JuliaTest {
 
     public static void juliaTest2(){
         //Complex c = new Complex(-(0.7269), 0.1889);
-        Complex c = new Complex(0.285, 0.013);
+        //Complex c = new Complex(0.285, 0.013);
+        Complex c = new Complex(-(0.8), 0.156);
         ComplexRectangle cr = new ComplexRectangle(-1, 1, 1, -1);
         JuliaSet juliaSet = new JuliaSet(c, cr, 0.001); //evitons les 4 zéros
         juliaSet.makeFractal();

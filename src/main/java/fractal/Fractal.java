@@ -13,7 +13,6 @@ public abstract class Fractal {
     protected static final int RADIUS = 2;
 
     protected String setChoice;
-    protected Complex z;
     protected Complex constant;
     protected ComplexRectangle complexRectangle;
     protected Double discretizationStape;
