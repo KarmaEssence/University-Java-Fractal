@@ -12,26 +12,7 @@ import utils.other.ParseArgs;
 
 public class Launcher{
     private GeneralView generalView;
-    private Fractal fractal;
     private String[] args;
-
-    /*public void makeFractal(){
-
-        String set = generalView.chooseSet();
-        Complex c = generalView.getConstant();
-
-        ComplexRectangle complexRectangle = generalView.chooseComplexeRectangle();
-        double discretizationStape = generalView.discretizationStape();
-
-        if(set.equals("julia")) {
-            fractal = new JuliaSet(c, complexRectangle, discretizationStape);
-            fractal.makeFractal();
-        }
-        //peut etre un else avec l'ensemble de Mandelbrot
-
-        FractalConfig.Builder builder = new FractalConfig.Builder(fractal);
-        builder.buildAndSave();
-    }*/
 
     public static void executeShellOption(Launcher launcher){
         String set = launcher.args[1];
@@ -58,23 +39,13 @@ public class Launcher{
     }
 
     public static void main(String[] args){
-
-        //JuliaTest.juliaTest1(); //Pour les test
-        //JuliaTest.juliaTest2();
         Launcher launcher = new Launcher();
         launcher.args = args;
-
-        /*if(args.length == 1){
-            launcher.generalView = new GeneralView(args[0]);
-            if(args[0].equals("shell")){
-                executeShellOption(launcher);
-            }else
-                executeGraphicalOption(launcher);*/
 
         if(args.length == 1 && args[0].equals("graphical")){
             launcher.generalView = new GeneralView("graphical");
             executeGraphicalOption(launcher);
-        }else if(args.length == 8 && CheckStringFormat.checkShellArgs(args)){
+        }else if(CheckStringFormat.checkShellArgs(args)){
             launcher.generalView = new GeneralView("shell");
             executeShellOption(launcher);
         }else{

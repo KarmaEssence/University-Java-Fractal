@@ -10,7 +10,7 @@ public class CheckStringFormat {
     }
 
     public static boolean checkShellArgs(String[] args){
-        if(args.length != 8 || !args[0].equals("shell") || !checkChoosedSet(args[1])) return false;
+        if(args.length != 9 || !args[0].equals("shell") || !checkChoosedSet(args[1])) return false;
         for(int i = 2; i < args.length; i++){
             if(!checkValue(args[i]))
                 return false;
@@ -52,6 +52,10 @@ public class CheckStringFormat {
      */
     public static boolean checkValue(String s){
         if(s.length()==0) return false;
+        if(s.contains("E-")){
+            int index = s.indexOf("E");
+            s = s.substring(0, index);
+        }
         if(s.charAt(0) != '-' && s.contains("-")) return false;
 
         for(int i=0;i<s.length();i++){
