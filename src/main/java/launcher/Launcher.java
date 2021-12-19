@@ -78,7 +78,8 @@ public class Launcher{
             launcher.generalView = new GeneralView("shell");
             executeShellOption(launcher);
         }else{
-
+            launcher.generalView = new GeneralView("help");
+            launcher.generalView.display();
         }
     }
 }
