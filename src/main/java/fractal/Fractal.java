@@ -82,8 +82,9 @@ public abstract class Fractal {
 
     private int getColorOfPixel(int a, int b){
 
-        double complexX = -1 + discretizationStape * b;
-        double complexY = 1 -  discretizationStape * a;
+        Complex pointA = complexRectangle.getPointA();
+        double complexX = pointA.getReal() + discretizationStape * b;
+        double complexY = pointA.getImaginary() -  discretizationStape * a;
         int index;
         Complex z;
 

@@ -40,7 +40,8 @@ public class Launcher{
     }
 
     public static void main(String[] args){
-        Launcher launcher = new Launcher();
+        JuliaTest.juliaTest2();
+        /*Launcher launcher = new Launcher();
         launcher.args = args;
 
         if(args.length == 1 && args[0].equals("graphical")){
@@ -52,6 +53,6 @@ public class Launcher{
         }else{
             launcher.generalView = new GeneralView("help");
             launcher.generalView.display();
-        }
+        }*/
     }
 }
