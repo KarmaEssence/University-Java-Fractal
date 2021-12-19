@@ -3,6 +3,8 @@ package fractal;
 import utils.complex.ComplexRectangle;
 import org.apache.commons.math3.complex.Complex;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
@@ -15,10 +17,11 @@ public class JuliaSet extends Fractal{
     }
 
     private int getColorOfPixel(int a, int b){
+
         double complexX = -1 + discretizationStape * b;
         double complexY = 1 -  discretizationStape * a;
-        z = new Complex(complexX, complexY);
-        int index = divergenceIndex(function);
+        Complex z = new Complex(complexX, complexY);
+        int index = divergenceIndex(z , function);
         int color;
 
         //divergence
@@ -79,26 +82,25 @@ public class JuliaSet extends Fractal{
                                     image.getImage().setRGB(b,a,color);
                                 }));*/
 
-        /*long startTime = System.nanoTime();
-
-        int[][] results = IntStream.range(0, image.getImageLength())
+        System.out.println("Je suis ici");
+        Instant start = Instant.now();
+        /*int[][] results = IntStream.range(0, image.getImageHeight())
                 .parallel()
                 .mapToObj(a ->
-                        IntStream.range(0, image.getImageHeight())
+                        IntStream.range(0, image.getImageLength())
                                 .parallel()
-                                .map(b -> getColorOfPixel(a, b))
+                                .map(b -> getColorOfPixel(b, a))
                                 .toArray())
-                .toArray(int[][]::new);
+                .toArray(int[][]::new);*/
 
-        long endTime = System.nanoTime();
-        System.out.println("Temps : " + (endTime - startTime) / 1000000);
-
-        for(int i = 0; i < results.length; i++){
+        /*for(int i = 0; i < results.length; i++){
             for(int j = 0; j < results[i].length; j++){
                 image.getImage().setRGB(i,j,results[i][j]);
             }
         }*/
 
+
+        System.out.println("Je suis ici-1");
         IntStream.range(0, image.getImageLength())
                 .parallel()
                 .forEach(a ->
@@ -106,6 +108,9 @@ public class JuliaSet extends Fractal{
                         .parallel()
                                 .forEach(b -> image.getImage().setRGB(b,a,getColorOfPixel(a, b))));
 
+        Instant end = Instant.now();
+        System.out.println(Duration.between(start, end).getSeconds());
+        System.out.println("Je suis ici-2");
         image.saveFractal();
     }
 

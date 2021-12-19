@@ -49,8 +49,8 @@ public class Launcher{
     public static void main(String[] args){
 
         //JuliaTest.juliaTest1(); //Pour les test
-        //JuliaTest.juliaTest2();
-        Launcher launcher = new Launcher();
+        JuliaTest.juliaTest2();
+        /*Launcher launcher = new Launcher();
 
         if(args.length == 1){
             launcher.generalView = new GeneralView(args[0]);
@@ -61,6 +61,6 @@ public class Launcher{
         }else{
             launcher.generalView = new GeneralView("graphical");
             executeGraphicalOption(launcher);
-        }
+        }*/
     }
 }
