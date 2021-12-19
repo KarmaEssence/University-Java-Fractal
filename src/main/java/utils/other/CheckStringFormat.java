@@ -1,6 +1,22 @@
 package utils.other;
 
+import java.util.Locale;
+
 public class CheckStringFormat {
+
+    private static boolean checkChoosedSet(String set){
+        set = set.toLowerCase(Locale.ROOT);
+        return set.equals("julia");
+    }
+
+    public static boolean checkShellArgs(String[] args){
+        if(args.length != 8 || !args[0].equals("shell") || !checkChoosedSet(args[1])) return false;
+        for(int i = 2; i < args.length; i++){
+            if(!checkValue(args[i]))
+                return false;
+        }
+        return true;
+    }
 
     /**
      * Transforme les informations en coordonnee pour la grille.

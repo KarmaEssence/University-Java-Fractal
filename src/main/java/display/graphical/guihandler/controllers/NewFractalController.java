@@ -15,6 +15,7 @@ import utils.complex.ComplexRectangle;
 import utils.config.FractalConfig;
 import utils.config.ImageConfig;
 import utils.other.CheckStringFormat;
+import utils.other.ParseArgs;
 
 public class NewFractalController extends Controller {
 
@@ -67,18 +68,13 @@ public class NewFractalController extends Controller {
 
     }
 
-    private Complex makeComplexe(String real, String imaginary){
-        return new Complex(Double.parseDouble(real), Double.parseDouble(imaginary));
-    }
-
     private Complex makeConstante(){
-        return makeComplexe(constanteX.getText(), constanteY.getText());
+        return ParseArgs.makeComplexe(constanteX.getText(), constanteY.getText());
     }
 
     private ComplexRectangle makeRectangle(){
-        Complex pointA = makeComplexe(pointAX.getText(), pointAY.getText());
-        Complex pointB = makeComplexe(pointBX.getText(), pointBY.getText());
-        return new ComplexRectangle(pointA, pointB);
+        return ParseArgs.makeRectangle(pointAX.getText(), pointAY.getText(),
+                pointBX.getText(), pointBY.getText());
     }
 
     private void makeFractal(){
