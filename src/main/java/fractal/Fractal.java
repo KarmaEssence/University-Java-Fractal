@@ -24,7 +24,6 @@ public abstract class Fractal {
         this.constant = constant;
         this.complexRectangle = complexRectangle;
         image = new ImageConfig(complexRectangle, discretizationStape);
-
         this.function = makeFunction(function);
 
     }
@@ -60,7 +59,7 @@ public abstract class Fractal {
         return null;
     }
 
-    protected int divergenceIndex(Complex z, Function<Complex, Complex> f) {
+    protected int divergenceIndex(Complex constant, Complex z, Function<Complex, Complex> f) {
         if(z == null) return -1;
 
         int iteration = 0;
