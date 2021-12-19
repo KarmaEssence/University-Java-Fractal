@@ -35,24 +35,10 @@ public class JuliaSet extends Fractal{
         return color;
     }
 
-    private void writeJuliaFractalOnImage(){
-        Instant start = Instant.now();
-        IntStream.range(0, image.getImageLength())
-                .parallel()
-                .forEach(a ->
-                        IntStream.range(0, image.getImageHeight())
-                        .parallel()
-                                .forEach(b -> image.getImage().setRGB(b,a,getColorOfPixel(a, b))));
-
-        Instant end = Instant.now();
-        System.out.println(Duration.between(start, end).getSeconds());
-        image.saveFractal();
-    }
-
     @Override
     public void makeFractal(){
         if(function != null && constant != null && complexRectangle != null){
-            writeJuliaFractalOnImage();
+            writeFractalOnImage();
         }
     }
 }
