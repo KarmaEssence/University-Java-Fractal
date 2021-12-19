@@ -16,8 +16,8 @@ public class HostPage {
         TextualDisplay.printSpace(24);
         System.out.println("Welcome to the Fractal project");
         System.out.println();
-        TextualDisplay.printSpace(12);
-        System.out.println("This application was made by KarmaEssence and Ibbo");
+        TextualDisplay.printSpace(18);
+        System.out.println("This application was made by Léo and Kévin");
         TextualDisplay.printSepator();
     }
 

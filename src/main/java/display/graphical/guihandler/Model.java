@@ -5,9 +5,11 @@ import display.graphical.guihandler.controllers.NewFractalController;
 import display.graphical.guihandler.controllers.OpenFractalController;
 import fractal.Fractal;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import utils.config.FractalConfig;
 
@@ -86,6 +88,16 @@ public class Model {
         this.fractalConfig = fractalConfig;
     }
 
+    public Stage getCurrentStage() {
+        return currentStage;
+    }
+
+    public void moveStageOnCenterOfPage(){
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        currentStage.setX((primScreenBounds.getWidth() - currentStage.getWidth()) / 2);
+        currentStage.setY((primScreenBounds.getHeight() - currentStage.getHeight()) / 2);
+    }
+
     public Controller getController(String name){
         if(name.equals("main"))
             return controllers.get(0);
@@ -108,5 +120,7 @@ public class Model {
         scenes.add(currentStage.getScene());
         getController(name).initPage(this);
         currentStage.setScene(getScene(name));
+        currentStage.centerOnScreen();
+        currentStage.show();
     }
 }

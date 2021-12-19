@@ -1,5 +1,9 @@
 package utils.other;
 
+import fractal.Fractal;
+import fractal.JuliaSet;
+import fractal.MandelbrotSet;
+import launcher.Launcher;
 import org.apache.commons.math3.complex.Complex;
 import utils.complex.ComplexRectangle;
 
@@ -14,5 +18,34 @@ public class ParseArgs {
         Complex pointA = makeComplexe(pointAX, pointAY);
         Complex pointB = makeComplexe(pointBX, pointBY);
         return new ComplexRectangle(pointA, pointB);
+    }
+
+    public static void checkDiscretizationStape(Launcher launcher, double discretizationStape){
+        if(discretizationStape < 0.001){
+            launcher.getGeneralView().displayError(1);
+            System.exit(0);
+        }
+    }
+
+    public static Fractal makeFractal(Launcher launcher){
+        String[] args = launcher.getArgs();
+        String set = args[1];
+
+        if(set.equals("julia")){
+            Complex constant = makeComplexe(args[2], args[3]);
+            ComplexRectangle complexRectangle = makeRectangle(args[4], args[5],
+                    args[6], args[7]);
+            double discretizationStape = Double.parseDouble(args[8]);
+            checkDiscretizationStape(launcher, discretizationStape);
+            return new JuliaSet(constant, complexRectangle, discretizationStape);
+
+        }else if(set.equals("mandelbrot")){
+            ComplexRectangle complexRectangle = makeRectangle(args[2], args[3],
+                    args[4], args[5]);
+            double discretizationStape = Double.parseDouble(args[6]);
+            checkDiscretizationStape(launcher, discretizationStape);
+            return new MandelbrotSet(complexRectangle, discretizationStape);
+        }
+        return null;
     }
 }
