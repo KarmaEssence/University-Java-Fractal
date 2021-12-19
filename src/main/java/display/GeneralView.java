@@ -34,5 +34,6 @@ public class GeneralView{
 	public void display(){
 		view.print();
 	}
+	public void displayError(int code){view.makeAnErrorMessage(code);}
 
 }

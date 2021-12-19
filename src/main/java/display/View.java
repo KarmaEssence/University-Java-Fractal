@@ -26,6 +26,10 @@ public abstract class View{
 		String title = "";
 		String message = "";
 		switch (type){
+			case 1 :
+				title ="Wrong discretization stape";
+				message = "You cannot choose an discretization stape inferior of 0.0009";
+				break;
 			default:
 				title ="Change your value";
 				message = "You cannot choose this!";

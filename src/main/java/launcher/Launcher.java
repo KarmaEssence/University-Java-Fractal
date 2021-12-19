@@ -20,6 +20,11 @@ public class Launcher{
         ComplexRectangle complexRectangle = ParseArgs.makeRectangle(launcher.args[4], launcher.args[5],
                 launcher.args[6], launcher.args[7]);
         double discretizationStape = Double.parseDouble(launcher.args[8]);
+        System.out.println(discretizationStape);
+        if(discretizationStape < 0.001){
+            launcher.generalView.displayError(1);
+            System.exit(0);
+        }
 
         Fractal fractal = null;
         if(set.equals("julia")) {
