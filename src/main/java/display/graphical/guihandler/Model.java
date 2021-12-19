@@ -88,16 +88,6 @@ public class Model {
         this.fractalConfig = fractalConfig;
     }
 
-    public Stage getCurrentStage() {
-        return currentStage;
-    }
-
-    public void moveStageOnCenterOfPage(){
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        currentStage.setX((primScreenBounds.getWidth() - currentStage.getWidth()) / 2);
-        currentStage.setY((primScreenBounds.getHeight() - currentStage.getHeight()) / 2);
-    }
-
     public Controller getController(String name){
         if(name.equals("main"))
             return controllers.get(0);

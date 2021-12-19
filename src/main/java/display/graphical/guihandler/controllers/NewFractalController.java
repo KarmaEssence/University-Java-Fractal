@@ -4,10 +4,12 @@ import display.graphical.guihandler.Controller;
 import display.graphical.guihandler.Model;
 import fractal.Fractal;
 import fractal.JuliaSet;
+import fractal.MandelbrotSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.apache.commons.math3.complex.Complex;
@@ -22,6 +24,16 @@ public class NewFractalController extends Controller {
 
     @FXML
     private CheckBox juliaCheckbox;
+
+    @FXML
+    private CheckBox mandelbrotCheckbox;
+
+
+    @FXML
+    private Pane constantBlock;
+
+    @FXML
+    private Text constantSection;
 
     @FXML
     private TextField constanteX;
@@ -62,8 +74,10 @@ public class NewFractalController extends Controller {
 
     //todo: Reprendre les fonctions de la classe TextualHumanInteract
     private boolean checkIfFieldsAreGoodFormat(){
-        return checkValue(constanteX.getText()) && checkValue(constanteY.getText())
-                && checkValue(pointAX.getText()) && checkValue(pointAY.getText())
+        if(juliaCheckbox.isSelected() && checkValue(constanteX.getText())
+                && checkValue(constanteY.getText()))
+            return false;
+        return checkValue(pointAX.getText()) && checkValue(pointAY.getText())
                 && checkValue(pointBX.getText()) && checkValue(pointBY.getText())
                 && checkValue(discretizationStape.getText());
 
@@ -79,17 +93,23 @@ public class NewFractalController extends Controller {
     }
 
     private void makeFractal(){
-        Fractal fractal;
+        Fractal fractal = null;
 
         if(juliaCheckbox.isSelected()){
             fractal = new JuliaSet(makeConstante(),
                     makeRectangle(), Double.parseDouble(discretizationStape.getText()));
-            fractal.saveFractalImage();
-            new FractalConfig.Builder(fractal).buildAndSave();
-            model.setFractal(fractal);
+
             juliaCheckbox.setSelected(false);
+        }else if(mandelbrotCheckbox.isSelected()){
+            fractal = new MandelbrotSet(makeRectangle(),
+                    Double.parseDouble(discretizationStape.getText()));
+            mandelbrotCheckbox.setSelected(false);
         }
 
+        assert fractal != null;
+        fractal.saveFractalImage();
+        new FractalConfig.Builder(fractal).buildAndSave();
+        model.setFractal(fractal);
     }
 
     private void clearFields(){
@@ -103,17 +123,39 @@ public class NewFractalController extends Controller {
 
     @Override
     public void initPage(Model model) {
+        mandelbrotCheckbox.setOnAction(event -> {
+            clearFields();
+            if(mandelbrotCheckbox.isSelected()){
+                juliaCheckbox.setSelected(false);
+                constantBlock.setVisible(false);
+                constantSection.setVisible(false);
+            }else{
+                constantBlock.setVisible(true);
+                constantSection.setVisible(true);
+            }
+        });
+
+        juliaCheckbox.setOnAction(event -> {
+            clearFields();
+            if(juliaCheckbox.isSelected()){
+                mandelbrotCheckbox.setSelected(false);
+                System.out.println(constantBlock != null);
+                constantBlock.setVisible(true);
+                constantSection.setVisible(true);
+            }
+        });
 
         newButton.setOnAction(event -> {
             boolean checkFormat = checkIfFieldsAreGoodFormat();
-            if(checkFormat && juliaCheckbox.isSelected()
+            if(checkFormat && (juliaCheckbox.isSelected() ||
+                    mandelbrotCheckbox.isSelected())
             && !(Double.parseDouble(discretizationStape.getText()) < 0.001)){
                 errorMessage.setText("");
                 makeFractal();
                 clearFields();
                 model.changeScene("main");
             }else{
-                if(!juliaCheckbox.isSelected())
+                if(!juliaCheckbox.isSelected() && !mandelbrotCheckbox.isSelected())
                     errorInPage(1);
                 else if(!checkFormat)
                     errorInPage(0);

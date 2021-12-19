@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.graphical.guihandler.controllers.NewFractalController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.graphical.guihandler.controllers.NewFractalController">
    <children>
       <Text layoutX="238.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make your Fractal :" wrappingWidth="152.853515625">
          <font>
@@ -18,16 +18,16 @@
       <Label layoutX="158.0" layoutY="74.0" prefHeight="17.0" prefWidth="119.0" text="Your type of fractal :" />
       <CheckBox fx:id="juliaCheckbox" layoutX="314.0" layoutY="74.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="58.0" text="Julia" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="179.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your constante :" wrappingWidth="91.0" />
-      <Pane layoutX="65.0" layoutY="142.0" prefHeight="70.0" prefWidth="496.0">
+      <Text fx:id="constantSection" layoutX="179.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your constante :" wrappingWidth="91.0" />
+      <Pane fx:id="constantBlock" layoutX="65.0" layoutY="142.0" prefHeight="70.0" prefWidth="496.0">
          <children>
-            <Pane layoutX="28.0" layoutY="12.0" prefHeight="47.0" prefWidth="153.0">
+            <Pane fx:id="constantRealBlock" layoutX="28.0" layoutY="12.0" prefHeight="47.0" prefWidth="153.0">
                <children>
                   <TextField fx:id="constanteX" layoutX="81.0" layoutY="11.0" prefHeight="25.0" prefWidth="56.0" />
                   <Label layoutX="14.0" layoutY="15.0" text="Real part : " />
                </children>
             </Pane>
-            <Pane layoutX="270.0" layoutY="12.0" prefHeight="47.0" prefWidth="200.0">
+            <Pane fx:id="constantImaginaryBlock" layoutX="270.0" layoutY="12.0" prefHeight="47.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="constanteY" layoutX="120.0" layoutY="11.0" prefHeight="25.0" prefWidth="56.0" />
                   <Label layoutX="14.0" layoutY="15.0" text="Imaginary part : " />
@@ -76,5 +76,6 @@
       <Button fx:id="clearFieldButton" layoutX="279.0" layoutY="485.0" mnemonicParsing="false" text="Clear field" />
       <Text fx:id="errorMessage" fill="WHITE" layoutX="218.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.13671875" />
       <Button fx:id="backButton" layoutX="418.0" layoutY="485.0" mnemonicParsing="false" text="Back " />
+      <CheckBox fx:id="mandelbrotCheckbox" layoutX="389.0" layoutY="74.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="91.0" text="Mandelbrot" />
    </children>
 </Pane>
