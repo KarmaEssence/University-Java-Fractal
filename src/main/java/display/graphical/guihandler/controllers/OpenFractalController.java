@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import utils.config.FileData;
 import utils.config.FractalConfig;
 import utils.json.JsonReader;
 
@@ -29,21 +30,9 @@ public class OpenFractalController extends Controller {
     @FXML
     private Button backButton;
 
-
-    private void getImageFromFile(){
-        try {
-            FileInputStream inputStream = new FileInputStream(System.getProperty("user.dir") +
-                    "/data/fractal_image/" + filename.getText() + ".png");
-            model.setWishImg(new Image(inputStream));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void getConfigFromFile(){
-        JsonReader jr = JsonReader.createReaderInstance(System.getProperty("user.dir") + "/data/fractal_config/" + filename.getText() + ".json");
-        assert jr != null;
-        model.setFractalConfig((FractalConfig) jr.deserialize());
+    private void clearFields(){
+        filename.clear();
+        errorMessage.setText("");
     }
 
     @Override
@@ -51,8 +40,7 @@ public class OpenFractalController extends Controller {
         openButton.setOnAction(event -> {
             File file = new File(System.getProperty("user.dir") + "/data/fractal_image/" + filename.getText() + ".png");
             if(file.exists()){
-                getImageFromFile();
-                getConfigFromFile();
+                FileData.getFractalConfig(model, filename.getText());
                 filename.clear();
                 errorMessage.setText("");
                 model.changeScene("main");

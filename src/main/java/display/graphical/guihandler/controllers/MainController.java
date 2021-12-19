@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import utils.config.FileData;
 import utils.config.FractalConfig;
 
 import java.io.FileInputStream;
@@ -100,6 +101,12 @@ public class MainController extends Controller {
     public void initPage(Model model) {
         if(Controller.model == null){
             Controller.model = model;
+        }
+
+        if(model.getFractal() != null){
+            FileData.getFractalConfig(model, FileData.getLastImageFileName(System.getProperty("user.dir") +
+                    "/data/fractal_image"));
+            model.setFractal(null);
         }
 
         if(model.getWishImg() != null && model.getFractalConfig() != null){

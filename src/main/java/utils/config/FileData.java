@@ -1,6 +1,12 @@
 package utils.config;
 
+import display.graphical.guihandler.Model;
+import javafx.scene.image.Image;
+import utils.json.JsonReader;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Objects;
 
 public class FileData {
@@ -17,7 +23,7 @@ public class FileData {
         }
     }
 
-    public static String giveNewFilename(String path){
+    public static String getLastImageFileName(String path){
         File dir = new File(path);
         File[] files = dir.listFiles();
         int max = 0;
@@ -27,6 +33,31 @@ public class FileData {
             if(valueFile > max)
                 max = valueFile;
         }
-        return String.valueOf(max + 1);
+        return String.valueOf(max);
+    }
+
+    public static String giveNewFilename(String path){
+        return String.valueOf(Integer.parseInt(getLastImageFileName(path)) + 1);
+    }
+
+    public static void getImageFromFile(Model model, String filename){
+        try {
+            FileInputStream inputStream = new FileInputStream(System.getProperty("user.dir") +
+                    "/data/fractal_image/" + filename + ".png");
+            model.setWishImg(new Image(inputStream));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getConfigFromFile(Model model, String filename){
+        JsonReader jr = JsonReader.createReaderInstance(System.getProperty("user.dir") + "/data/fractal_config/" + filename + ".json");
+        assert jr != null;
+        model.setFractalConfig((FractalConfig) jr.deserialize());
+    }
+
+    public static void getFractalConfig(Model model, String filename){
+        getImageFromFile(model, filename);
+        getConfigFromFile(model, filename);
     }
 }

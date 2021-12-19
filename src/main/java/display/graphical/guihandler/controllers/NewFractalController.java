@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.apache.commons.math3.complex.Complex;
 import utils.complex.ComplexRectangle;
+import utils.config.FileData;
 import utils.config.FractalConfig;
 import utils.config.ImageConfig;
 import utils.other.CheckStringFormat;
@@ -56,7 +57,6 @@ public class NewFractalController extends Controller {
     private Button backButton;
 
     private boolean checkValue(String s){
-        System.out.println(s + " " + CheckStringFormat.checkValue(s));
         return CheckStringFormat.checkValue(s);
     }
 
@@ -105,8 +105,8 @@ public class NewFractalController extends Controller {
     public void initPage(Model model) {
 
         newButton.setOnAction(event -> {
-            System.out.println(checkIfFieldsAreGoodFormat());
-            if(checkIfFieldsAreGoodFormat() && juliaCheckbox.isSelected()
+            boolean checkFormat = checkIfFieldsAreGoodFormat();
+            if(checkFormat && juliaCheckbox.isSelected()
             && !(Double.parseDouble(discretizationStape.getText()) < 0.001)){
                 errorMessage.setText("");
                 makeFractal();
@@ -115,10 +115,10 @@ public class NewFractalController extends Controller {
             }else{
                 if(!juliaCheckbox.isSelected())
                     errorInPage(1);
+                else if(!checkFormat)
+                    errorInPage(0);
                 else if (Double.parseDouble(discretizationStape.getText()) < 0.001)
                     errorInPage(2);
-                else
-                    errorInPage(0);
             }
         });
 
@@ -127,6 +127,7 @@ public class NewFractalController extends Controller {
         });
 
         backButton.setOnAction(event -> {
+            clearFields();
             model.changeScene("main");
         });
     }
