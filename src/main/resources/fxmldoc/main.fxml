@@ -108,7 +108,7 @@
                   <Text fx:id="discretizationStape" layoutX="153.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Undefined" wrappingWidth="68.9921875" />
           </children>
         </AnchorPane>
-        <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+        <ScrollPane fx:id="scrollPane" prefHeight="-1.0" prefWidth="-1.0">
           <content>
             <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="656.0">
                      <children>

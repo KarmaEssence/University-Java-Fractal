@@ -2,12 +2,19 @@ package display.graphical.guihandler.controllers;
 
 import display.graphical.guihandler.Controller;
 import display.graphical.guihandler.Model;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import utils.config.FileData;
@@ -34,7 +41,7 @@ public class MainController extends Controller {
     private MenuItem quitApp;
 
     @FXML
-    private Menu helpOptions;
+    private ScrollPane scrollPane;
 
     @FXML
     private Label fractalParameters;
@@ -73,6 +80,8 @@ public class MainController extends Controller {
     @FXML
     private Label versionApp;
 
+    private DoubleProperty zoomProperty;
+
     private void displayFractalConfig(){
         FractalConfig config = model.getFractalConfig();
         setChoice.setText(config.setChoice);
@@ -97,6 +106,26 @@ public class MainController extends Controller {
         discretizationStape.setText("Undefined");
     }
 
+    private void setZoomProperty(){
+        zoomProperty = new SimpleDoubleProperty(200);
+
+        zoomProperty.addListener(arg0 -> {
+            fractalImage.setFitWidth(zoomProperty.get() * 4);
+            fractalImage.setFitHeight(zoomProperty.get() * 3);
+        });
+
+        scrollPane.addEventFilter(ScrollEvent.ANY, event -> {
+            if (event.getDeltaY() > 0) {
+                zoomProperty.set(zoomProperty.get() * 1.1);
+            } else if (event.getDeltaY() < 0) {
+                zoomProperty.set(zoomProperty.get() / 1.1);
+            }
+        });
+
+        fractalImage.preserveRatioProperty().set(true);
+        scrollPane.setContent(fractalImage);
+    }
+
     @Override
     public void initPage(Model model) {
         if(Controller.model == null){
@@ -112,6 +141,7 @@ public class MainController extends Controller {
         if(model.getWishImg() != null && model.getFractalConfig() != null){
             displayFractalConfig();
             fractalImage.setImage(model.getWishImg());
+            setZoomProperty();
         }
 
         newMenuItem.setOnAction(event -> {
