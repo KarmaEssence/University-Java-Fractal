@@ -28,7 +28,6 @@ public class NewFractalController extends Controller {
     @FXML
     private CheckBox mandelbrotCheckbox;
 
-
     @FXML
     private Pane constantBlock;
 
@@ -114,6 +113,7 @@ public class NewFractalController extends Controller {
 
     private void clearFields(){
         juliaCheckbox.setSelected(false);
+        mandelbrotCheckbox.setSelected(false);
         constanteX.clear(); constanteY.clear();
         pointAX.clear(); pointAY.clear();
         pointBX.clear(); pointBY.clear();
@@ -124,7 +124,6 @@ public class NewFractalController extends Controller {
     @Override
     public void initPage(Model model) {
         mandelbrotCheckbox.setOnAction(event -> {
-            clearFields();
             if(mandelbrotCheckbox.isSelected()){
                 juliaCheckbox.setSelected(false);
                 constantBlock.setVisible(false);
@@ -136,10 +135,8 @@ public class NewFractalController extends Controller {
         });
 
         juliaCheckbox.setOnAction(event -> {
-            clearFields();
             if(juliaCheckbox.isSelected()){
                 mandelbrotCheckbox.setSelected(false);
-                System.out.println(constantBlock != null);
                 constantBlock.setVisible(true);
                 constantSection.setVisible(true);
             }
