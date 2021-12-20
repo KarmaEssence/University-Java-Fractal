@@ -23,4 +23,12 @@ public class ComplexRectangle {
     public Complex getPointB() {
         return pointB;
     }
+
+    public double getWidth(){
+        return Math.abs(pointA.getReal() - pointB.getReal());
+    }
+
+    public double getHeight(){
+        return Math.abs(pointA.getImaginary() - pointB.getImaginary());
+    }
 }

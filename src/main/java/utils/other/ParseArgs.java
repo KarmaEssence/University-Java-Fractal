@@ -27,6 +27,40 @@ public class ParseArgs {
         }
     }
 
+    public static boolean pointsAreOpposite(ComplexRectangle complexRectangle){
+        return complexRectangle.getWidth() != 0 && complexRectangle.getHeight() != 0;
+    }
+
+    public static boolean checkPointPosLimite(Complex point, int limite){
+        return Math.abs(point.getReal()) < limite &&
+                Math.abs(point.getImaginary()) < limite;
+    }
+
+    public static boolean checkRectanglePosLimite(ComplexRectangle complexRectangle, int limite){
+        return checkPointPosLimite(complexRectangle.getPointA(), limite) &&
+                checkPointPosLimite(complexRectangle.getPointB(), limite);
+    }
+
+    public static void checkRectanglePosInFunctionOfDiscretizationStape(Launcher launcher,
+                                                                        ComplexRectangle complexRectangle,
+                                                                        int discretizationStape){
+        if(!pointsAreOpposite(complexRectangle)){
+            launcher.getGeneralView().displayError(2);
+            System.exit(0);
+
+        }else if(discretizationStape < 0.01 && discretizationStape > 0.001
+        && !checkRectanglePosLimite(complexRectangle, 5)){
+            launcher.getGeneralView().displayError(3);
+            System.exit(0);
+
+        }else if(discretizationStape < 0.001 && discretizationStape > 0.0001
+                && !checkRectanglePosLimite(complexRectangle, 2)){
+            launcher.getGeneralView().displayError(4);
+            System.exit(0);
+        }
+
+    }
+
     public static Fractal makeFractal(Launcher launcher){
         String[] args = launcher.getArgs();
         String set = args[1];
