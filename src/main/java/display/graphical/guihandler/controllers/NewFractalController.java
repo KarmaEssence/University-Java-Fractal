@@ -195,7 +195,7 @@ public class NewFractalController extends Controller {
         else if(error == 6)
             errorMessage.setText("To discretization stape inferior/equals of 0.01, max dimensions are 2 x 2");
         else
-            errorMessage.setText("Wrong content in one of all field");
+            errorMessage.setText("You cannot choose this!");
 
         errorMessage.setFill(Color.RED);
     }
