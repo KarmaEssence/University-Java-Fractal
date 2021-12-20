@@ -146,7 +146,7 @@ public class NewFractalController extends Controller {
             boolean checkFormat = checkIfFieldsAreGoodFormat();
             double value = Double.parseDouble(discretizationStape.getText());
             int code = ParseArgs.checkRectanglePosInFunctionOfDiscretizationStape(makeRectangle(), value);
-            if(checkFormat && code == 0 && !(value < 0.001) &&
+            if(checkFormat && code == 0 && !(value < 0.0001) &&
                     (juliaCheckbox.isSelected() || mandelbrotCheckbox.isSelected())){
 
                 errorMessage.setText("");
@@ -179,7 +179,6 @@ public class NewFractalController extends Controller {
 
     @Override
     public void errorInPage(int error) {
-        System.out.println("Code d'erreur : " + error);
         if(error == 1)
             errorMessage.setText("Please select a set");
         else if(error == 2)

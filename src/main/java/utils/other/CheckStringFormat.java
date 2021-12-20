@@ -52,8 +52,6 @@ public class CheckStringFormat {
      * respecte le format,false sinon.
      */
     public static boolean checkValue(String s){
-        System.out.println("String : " + s);
-        System.out.println("Je suis ici-2");
         if(s.length()==0) return false;
         if(s.contains("E-")){
             int index = s.indexOf("E");
@@ -63,16 +61,13 @@ public class CheckStringFormat {
         if(s.chars().filter(ch -> ch == '.').count() == 2) return false;
         if(s.chars().filter(ch -> ch == '-').count() == 2) return false;
         if(s.charAt(0) == '.' || s.charAt(s.length()-1) == '.') return false;
-        System.out.println("Je suis ici-3");
-        System.out.println("String : " + s);
+
         for(int i=0;i<s.length();i++){
             if(!((s.charAt(i)>47 && s.charAt(i)<58) || s.charAt(i) == '-') && s.charAt(i) != '.'){
-                System.out.println("char posant problème : " + s.charAt(i));
                 return false;
             }
 
         }
-        System.out.println("Je suis ici-4");
         return true;
     }
 }

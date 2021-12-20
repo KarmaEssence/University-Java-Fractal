@@ -44,22 +44,23 @@ public class ParseArgs {
     public static void checkRectanglePosInFunctionOfDiscretizationStape(Launcher launcher,
                                                                         ComplexRectangle complexRectangle,
                                                                         double discretizationStape){
+
         if(!pointsAreOpposite(complexRectangle)){
             launcher.getGeneralView().displayError(2);
             System.exit(0);
 
         }else if(discretizationStape <= 0.1 && discretizationStape > 0.001
-                && !checkRectanglePosLimite(complexRectangle, 10)){
+                && !checkRectanglePosLimite(complexRectangle, 11)){
             launcher.getGeneralView().displayError(3);
             System.exit(0);
 
         }else if(discretizationStape <= 0.01 && discretizationStape > 0.001
-        && !checkRectanglePosLimite(complexRectangle, 5)){
+        && !checkRectanglePosLimite(complexRectangle, 6)){
             launcher.getGeneralView().displayError(4);
             System.exit(0);
 
         }else if(discretizationStape <= 0.001 && discretizationStape > 0.0001
-                && !checkRectanglePosLimite(complexRectangle, 2)){
+                && !checkRectanglePosLimite(complexRectangle, 3)){
             launcher.getGeneralView().displayError(5);
             System.exit(0);
         }
@@ -73,15 +74,15 @@ public class ParseArgs {
             return 3;
 
         }else if(discretizationStape <= 0.1 && discretizationStape > 0.001
-                && !checkRectanglePosLimite(complexRectangle, 10)){
+                && !checkRectanglePosLimite(complexRectangle, 11)){
             return 4;
 
         }else if(discretizationStape <= 0.01 && discretizationStape > 0.001
-                && !checkRectanglePosLimite(complexRectangle, 5)){
+                && !checkRectanglePosLimite(complexRectangle, 6)){
             return 5;
 
         }else if(discretizationStape <= 0.001 && discretizationStape > 0.0001
-                && !checkRectanglePosLimite(complexRectangle, 2)){
+                && !checkRectanglePosLimite(complexRectangle, 3)){
             return 6;
         }
         return 0;
