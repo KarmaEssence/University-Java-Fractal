@@ -21,7 +21,7 @@ public class ParseArgs {
     }
 
     public static void checkDiscretizationStape(Launcher launcher, double discretizationStape){
-        if(discretizationStape < 0.001){
+        if(discretizationStape < 0.001 || discretizationStape > 0.1){
             launcher.getGeneralView().displayError(1);
             System.exit(0);
         }
@@ -43,19 +43,24 @@ public class ParseArgs {
 
     public static void checkRectanglePosInFunctionOfDiscretizationStape(Launcher launcher,
                                                                         ComplexRectangle complexRectangle,
-                                                                        int discretizationStape){
+                                                                        double discretizationStape){
         if(!pointsAreOpposite(complexRectangle)){
             launcher.getGeneralView().displayError(2);
             System.exit(0);
 
-        }else if(discretizationStape < 0.01 && discretizationStape > 0.001
-        && !checkRectanglePosLimite(complexRectangle, 5)){
+        }else if(discretizationStape <= 0.1 && discretizationStape > 0.001
+                && !checkRectanglePosLimite(complexRectangle, 10)){
             launcher.getGeneralView().displayError(3);
             System.exit(0);
 
-        }else if(discretizationStape < 0.001 && discretizationStape > 0.0001
-                && !checkRectanglePosLimite(complexRectangle, 2)){
+        }else if(discretizationStape <= 0.01 && discretizationStape > 0.001
+        && !checkRectanglePosLimite(complexRectangle, 5)){
             launcher.getGeneralView().displayError(4);
+            System.exit(0);
+
+        }else if(discretizationStape <= 0.001 && discretizationStape > 0.0001
+                && !checkRectanglePosLimite(complexRectangle, 2)){
+            launcher.getGeneralView().displayError(5);
             System.exit(0);
         }
 
@@ -70,7 +75,10 @@ public class ParseArgs {
             ComplexRectangle complexRectangle = makeRectangle(args[4], args[5],
                     args[6], args[7]);
             double discretizationStape = Double.parseDouble(args[8]);
+
             checkDiscretizationStape(launcher, discretizationStape);
+            checkRectanglePosInFunctionOfDiscretizationStape(launcher, complexRectangle,
+                    discretizationStape);
             return new JuliaSet(constant, complexRectangle, discretizationStape);
 
         }else if(set.equals("mandelbrot")){
