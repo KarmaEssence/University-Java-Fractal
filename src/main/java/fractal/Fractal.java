@@ -119,7 +119,8 @@ public abstract class Fractal {
                                 .forEach(b -> image.getImage().setRGB(b,a,getColorOfPixel(a, b))));
 
         Instant end = Instant.now();
-        System.out.println("Time to write information pixel per pixel : " + Duration.between(start, end).getSeconds());
+        System.out.println("Time to write information pixel per pixel : "
+                + Duration.between(start, end).getSeconds() + " seconds");
         image.saveFractal();
     }
 
