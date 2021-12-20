@@ -80,8 +80,8 @@ public class MainController extends Controller {
     @FXML
     private Label versionApp;
 
-    private static final double INITIAL_FIT_WIDTH = 659.0;
-    private static final double INITIAL_FIT_HEIGHT = 551.0;
+    private static final double INITIAL_FIT_WIDTH = 880;
+    private static final double INITIAL_FIT_HEIGHT = 660.0;
 
     private DoubleProperty zoomProperty;
 
@@ -124,6 +124,8 @@ public class MainController extends Controller {
             if(checkZoomPropertyCondition()){
                 fractalImage.setFitWidth(zoomProperty.get() * 4);
                 fractalImage.setFitHeight(zoomProperty.get() * 3);
+                System.out.println(fractalImage.getFitWidth());
+                System.out.println(fractalImage.getFitHeight());
             }
         });
 
