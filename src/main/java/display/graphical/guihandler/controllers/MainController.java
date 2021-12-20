@@ -26,9 +26,6 @@ import java.io.FileNotFoundException;
 public class MainController extends Controller {
 
     @FXML
-    private Menu fileOptions;
-
-    @FXML
     private MenuItem newMenuItem;
 
     @FXML
@@ -42,12 +39,6 @@ public class MainController extends Controller {
 
     @FXML
     private ScrollPane scrollPane;
-
-    @FXML
-    private Label fractalParameters;
-
-    @FXML
-    private Font fractalParametersFont;
 
     @FXML
     private Text setChoice;
@@ -76,9 +67,6 @@ public class MainController extends Controller {
 
     @FXML
     private ImageView fractalImage;
-
-    @FXML
-    private Label versionApp;
 
     private static final double INITIAL_FIT_WIDTH = 880;
     private static final double INITIAL_FIT_HEIGHT = 660.0;
@@ -124,8 +112,6 @@ public class MainController extends Controller {
             if(checkZoomPropertyCondition()){
                 fractalImage.setFitWidth(zoomProperty.get() * 4);
                 fractalImage.setFitHeight(zoomProperty.get() * 3);
-                System.out.println(fractalImage.getFitWidth());
-                System.out.println(fractalImage.getFitHeight());
             }
         });
 

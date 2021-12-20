@@ -110,12 +110,16 @@ public abstract class Fractal {
     }
 
     protected void writeFractalOnImage(){
+        Instant start = Instant.now();
         IntStream.range(0, image.getImageLength())
                 .parallel()
                 .forEach(a ->
                         IntStream.range(0, image.getImageHeight())
                                 .parallel()
                                 .forEach(b -> image.getImage().setRGB(b,a,getColorOfPixel(a, b))));
+
+        Instant end = Instant.now();
+        System.out.println("Time to write information pixel per pixel : " + Duration.between(start, end).getSeconds());
         image.saveFractal();
     }
 
