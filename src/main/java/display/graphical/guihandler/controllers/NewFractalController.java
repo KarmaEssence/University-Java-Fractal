@@ -73,8 +73,8 @@ public class NewFractalController extends Controller {
 
     //todo: Reprendre les fonctions de la classe TextualHumanInteract
     private boolean checkIfFieldsAreGoodFormat(){
-        if(juliaCheckbox.isSelected() && checkValue(constanteX.getText())
-                && checkValue(constanteY.getText()))
+        if(juliaCheckbox.isSelected() && !checkValue(constanteX.getText())
+                && !checkValue(constanteY.getText()))
             return false;
         return checkValue(pointAX.getText()) && checkValue(pointAY.getText())
                 && checkValue(pointBX.getText()) && checkValue(pointBY.getText())
@@ -179,6 +179,7 @@ public class NewFractalController extends Controller {
 
     @Override
     public void errorInPage(int error) {
+        System.out.println("Code d'erreur : " + error);
         if(error == 1)
             errorMessage.setText("Please select a set");
         else if(error == 2)
