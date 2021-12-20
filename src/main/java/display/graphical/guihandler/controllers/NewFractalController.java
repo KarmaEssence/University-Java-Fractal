@@ -147,20 +147,23 @@ public class NewFractalController extends Controller {
 
         newButton.setOnAction(event -> {
             boolean checkFormat = checkIfFieldsAreGoodFormat();
-            if(checkFormat && (juliaCheckbox.isSelected() ||
-                    mandelbrotCheckbox.isSelected())
-            && !(Double.parseDouble(discretizationStape.getText()) < 0.001)){
+            double temp = Double.parseDouble(discretizationStape.getText());
+            int code = ParseArgs.checkRectanglePosInFunctionOfDiscretizationStape(makeRectangle(), temp);
+            if(checkFormat && code == 0 &&
+                    (juliaCheckbox.isSelected() || mandelbrotCheckbox.isSelected())){
+
                 errorMessage.setText("");
                 makeFractal();
                 clearFields();
                 model.changeScene("main");
+
             }else{
                 if(!juliaCheckbox.isSelected() && !mandelbrotCheckbox.isSelected())
                     errorInPage(1);
                 else if(!checkFormat)
                     errorInPage(0);
-                else if (Double.parseDouble(discretizationStape.getText()) < 0.001)
-                    errorInPage(2);
+                else
+                    errorInPage(code);
             }
         });
 

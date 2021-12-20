@@ -66,6 +66,27 @@ public class ParseArgs {
 
     }
 
+    public static int checkRectanglePosInFunctionOfDiscretizationStape(ComplexRectangle complexRectangle,
+                                                                        double discretizationStape){
+
+        if(!pointsAreOpposite(complexRectangle)){
+            return 3;
+
+        }else if(discretizationStape <= 0.1 && discretizationStape > 0.001
+                && !checkRectanglePosLimite(complexRectangle, 10)){
+            return 4;
+
+        }else if(discretizationStape <= 0.01 && discretizationStape > 0.001
+                && !checkRectanglePosLimite(complexRectangle, 5)){
+            return 5;
+
+        }else if(discretizationStape <= 0.001 && discretizationStape > 0.0001
+                && !checkRectanglePosLimite(complexRectangle, 2)){
+            return 6;
+        }
+        return 0;
+    }
+
     public static Fractal makeFractal(Launcher launcher){
         String[] args = launcher.getArgs();
         String set = args[1];
