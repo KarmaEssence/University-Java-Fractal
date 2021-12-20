@@ -21,7 +21,7 @@ public class ParseArgs {
     }
 
     public static void checkDiscretizationStape(Launcher launcher, double discretizationStape){
-        if(discretizationStape < 0.001 || discretizationStape > 0.1){
+        if(discretizationStape <= 0.0001 || discretizationStape > 0.1){
             launcher.getGeneralView().displayError(1);
             System.exit(0);
         }
