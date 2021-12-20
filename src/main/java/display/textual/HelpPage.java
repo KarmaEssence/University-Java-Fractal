@@ -17,7 +17,9 @@ public class HelpPage {
         TextualDisplay.printSpace(2);
         System.out.println(" pointBRe pointBIm discretizationStape'");
         System.out.println();
-        System.out.println("./gradlew run --args='graphical");
+        System.out.println("./gradlew run --args='graphical'");
+        System.out.println();
+        System.out.println("./gradlew run --args='test'");
         TextualDisplay.printSepator();
     }
 }
