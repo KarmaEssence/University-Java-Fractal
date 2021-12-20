@@ -147,9 +147,9 @@ public class NewFractalController extends Controller {
 
         newButton.setOnAction(event -> {
             boolean checkFormat = checkIfFieldsAreGoodFormat();
-            double temp = Double.parseDouble(discretizationStape.getText());
-            int code = ParseArgs.checkRectanglePosInFunctionOfDiscretizationStape(makeRectangle(), temp);
-            if(checkFormat && code == 0 &&
+            double value = Double.parseDouble(discretizationStape.getText());
+            int code = ParseArgs.checkRectanglePosInFunctionOfDiscretizationStape(makeRectangle(), value);
+            if(checkFormat && code == 0 && !(value < 0.001) &&
                     (juliaCheckbox.isSelected() || mandelbrotCheckbox.isSelected())){
 
                 errorMessage.setText("");
@@ -162,8 +162,11 @@ public class NewFractalController extends Controller {
                     errorInPage(1);
                 else if(!checkFormat)
                     errorInPage(0);
+                else if (value < 0.001)
+                    errorInPage(2);
                 else
                     errorInPage(code);
+
             }
         });
 
@@ -183,8 +186,17 @@ public class NewFractalController extends Controller {
             errorMessage.setText("Please select a set");
         else if(error == 2)
             errorMessage.setText("You cannot choose an discretization stape inferior of 0.0009");
+        else if(error == 3)
+            errorMessage.setText("Please choose two opposite points for the rectangle");
+        else if(error == 4)
+            errorMessage.setText("To discretization stape inferior/equals of 0.1, max dimensions are 10 x 10");
+        else if(error == 5)
+            errorMessage.setText("To discretization stape inferior/equals of 0.01, max dimensions are 5 x 5");
+        else if(error == 6)
+            errorMessage.setText("To discretization stape inferior/equals of 0.01, max dimensions are 2 x 2");
         else
             errorMessage.setText("Wrong content in one of all field");
+
         errorMessage.setFill(Color.RED);
     }
 }
