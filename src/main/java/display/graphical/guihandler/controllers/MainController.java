@@ -80,6 +80,9 @@ public class MainController extends Controller {
     @FXML
     private Label versionApp;
 
+    private static final double INITIAL_FIT_WIDTH = 659.0;
+    private static final double INITIAL_FIT_HEIGHT = 551.0;
+
     private DoubleProperty zoomProperty;
 
     private void displayFractalConfig(){
@@ -106,12 +109,22 @@ public class MainController extends Controller {
         discretizationStape.setText("Undefined");
     }
 
+    private boolean checkZoomPropertyCondition(){
+        return zoomProperty.get() * 4 >= INITIAL_FIT_WIDTH &&
+                zoomProperty.get() * 3 >= INITIAL_FIT_HEIGHT &&
+                zoomProperty.get() * 4 < 100000 && zoomProperty.get() * 3 < 100000;
+    }
+
     private void setZoomProperty(){
+        fractalImage.setFitWidth(INITIAL_FIT_WIDTH);
+        fractalImage.setFitHeight(INITIAL_FIT_HEIGHT);
         zoomProperty = new SimpleDoubleProperty(200);
 
         zoomProperty.addListener(arg0 -> {
-            fractalImage.setFitWidth(zoomProperty.get() * 4);
-            fractalImage.setFitHeight(zoomProperty.get() * 3);
+            if(checkZoomPropertyCondition()){
+                fractalImage.setFitWidth(zoomProperty.get() * 4);
+                fractalImage.setFitHeight(zoomProperty.get() * 3);
+            }
         });
 
         scrollPane.addEventFilter(ScrollEvent.ANY, event -> {
