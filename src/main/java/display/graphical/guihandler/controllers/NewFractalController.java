@@ -193,7 +193,7 @@ public class NewFractalController extends Controller {
     @Override
     public void errorInPage(int error) {
         if(error == 1)
-            errorMessage.setText("Please select a set");
+            errorMessage.setText("between julia and mandelbrot");
         else if(error == 2)
             errorMessage.setText("You cannot choose an discretization stape inferior of 0.009");
         else if(error == 3)

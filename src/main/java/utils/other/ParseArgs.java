@@ -21,8 +21,12 @@ public class ParseArgs {
     }
 
     public static void checkDiscretizationStape(Launcher launcher, double discretizationStape){
-        if(discretizationStape <= 0.0001 || discretizationStape > 0.1){
-            launcher.getGeneralView().displayError(1);
+        if(discretizationStape <= 0.0001){
+            launcher.getGeneralView().displayError(2);
+            System.exit(0);
+        }
+        if(discretizationStape > 0.1){
+            launcher.getGeneralView().displayError(3);
             System.exit(0);
         }
     }
@@ -46,22 +50,22 @@ public class ParseArgs {
                                                                         double discretizationStape){
 
         if(!pointsAreOpposite(complexRectangle)){
-            launcher.getGeneralView().displayError(2);
+            launcher.getGeneralView().displayError(4);
             System.exit(0);
 
         }else if(discretizationStape <= 0.1 && discretizationStape > 0.001
                 && !checkRectanglePosLimite(complexRectangle, 11)){
-            launcher.getGeneralView().displayError(3);
+            launcher.getGeneralView().displayError(5);
             System.exit(0);
 
         }else if(discretizationStape <= 0.01 && discretizationStape > 0.001
         && !checkRectanglePosLimite(complexRectangle, 6)){
-            launcher.getGeneralView().displayError(4);
+            launcher.getGeneralView().displayError(6);
             System.exit(0);
 
         }else if(discretizationStape <= 0.001 && discretizationStape > 0.0001
                 && !checkRectanglePosLimite(complexRectangle, 3)){
-            launcher.getGeneralView().displayError(5);
+            launcher.getGeneralView().displayError(7);
             System.exit(0);
         }
 
@@ -109,6 +113,9 @@ public class ParseArgs {
             double discretizationStape = Double.parseDouble(args[6]);
             checkDiscretizationStape(launcher, discretizationStape);
             return new MandelbrotSet(complexRectangle, discretizationStape);
+        }else{
+            launcher.getGeneralView().displayError(1);
+            System.exit(0);
         }
         return null;
     }

@@ -23,26 +23,16 @@ public abstract class View{
 	 * @param type type du message d erreur.
 	 */
 	public void makeAnErrorMessage(int type){
-		String message = "";
-		switch (type){
-			case 1 :
-				message = "You cannot choose an discretization stape inferior of 0.0009";
-				break;
-			case 2 :
-				message = "Please choose two opposite points for the rectangle";
-				break;
-			case 3 :
-				message = "To discretization stape inferior/equals of 0.1, max dimensions are 10 x 10";
-				break;
-			case 4 :
-				message = "To discretization stape inferior/equals of 0.01, max dimensions are 5 x 5";
-				break;
-			case 5 :
-				message = "To discretization stape inferior/equals of 0.01, max dimensions are 2 x 2";
-				break;
-			default:
-				message = "You cannot choose this!";
-		}
+		String message = switch (type) {
+			case 1 -> "Please select a set between julia and mandelbrot";
+			case 2 -> "You cannot choose an discretization stape inferior of 0.009";
+			case 3 -> "You cannot choose an discretization stape superior of 0.1";
+			case 4 -> "Please choose two opposite points for the rectangle";
+			case 5 -> "To discretization stape inferior/equals of 0.1, max dimensions are 10 x 10";
+			case 6 -> "To discretization stape inferior/equals of 0.01, max dimensions are 5 x 5";
+			case 7 -> "To discretization stape inferior/equals of 0.01, max dimensions are 2 x 2";
+			default -> "You cannot choose this!";
+		};
 		printErrorMessage(message);
 	}
 
