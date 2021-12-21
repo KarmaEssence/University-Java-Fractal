@@ -4,11 +4,23 @@ import java.util.Locale;
 
 public class CheckStringFormat {
 
+    /**
+     * Verifie que l ensemble choisi correspond a un ensemble existant
+     * @param set l ensemble choisi
+     * @return true si l ensemble choisi correspond a un ensemble existant,
+     * false sinon
+     */
     private static boolean checkChoosedSet(String set){
         set = set.toLowerCase(Locale.ROOT);
         return set.equals("julia") || set.equals("mandelbrot");
     }
 
+    /**
+     * Verifie que les arguments soient correct
+     * @param args les arguments
+     * @return true si les arguments sont correct,
+     * false sinon
+     */
     public static boolean checkShellArgs(String[] args){
         if((args.length != 9 && args.length != 7)  || !args[0].equals("shell")
                 || !checkChoosedSet(args[1])) return false;

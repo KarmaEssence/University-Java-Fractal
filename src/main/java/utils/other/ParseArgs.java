@@ -9,10 +9,24 @@ import utils.complex.ComplexRectangle;
 
 public class ParseArgs {
 
+    /**
+     * Fabrique un complexe
+     * @param real partie reel
+     * @param imaginary partie imaginaire
+     * @return un nombre complexe
+     */
     public static Complex makeComplexe(String real, String imaginary){
         return new Complex(Double.parseDouble(real), Double.parseDouble(imaginary));
     }
 
+    /**
+     * Fabrique un rectangle
+     * @param pointAX partie reel du point A
+     * @param pointAY partie imaginaire du point A
+     * @param pointBX partie reel du point B
+     * @param pointBY partie imaginaire du point B
+     * @return un rectangle
+     */
     public static ComplexRectangle makeRectangle(String pointAX, String pointAY,
                                            String pointBX, String pointBY){
         Complex pointA = makeComplexe(pointAX, pointAY);
@@ -20,6 +34,11 @@ public class ParseArgs {
         return new ComplexRectangle(pointA, pointB);
     }
 
+    /**
+     * Verifie que le pas de discretisation soit correct
+     * @param launcher la classe lançant le projet
+     * @param discretizationStape pas de discretisation
+     */
     public static void checkDiscretizationStape(Launcher launcher, double discretizationStape){
         if(discretizationStape <= 0.0001){
             launcher.getGeneralView().displayError(2);
@@ -31,24 +50,49 @@ public class ParseArgs {
         }
     }
 
+    /**
+     * Verifie que les points du rectangles soient opposes
+     * @param complexRectangle un rectangle
+     * @return true si les points du rectangles sont opposes,
+     * false sinon
+     */
     public static boolean pointsAreOpposite(ComplexRectangle complexRectangle){
         return complexRectangle.getWidth() != 0 && complexRectangle.getHeight() != 0;
     }
 
+    /**
+     * Verifie que le point ne depasse pas la limite
+     * @param point un complexe
+     * @param limite la limite
+     * @return true le point ne depasse pas la limite,
+     * false sinon
+     */
     public static boolean checkPointPosLimite(Complex point, int limite){
         return Math.abs(point.getReal()) < limite &&
                 Math.abs(point.getImaginary()) < limite;
     }
 
+    /**
+     * Verifie que les points ne depassent pas la limite
+     * @param complexRectangle un rectangle
+     * @param limite la limite
+     * @return true les points ne depassent pas la limite,
+     * false sinon
+     */
     public static boolean checkRectanglePosLimite(ComplexRectangle complexRectangle, int limite){
         return checkPointPosLimite(complexRectangle.getPointA(), limite) &&
                 checkPointPosLimite(complexRectangle.getPointB(), limite);
     }
 
+    /**
+     * Verifie que le rectangle respecte les dimensions
+     * @param launcher la classe lançant le projet
+     * @param complexRectangle un rectangle
+     * @param discretizationStape pas de discretisation
+     */
     public static void checkRectanglePosInFunctionOfDiscretizationStape(Launcher launcher,
                                                                         ComplexRectangle complexRectangle,
                                                                         double discretizationStape){
-
         if(!pointsAreOpposite(complexRectangle)){
             launcher.getGeneralView().displayError(4);
             System.exit(0);
@@ -71,6 +115,12 @@ public class ParseArgs {
 
     }
 
+    /**
+     * Verifie que le rectangle respecte les dimensions
+     * @param complexRectangle un rectangle
+     * @param discretizationStape pas de discretisation
+     * @return un signal de retour
+     */
     public static int checkRectanglePosInFunctionOfDiscretizationStape(ComplexRectangle complexRectangle,
                                                                         double discretizationStape){
 
@@ -92,6 +142,11 @@ public class ParseArgs {
         return 0;
     }
 
+    /**
+     * Construit une fractal
+     * @param launcher la classe lançant le projet
+     * @return une fractal
+     */
     public static Fractal makeFractal(Launcher launcher){
         String[] args = launcher.getArgs();
         String set = args[1];

@@ -67,11 +67,18 @@ public class NewFractalController extends Controller {
     @FXML
     private Button backButton;
 
+    /**
+     * Appelle la methode checkValue de
+     * CheckStringFormat
+     */
     private boolean checkValue(String s){
         return CheckStringFormat.checkValue(s);
     }
 
-    //todo: Reprendre les fonctions de la classe TextualHumanInteract
+    /**
+     * Verifie que le format est respecte
+     * @return true si le format est respecte
+     */
     private boolean checkIfFieldsAreGoodFormat(){
         if(juliaCheckbox.isSelected() && (constanteX.getText().isEmpty() ||
                 constanteY.getText().isEmpty()))
@@ -89,15 +96,24 @@ public class NewFractalController extends Controller {
 
     }
 
+    /**
+     * Appelle la methode de ParseArgs
+     */
     private Complex makeConstante(){
         return ParseArgs.makeComplexe(constanteX.getText(), constanteY.getText());
     }
 
+    /**
+     * Appelle la methode de ParseArgs
+     */
     private ComplexRectangle makeRectangle(){
         return ParseArgs.makeRectangle(pointAX.getText(), pointAY.getText(),
                 pointBX.getText(), pointBY.getText());
     }
 
+    /**
+     * Construit la fractale et l enregiste
+     */
     private void makeFractal(){
         Fractal fractal = null;
 
@@ -118,6 +134,9 @@ public class NewFractalController extends Controller {
         model.setFractal(fractal);
     }
 
+    /**
+     * Reinitialise les champs de texte
+     */
     private void clearFields(){
         juliaCheckbox.setSelected(false);
         mandelbrotCheckbox.setSelected(false);
@@ -128,6 +147,10 @@ public class NewFractalController extends Controller {
         errorMessage.setText("");
     }
 
+    /**
+     * Initialise cette page
+     * @param model modele de l interface graphique
+     */
     @Override
     public void initPage(Model model) {
         mandelbrotCheckbox.setOnAction(event -> {
@@ -190,6 +213,10 @@ public class NewFractalController extends Controller {
         });
     }
 
+    /**
+     * Affiche une erreur
+     * @param error code de l erreur
+     */
     @Override
     public void errorInPage(int error) {
         if(error == 1)

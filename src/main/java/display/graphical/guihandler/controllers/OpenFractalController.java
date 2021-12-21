@@ -30,11 +30,18 @@ public class OpenFractalController extends Controller {
     @FXML
     private Button backButton;
 
+    /**
+     * Reinitialise les champs de texte
+     */
     private void clearFields(){
         filename.clear();
         errorMessage.setText("");
     }
 
+    /**
+     * Initialise cette page
+     * @param model modele de l interface graphique
+     */
     @Override
     public void initPage(Model model) {
         openButton.setOnAction(event -> {
@@ -57,6 +64,10 @@ public class OpenFractalController extends Controller {
 
     }
 
+    /**
+     * Affiche une erreur
+     * @param error code de l erreur
+     */
     @Override
     public void errorInPage(int error) {
         errorMessage.setText("Wrong filename");

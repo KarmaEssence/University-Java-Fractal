@@ -2,26 +2,16 @@ package display.graphical.guihandler.controllers;
 
 import display.graphical.guihandler.Controller;
 import display.graphical.guihandler.Model;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import utils.config.FileData;
 import utils.config.FractalConfig;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class MainController extends Controller {
 
@@ -73,6 +63,9 @@ public class MainController extends Controller {
 
     private DoubleProperty zoomProperty;
 
+    /**
+     * Affiche la fractal
+     */
     private void displayFractalConfig(){
         FractalConfig config = model.getFractalConfig();
         setChoice.setText(config.setChoice);
@@ -86,6 +79,9 @@ public class MainController extends Controller {
 
     }
 
+    /**
+     * Reinitialise les champs de texte
+     */
     private void clearTextField(){
         setChoice.setText("No Choosed");
         constanteX.setText("Undefined");
@@ -97,12 +93,20 @@ public class MainController extends Controller {
         discretizationStape.setText("Undefined");
     }
 
+    /**
+     * Permet de borner l utilisation du zoom
+     * @return true si le zoom peut s effectuer,
+     * false sinon
+     */
     private boolean checkZoomPropertyCondition(){
         return zoomProperty.get() * 4 >= INITIAL_FIT_WIDTH &&
                 zoomProperty.get() * 3 >= INITIAL_FIT_HEIGHT &&
                 zoomProperty.get() * 4 < 100000 && zoomProperty.get() * 3 < 100000;
     }
 
+    /**
+     * Met en place le zoom
+     */
     private void setZoomProperty(){
         fractalImage.setFitWidth(INITIAL_FIT_WIDTH);
         fractalImage.setFitHeight(INITIAL_FIT_HEIGHT);
@@ -127,6 +131,10 @@ public class MainController extends Controller {
         scrollPane.setContent(fractalImage);
     }
 
+    /**
+     * Initialise cette page
+     * @param model modele de l interface graphique
+     */
     @Override
     public void initPage(Model model) {
         if(Controller.model == null){
@@ -166,9 +174,10 @@ public class MainController extends Controller {
         });
     }
 
-
+    /**
+     * Affiche une erreur
+     * @param error code de l erreur
+     */
     @Override
-    public void errorInPage(int error) {
-
-    }
+    public void errorInPage(int error) {}
 }
