@@ -20,7 +20,7 @@ public abstract class View{
 	public void makeAnErrorMessage(int type){
 		String message = switch (type) {
 			case 1 -> "Please select a set between julia and mandelbrot";
-			case 2 -> "Please select a color between blue and orange";
+			case 2 -> "Please select a color between cold and heat";
 			case 3 -> "You cannot choose an discretization stape inferior of 0.009";
 			case 4 -> "You cannot choose an discretization stape superior of 0.1";
 			case 5 -> "Please choose two opposite points for the rectangle";

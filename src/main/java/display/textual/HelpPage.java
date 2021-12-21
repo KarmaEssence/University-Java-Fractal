@@ -13,9 +13,13 @@ public class HelpPage {
         TextualDisplay.printSpace(24);
         System.out.println("Help page :");
         System.out.println();
-        System.out.println("./gradlew run --args='shell julia constantRe constantIm pointARe pointAIm");
+        System.out.println("./gradlew run --args='shell <julia> <color> <constantRe> <constantIm> <pointARe> <pointAIm>");
         TextualDisplay.printSpace(2);
-        System.out.println(" pointBRe pointBIm discretizationStape'");
+        System.out.println(" <pointBRe> <pointBIm> <discretizationStape>'");
+        System.out.println();
+        System.out.println("./gradlew run --args='shell <mandelbrot> <color> <pointARe> <pointAIm>");
+        TextualDisplay.printSpace(2);
+        System.out.println(" <pointBRe> <pointBIm> <discretizationStape>'");
         System.out.println();
         System.out.println("./gradlew run --args='graphical'");
         System.out.println();

@@ -32,6 +32,14 @@ public class Launcher{
     }
 
     /**
+     * Etablie la vue generale
+     * @param generalView la vue generale
+     */
+    public void setGeneralView(GeneralView generalView) {
+        this.generalView = generalView;
+    }
+
+    /**
      * Execute le programme sur le terminal
      * @param launcher la classe lançant le projet
      */
@@ -66,7 +74,7 @@ public class Launcher{
         if(args.length == 1 && args[0].equals("graphical")){
             launcher.generalView = new GeneralView("graphical");
             executeGraphicalOption(launcher);
-        }else if(CheckStringFormat.checkShellArgs(args)) {
+        }else if(CheckStringFormat.checkShellArgs(launcher)) {
             launcher.generalView = new GeneralView("shell");
             executeShellOption(launcher);
         }else if(args.length == 1 && args[0].equals("test")){

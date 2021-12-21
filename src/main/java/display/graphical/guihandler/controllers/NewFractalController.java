@@ -246,7 +246,7 @@ public class NewFractalController extends Controller {
         if(error == 1)
             errorMessage.setText("Please select a set between julia and mandelbrot");
         else if(error == 2)
-            errorMessage.setText("Please select a color between blue and orange");
+            errorMessage.setText("Please select a color between cold and heat");
         else if(error == 3)
             errorMessage.setText("You cannot choose an discretization stape inferior of 0.009");
         else if(error == 4)

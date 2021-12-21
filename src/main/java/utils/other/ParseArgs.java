@@ -150,24 +150,25 @@ public class ParseArgs {
     public static Fractal makeFractal(Launcher launcher){
         String[] args = launcher.getArgs();
         String set = args[1];
+        String color = args[2];
 
         if(set.equals("julia")){
-            Complex constant = makeComplexe(args[2], args[3]);
-            ComplexRectangle complexRectangle = makeRectangle(args[4], args[5],
-                    args[6], args[7]);
-            double discretizationStape = Double.parseDouble(args[8]);
+            Complex constant = makeComplexe(args[3], args[4]);
+            ComplexRectangle complexRectangle = makeRectangle(args[5], args[6],
+                    args[7], args[8]);
+            double discretizationStape = Double.parseDouble(args[9]);
 
             checkDiscretizationStape(launcher, discretizationStape);
             checkRectanglePosInFunctionOfDiscretizationStape(launcher, complexRectangle,
                     discretizationStape);
-            return new JuliaSet(constant, complexRectangle, discretizationStape);
+            return new JuliaSet(color, constant, complexRectangle, discretizationStape);
 
         }else if(set.equals("mandelbrot")){
-            ComplexRectangle complexRectangle = makeRectangle(args[2], args[3],
-                    args[4], args[5]);
-            double discretizationStape = Double.parseDouble(args[6]);
+            ComplexRectangle complexRectangle = makeRectangle(args[3], args[4],
+                    args[5], args[6]);
+            double discretizationStape = Double.parseDouble(args[7]);
             checkDiscretizationStape(launcher, discretizationStape);
-            return new MandelbrotSet(complexRectangle, discretizationStape);
+            return new MandelbrotSet(color, complexRectangle, discretizationStape);
         }else{
             launcher.getGeneralView().displayError(1);
             System.exit(0);

@@ -1,5 +1,8 @@
 package utils.other;
 
+import display.GeneralView;
+import launcher.Launcher;
+
 import java.util.Locale;
 
 public class CheckStringFormat {
@@ -16,15 +19,32 @@ public class CheckStringFormat {
     }
 
     /**
+     * Verifie que l ensemble choisi correspond a une couleur existante
+     * @param color couleur choisi
+     * @return true si la couleur choisi correspond a une couleur existante,
+     * false sinon
+     */
+    private static boolean checkChoosedColor(String color){
+        color = color.toLowerCase(Locale.ROOT);
+        return color.equals("cold") || color.equals("heat");
+    }
+
+    /**
      * Verifie que les arguments soient correct
-     * @param args les arguments
+     * @param launcher la classe lançant le projet
      * @return true si les arguments sont correct,
      * false sinon
      */
-    public static boolean checkShellArgs(String[] args){
-        if((args.length != 9 && args.length != 7)  || !args[0].equals("shell")
+    public static boolean checkShellArgs(Launcher launcher){
+        String[] args = launcher.getArgs();
+        if((args.length != 10 && args.length != 8)  || !args[0].equals("shell")
                 || !checkChoosedSet(args[1])) return false;
-        for(int i = 2; i < args.length; i++){
+        if(!checkChoosedColor(args[2])){
+            launcher.setGeneralView(new GeneralView("shell"));
+            launcher.getGeneralView().displayError(2);
+            return false;
+        }
+        for(int i = 3; i < args.length; i++){
             if(!checkValue(args[i]))
                 return false;
         }
