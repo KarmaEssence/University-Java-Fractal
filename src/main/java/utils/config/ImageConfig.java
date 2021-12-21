@@ -24,18 +24,33 @@ public class ImageConfig {
         image = new BufferedImage(imageLength, imageHeight, BufferedImage.TYPE_INT_RGB);
     }
 
+    /**
+     * Recupere un BufferedImage
+     * @return un BufferedImage
+     */
     public BufferedImage getImage() {
         return image;
     }
 
+    /**
+     * Recupere la largeur de l'image
+     * @return la largeur de l'image
+     */
     public Integer getImageLength() {
         return imageLength;
     }
 
+    /**
+     * Recupere la hauteur de l'image
+     * @return la hauteur de l'image
+     */
     public Integer getImageHeight() {
         return imageHeight;
     }
 
+    /**
+     * Sauvegarde la fractal
+     */
     public void saveFractal(){
         if(image == null) return;
         System.out.println("Generating image ...");

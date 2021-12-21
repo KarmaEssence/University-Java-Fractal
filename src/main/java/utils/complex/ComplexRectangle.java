@@ -16,18 +16,34 @@ public class ComplexRectangle {
         this.pointB = pointB;
     }
 
+    /**
+     * Recupere le point A
+     * @return le point A
+     */
     public Complex getPointA() {
         return pointA;
     }
 
+    /**
+     * Recupere le point A
+     * @return le point A
+     */
     public Complex getPointB() {
         return pointB;
     }
 
+    /**
+     * Recupere la largeur du rectangle
+     * @return la largeur du rectangle
+     */
     public double getWidth(){
         return Math.abs(pointA.getReal() - pointB.getReal());
     }
 
+    /**
+     * Recupere la hauteur du rectangle
+     * @return la hauteur du rectangle
+     */
     public double getHeight(){
         return Math.abs(pointA.getImaginary() - pointB.getImaginary());
     }

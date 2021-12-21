@@ -15,14 +15,26 @@ public class Launcher{
     private GeneralView generalView;
     private String[] args;
 
+    /**
+     * Recupere les arguments
+     * @return les arguments
+     */
     public String[] getArgs() {
         return args;
     }
 
+    /**
+     * Recupere la vue generale
+     * @return la vue generale
+     */
     public GeneralView getGeneralView() {
         return generalView;
     }
 
+    /**
+     * Execute le programme sur le terminal
+     * @param launcher la classe lançant le projet
+     */
     public static void executeShellOption(Launcher launcher){
         launcher.generalView.display();
         Fractal fractal = ParseArgs.makeFractal(launcher);
@@ -34,11 +46,19 @@ public class Launcher{
         System.exit(0);
     }
 
+    /**
+     * Execute le programme sur le terminal
+     * @param launcher la classe lançant le projet
+     */
     public static void executeGraphicalOption(Launcher launcher){
         launcher.generalView.display();
         System.exit(0);
     }
 
+    /**
+     * Permet de lancer le programme
+     * @param args les arguments
+     */
     public static void main(String[] args){
         Launcher launcher = new Launcher();
         launcher.args = args;

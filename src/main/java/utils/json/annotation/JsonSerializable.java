@@ -5,17 +5,27 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/** Annotation interface for a Json serializable type or field. */
+/**
+ * Annotation interface pour les object serialisable
+ */
 @Target({ElementType.FIELD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JsonSerializable {
 
-    /** The path to search for this element. */
+    /**
+     * @return Le chemin pour chercher cette element
+     */
     String path() default "";
 
-    /** Defines if this is a necessary field or not (if not, it can be deserialized as null if not found). */
+    /**
+     * Definie si ce sont des champs obligatoire ou non
+     * @return true si c est le cas, false sinon.
+     */
     boolean necessary() default true;
 
+    /**
+     * @return le type de serialisation
+     */
     JsonSerializableType getType() default JsonSerializableType.Both;
 
 }

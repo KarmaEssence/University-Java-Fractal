@@ -6,6 +6,12 @@ import utils.complex.ComplexRectangle;
 import utils.json.JsonWriter;
 import utils.json.annotation.JsonSerializable;
 
+/**
+ * Les attributs de la classe sont
+ * public pour que le JsonReader
+ * puisse y ecrire les donnees du
+ * fichier de configuration choisi
+ */
 @JsonSerializable
 public class FractalConfig {
 
@@ -33,6 +39,11 @@ public class FractalConfig {
     @JsonSerializable
     public Double discretizationStape;
 
+    /**
+     * On utilise un builder
+     * pour creer et sauvegarder une image
+     * et sa configuration
+     */
     public static class Builder {
         private final String setChoice;
         private final Double constantX;
@@ -60,9 +71,17 @@ public class FractalConfig {
                     fractal.getDiscretizationStape());
         }
 
+        /**
+         * Construit une configuration
+         * @return une configuration
+         */
         public FractalConfig build() {
             return new FractalConfig(this);
         }
+
+        /**
+         * Construit et sauvegarde la configuration
+         */
         public void buildAndSave(){
             FractalConfig fractalConfig = build();
             FileData.directoryExist("/data/fractal_config");
@@ -84,6 +103,10 @@ public class FractalConfig {
         this.setChoice = builder.setChoice;
     }
 
+    /**
+     * Notre JsonReader a besoin d un
+     * constructeur vide pour construire l object
+     */
     public FractalConfig(){}
     
 }

@@ -8,6 +8,9 @@ import utils.config.FractalConfig;
 
 public class FractalLauncher {
 
+    /**
+     * Configuration 1
+     */
     private static void julia1(){
         Complex c = new Complex(-(0.7269), 0.1889);
         ComplexRectangle cr = new ComplexRectangle(-1, 1, 1, -1);
@@ -17,6 +20,9 @@ public class FractalLauncher {
         builder.buildAndSave();
     }
 
+    /**
+     * Configuration 2
+     */
     private static void julia2(){
         Complex c = new Complex(-(0.8), 0.156);
         ComplexRectangle cr = new ComplexRectangle(-2, 2, 2, -2);
@@ -26,6 +32,9 @@ public class FractalLauncher {
         builder.buildAndSave();
     }
 
+    /**
+     * Configuration 3
+     */
     private static void mandelbrot1(){
         ComplexRectangle cr = new ComplexRectangle(-2, 2, 2, -2);
         MandelbrotSet mandelbrotSet = new MandelbrotSet( cr, 0.001);

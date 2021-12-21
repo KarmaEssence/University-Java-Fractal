@@ -10,8 +10,8 @@ public class MandelbrotSet extends Fractal{
     }
 
     /**
-     * Construit la fractal s'il y a un rectangle,
-     * une constante et une fonction
+     * Construit la fractal s il y a un rectangle
+     * et une fonction
      **/
     @Override
     public void makeFractal(){

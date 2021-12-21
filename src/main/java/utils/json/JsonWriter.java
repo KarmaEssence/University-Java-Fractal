@@ -17,10 +17,7 @@ public class JsonWriter {
     private Map<String,Object> jsonMap;
     private String lastKey;
 
-    /**
-     * Create an instance of JsonWriter.
-     * @param filePath File path.
-     */
+
     public JsonWriter(String filePath)
     {
         filePath = Resources.checkExtensionOf(filePath,".json");
@@ -32,7 +29,7 @@ public class JsonWriter {
     }
 
     /**
-     * @return File path.
+     * @return le chemin du fichier
      */
     public String getFilePath()
     {
@@ -40,9 +37,9 @@ public class JsonWriter {
     }
 
     /**
-     * Fill the map with key and value.
-     * @param key Key.
-     * @param value Value.
+     * Remplie la map.
+     * @param key cle.
+     * @param value valeur.
      */
     public void fillJsonMap(String key,Object value)
     {
@@ -50,9 +47,10 @@ public class JsonWriter {
         lastKey = key;
     }
 
-    //https://forums.commentcamarche.net/forum/affich-25720907-ecrire-en-java-dans-un-fichier-json
-    //
-
+    /**
+     * Permet de serialiser un object
+     * @param object l object a serialiser
+     */
     public void serializeObject(Object object){
         Field[] fields = object.getClass().getFields();
         Resources.checkIfFileExist(filePath);
@@ -84,7 +82,8 @@ public class JsonWriter {
     }
 
     /**
-     * Save the map in file (in data folder).
+     * Sauvegarde la map dans le fichier
+     * de configuration
      */
     public void saveMap()
     {
@@ -115,10 +114,9 @@ public class JsonWriter {
     }
 
     /**
-     * Check if the object is primary.
-     * @param writer To write the content.
-     * @param key Current key.
-     * @throws IOException In case where the save failed.
+     * Sauvegarde dans le fichier une variable primaire.
+     * @param writer pour ecrire le contenu.
+     * @param key cle courante.
      */
     private void savePrimaryVar(FileWriter writer, String key, int space) throws IOException {
         Object obj = jsonMap.get(key);
@@ -129,7 +127,15 @@ public class JsonWriter {
         writer.write(Utility.makeSpace(space) + "\""+ key + "\": " + obj + comma + "\n");
     }
 
-    private void savePrimaryVar(Object obj, FileWriter writer,String key, boolean isLastKey, int space) throws IOException {
+    /**
+     * Sauvegarde dans le fichier une variable primaire.
+     * @param obj object a sauvegarder
+     * @param writer pour ecrire le contenu
+     * @param key cle courante
+     * @param isLastKey si c est le dernier à sauvegarder
+     * @param space le nombre d espace
+     */
+    private void savePrimaryVar(Object obj, FileWriter writer, String key, boolean isLastKey, int space) throws IOException {
         if (obj instanceof String || obj instanceof Character){
             obj = "\"" + obj + "\"";
         }
@@ -138,6 +144,14 @@ public class JsonWriter {
         writer.write(Utility.makeSpace(space) + displayKey + obj + comma + "\n");
     }
 
+    /**
+     * Sauvegarde dans le fichier une liste d object.
+     * @param obj une liste d object
+     * @param writer pour ecrire le contenu
+     * @param key cle courante
+     * @param isLastKey si c est le dernier à sauvegarder
+     * @param space le nombre d espace
+     */
     private void saveList(List<Object> obj, FileWriter writer, String key, boolean isLastKey,int space) throws IOException, IllegalAccessException {
 
         writer.write(Utility.makeSpace(space)  + "\""+ key + "\": " + "[" + Utility.makeLineBreak(1));
@@ -158,7 +172,14 @@ public class JsonWriter {
         writer.write(Utility.makeSpace(space)  +  "]" + comma + Utility.makeLineBreak(1));
     }
 
-    //Ne marche pas du tout, changer en map Object,Object
+    /**
+     * Sauvegarde dans le fichier une map d object.
+     * @param obj une map d object
+     * @param writer pour ecrire le contenu
+     * @param key cle courante
+     * @param isLastKey si c est le dernier à sauvegarder
+     * @param space le nombre d espace
+     */
     private void saveMap(Map<String, Object> obj, FileWriter writer, String key, boolean isLastKey,int space) throws IOException, IllegalAccessException {
         writer.write(Utility.makeSpace(space)  + "\""+ key + "\": " + "[" + Utility.makeLineBreak(1));
         savePrimaryVar(obj.getClass().getName(), writer, "classType", false, space + 4);
@@ -178,8 +199,14 @@ public class JsonWriter {
         writer.write(Utility.makeSpace(space)  +  "]" + comma + Utility.makeLineBreak(1));
     }
 
-    //Save content with the annotation "JsonSerialisable"
-
+    /**
+     * Sauvegarde dans le fichier un object special.
+     * @param obj une object special
+     * @param writer pour ecrire le contenu
+     * @param key cle courante
+     * @param isLastKey si c est le dernier à sauvegarder
+     * @param space le nombre d espace
+     */
     private void saveSpecialObject(Object obj, FileWriter writer, String key, boolean isLastKey,int space) throws IOException, IllegalAccessException {
         Class getClass = obj.getClass();
         Field[] classField = getClass.getDeclaredFields();
@@ -197,6 +224,12 @@ public class JsonWriter {
         writer.write(Utility.makeSpace(space) + "}" + comma + Utility.makeLineBreak(1));
     }
 
+    /**
+     * Regarde si la cle est inutile
+     * @param key ligne courante
+     * @return true si la ligne est inutile,
+     * false sinon
+     */
     private boolean isUselessKey(String key){
         return key == null || key.equals("{");
     }

@@ -12,7 +12,8 @@ import java.util.Objects;
 public class FileData {
 
     /**
-     * Verifie que le repertoire existe.
+     * Verifie que le repertoire existe
+     * et le cree dans le cas contraire.
      */
     public static void directoryExist(String dirPath){
         String path = System.getProperty("user.dir");
@@ -23,6 +24,11 @@ public class FileData {
         }
     }
 
+    /**
+     * Recupere le nom du fichier le plus recent du repertoire.
+     * @param path chemin du repertoire
+     * @return retourne le nom de fichier
+     */
     public static String getLastImageFileName(String path){
         File dir = new File(path);
         File[] files = dir.listFiles();
@@ -36,10 +42,22 @@ public class FileData {
         return String.valueOf(max);
     }
 
+    /**
+     * Donne un nouveau nom de fichier à partir du dernier
+     * connu
+     * @param path chemin du repertoire
+     * @return un nouveau nom de fichier à partir du dernier
+     * connu
+     */
     public static String giveNewFilename(String path){
         return String.valueOf(Integer.parseInt(getLastImageFileName(path)) + 1);
     }
 
+    /**
+     * Recupere une image
+     * @param model modele de l interface graphique
+     * @param filename nom du fichier
+     */
     public static void getImageFromFile(Model model, String filename){
         try {
             FileInputStream inputStream = new FileInputStream(System.getProperty("user.dir") +
@@ -50,12 +68,22 @@ public class FileData {
         }
     }
 
+    /**
+     * Recupere la configuration de l image
+     * @param model modele de l interface graphique
+     * @param filename nom du fichier
+     */
     public static void getConfigFromFile(Model model, String filename){
         JsonReader jr = JsonReader.createReaderInstance(System.getProperty("user.dir") + "/data/fractal_config/" + filename + ".json");
         assert jr != null;
         model.setFractalConfig((FractalConfig) jr.deserialize());
     }
 
+    /**
+     * Recupere l image et sa configuration
+     * @param model modele de l interface graphique
+     * @param filename nom du fichier
+     */
     public static void getFractalConfig(Model model, String filename){
         getImageFromFile(model, filename);
         getConfigFromFile(model, filename);

@@ -8,27 +8,27 @@ import java.util.Map;
 public class Utility {
 
     /**
-     * To make some space.
-     * @param n Number of space.
-     * @return All space needed.
+     * Fais des espaces
+     * @param n nombre d espace
+     * @return Le nombre d espace necessaire
      */
     protected static String makeSpace(int n){
         return " ".repeat(Math.max(0, n));
     }
 
     /**
-     * Make some line break.
-     * @param n Number of line break.
-     * @return All line break needed.
+     * Fais des sauts de ligne.
+     * @param n nombre de saut de ligne
+     * @return nombre de saut de ligne necessaire
      */
     protected static String makeLineBreak(int n){
         return "\n".repeat(Math.max(0, n));
     }
 
     /**
-     * Verify if obj is primary.
-     * @param obj an object.
-     * @return true if obj is an instance of primary object.
+     * Verifie si l objet est un objet primaire.
+     * @param obj un objet.
+     * @return true si obj est une instance d un objet primaire.
      */
     protected static boolean isPrimaryVar(Object obj){
         if(obj instanceof Number ||
@@ -40,7 +40,11 @@ public class Utility {
         return false;
     }
 
-    //Modify isDigit for short, long value, etc ...
+    /**
+     * Selectionne l objet ideal
+     * @param firstVal a transformer en objet
+     * @return renvoie l objet ideal
+     */
     protected static Object findGoodObject(String firstVal){
         if(firstVal.length() == 1 && isCharacter(firstVal.charAt(0))){
             return firstVal.charAt(0);
@@ -55,10 +59,20 @@ public class Utility {
         }
     }
 
+    /**
+     * Verifie que l entier est un caractere
+     * @param c un entier
+     * @return true si l entier est un caractere, false sinon
+     */
     public static boolean isCharacter(int c){
         return (c >= 58 && c <= 126) || (c >= 33 && c <= 47);
     }
 
+    /**
+     * Verifie que le string est une valeur
+     * @param s un string
+     * @return true si le string est une valeur, false sinon
+     */
     public static boolean isDigit(String s){
         for(int i = 0; i < s.length(); i++){
             if (!(s.charAt(i) >= 48 && s.charAt(i) <= 57)){
@@ -68,6 +82,11 @@ public class Utility {
         return true;
     }
 
+    /**
+     * Verifie si le caractere est une majuscule
+     * @param c le caractere
+     * @return true si le caractere est une majuscule, false sinon
+     */
     protected static boolean firstCharacterIsUpper(char c){
         return (c >= 65 && c <= 90);
     }

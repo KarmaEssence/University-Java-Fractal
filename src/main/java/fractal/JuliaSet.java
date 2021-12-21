@@ -13,7 +13,7 @@ public class JuliaSet extends Fractal{
     }
 
     /**
-     * Construit la fractal s'il y a un rectangle,
+     * Construit la fractal s il y a un rectangle,
      * une constante et une fonction
      **/
     @Override
