@@ -71,19 +71,19 @@ public class ParseArgs {
                                                                         double discretizationStape){
 
         if(!pointsAreOpposite(complexRectangle)){
-            return 3;
+            return 4;
 
         }else if(discretizationStape <= 0.1 && discretizationStape > 0.001
                 && !checkRectanglePosLimite(complexRectangle, 11)){
-            return 4;
+            return 5;
 
         }else if(discretizationStape <= 0.01 && discretizationStape > 0.001
                 && !checkRectanglePosLimite(complexRectangle, 6)){
-            return 5;
+            return 6;
 
         }else if(discretizationStape <= 0.001 && discretizationStape > 0.0001
                 && !checkRectanglePosLimite(complexRectangle, 3)){
-            return 6;
+            return 7;
         }
         return 0;
     }

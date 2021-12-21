@@ -73,6 +73,13 @@ public class NewFractalController extends Controller {
 
     //todo: Reprendre les fonctions de la classe TextualHumanInteract
     private boolean checkIfFieldsAreGoodFormat(){
+        if(juliaCheckbox.isSelected() && (constanteX.getText().isEmpty() ||
+                constanteY.getText().isEmpty()))
+            return false;
+        if(pointAX.getText().isEmpty() || pointAY.getText().isEmpty() ||
+                pointBX.getText().isEmpty() || pointBY.getText().isEmpty() ||
+        discretizationStape.getText().isEmpty())
+            return false;
         if(juliaCheckbox.isSelected() && !checkValue(constanteX.getText())
                 && !checkValue(constanteY.getText()))
             return false;
@@ -144,9 +151,11 @@ public class NewFractalController extends Controller {
 
         newButton.setOnAction(event -> {
             boolean checkFormat = checkIfFieldsAreGoodFormat();
-            double value = Double.parseDouble(discretizationStape.getText());
-            int code = ParseArgs.checkRectanglePosInFunctionOfDiscretizationStape(makeRectangle(), value);
-            if(checkFormat && code == 0 && value > 0.0001 && value < 0.1 &&
+            System.out.println(checkFormat);
+            double value = (checkFormat)? Double.parseDouble(discretizationStape.getText()) : 0;
+            int code = (checkFormat)? ParseArgs.checkRectanglePosInFunctionOfDiscretizationStape(makeRectangle(), value)
+                    : 0;
+            if(checkFormat && code == 0 && value > 0.0001 && value <= 0.1 &&
                     (juliaCheckbox.isSelected() || mandelbrotCheckbox.isSelected())){
 
                 errorMessage.setText("");
@@ -161,6 +170,8 @@ public class NewFractalController extends Controller {
                     errorInPage(0);
                 else if (value < 0.001)
                     errorInPage(2);
+                else if (value > 0.1)
+                    errorInPage(3);
                 else
                     errorInPage(code);
 
@@ -184,12 +195,14 @@ public class NewFractalController extends Controller {
         else if(error == 2)
             errorMessage.setText("You cannot choose an discretization stape inferior of 0.0009");
         else if(error == 3)
-            errorMessage.setText("Please choose two opposite points for the rectangle");
+            errorMessage.setText("You cannot choose an discretization stape superior of 0.1");
         else if(error == 4)
-            errorMessage.setText("To discretization stape inferior/equals of 0.1, max dimensions are 10 x 10");
+            errorMessage.setText("Please choose two opposite points for the rectangle");
         else if(error == 5)
-            errorMessage.setText("To discretization stape inferior/equals of 0.01, max dimensions are 5 x 5");
+            errorMessage.setText("To discretization stape inferior/equals of 0.1, max dimensions are 10 x 10");
         else if(error == 6)
+            errorMessage.setText("To discretization stape inferior/equals of 0.01, max dimensions are 5 x 5");
+        else if(error == 7)
             errorMessage.setText("To discretization stape inferior/equals of 0.01, max dimensions are 2 x 2");
         else
             errorMessage.setText("You cannot choose this!");
