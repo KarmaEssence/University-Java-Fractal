@@ -9,6 +9,10 @@ public class MandelbrotSet extends Fractal{
         super.setChoice = "mandelbrot";
     }
 
+    /**
+     * Construit la fractal s'il y a un rectangle,
+     * une constante et une fonction
+     **/
     @Override
     public void makeFractal(){
         if(function != null && complexRectangle != null){

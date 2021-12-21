@@ -31,30 +31,63 @@ public abstract class Fractal {
 
     }
 
+    /**
+     * Cree et sauvegarde la fractal
+     **/
     public void saveFractalImage(){
         makeFractal();
     }
 
+    /**
+     * Recupere le nom de l ensemble choisi
+     * @return le nom de l ensemble choisi
+     */
     public String getSetChoice() {
         return setChoice;
     }
 
+    /**
+     * Etablie le nom de l ensemble choisi
+     * @param setChoice nom de l ensemble choisi
+     */
     public void setSetChoice(String setChoice) {
         this.setChoice = setChoice;
     }
 
+    /**
+     * Recupere la constante
+     * @return la constante
+     */
     public Complex getConstant() { return constant; }
 
+    /**
+     * Recupere le rectangle
+     * @return le rectangle
+     */
     public ComplexRectangle getComplexRectangle() { return complexRectangle; }
 
+    /**
+     * Recupere le pas de discretisation
+     * @return le pas de discretisation
+     */
     public Double getDiscretizationStape() {
         return discretizationStape;
     }
 
+    /**
+     * Verifie que la fonction ait le bon format
+     * @param str la fonction a verifier
+     * @return true si la fonction correspond au format
+     */
     public boolean fonctionStrIsGoodFormat(String str){
         return str.equals("z^2 + c");
     }
 
+    /**
+     * Transforme la fonction donnee en fonction de premiere classe
+     * @param str fonction donnee
+     * @return la fonction de premiere classe
+     */
     public Function<Complex, Complex> makeFunction(String str){
         if (fonctionStrIsGoodFormat(str)){
             return (Complex z1) -> constant.add(z1.multiply(z1));
@@ -62,10 +95,23 @@ public abstract class Fractal {
         return null;
     }
 
+    /**
+     * Dans le cas de l'ensemble de mandelbrot cree la fonction
+     * de premiere classe a partir de la constante
+     * @param constant la constante
+     * @return la fonction de premiere classe
+     */
     public Function<Complex, Complex> makeMandelbrotFunction(Complex constant) {
         return (Complex z1) -> constant.add(z1.multiply(z1));
     }
 
+    /**
+     * Calcule l indice de divergence
+     * @param constant la constante
+     * @param z le complexe calcule
+     * @param f la fonction donnee
+     * @return l indice de divergence
+     */
     protected int divergenceIndex(Complex constant, Complex z, Function<Complex, Complex> f) {
         if(z == null) return -1;
 
@@ -80,6 +126,12 @@ public abstract class Fractal {
         return iteration;
     }
 
+    /**
+     * Recupere la couleur du pixel
+     * @param a une position
+     * @param b une position
+     * @return la couleur correspondante
+     */
     private int getColorOfPixel(int a, int b){
 
         Complex pointA = complexRectangle.getPointA();
@@ -109,6 +161,9 @@ public abstract class Fractal {
         return color;
     }
 
+    /**
+     * Ecrit toutes les couleurs sur l image
+     */
     protected void writeFractalOnImage(){
         Instant start = Instant.now();
         IntStream.range(0, image.getImageLength())
@@ -124,6 +179,9 @@ public abstract class Fractal {
         image.saveFractal();
     }
 
+    /**
+     * Construit la fractale
+     */
     public abstract void makeFractal();
 
 }
