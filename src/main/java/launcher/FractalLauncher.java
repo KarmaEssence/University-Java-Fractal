@@ -14,9 +14,9 @@ public class FractalLauncher {
     private static void julia1(){
         Complex c = new Complex(-(0.7269), 0.1889);
         ComplexRectangle cr = new ComplexRectangle(-1, 1, 1, -1);
-        JuliaSet juliaSet = new JuliaSet(c, cr, 0.001);
+        JuliaSet juliaSet = new JuliaSet("heat", c, cr, 0.001);
         juliaSet.makeFractal();
-        FractalConfig.Builder builder = new FractalConfig.Builder("julia", "orange",c, cr, 0.001);
+        FractalConfig.Builder builder = new FractalConfig.Builder(juliaSet);
         builder.buildAndSave();
     }
 
@@ -26,9 +26,9 @@ public class FractalLauncher {
     private static void julia2(){
         Complex c = new Complex(-(0.8), 0.156);
         ComplexRectangle cr = new ComplexRectangle(-2, 2, 2, -2);
-        JuliaSet juliaSet = new JuliaSet(c, cr, 0.001);
+        JuliaSet juliaSet = new JuliaSet("cold", c, cr, 0.001);
         juliaSet.makeFractal();
-        FractalConfig.Builder builder = new FractalConfig.Builder("julia", "blue",c, cr, 0.001);
+        FractalConfig.Builder builder = new FractalConfig.Builder(juliaSet);
         builder.buildAndSave();
     }
 
@@ -37,7 +37,7 @@ public class FractalLauncher {
      */
     private static void mandelbrot1(){
         ComplexRectangle cr = new ComplexRectangle(-2, 2, 2, -2);
-        MandelbrotSet mandelbrotSet = new MandelbrotSet( cr, 0.001);
+        MandelbrotSet mandelbrotSet = new MandelbrotSet("heat", cr, 0.001);
         mandelbrotSet.makeFractal();
         FractalConfig.Builder builder = new FractalConfig.Builder(mandelbrotSet);
         builder.buildAndSave();
