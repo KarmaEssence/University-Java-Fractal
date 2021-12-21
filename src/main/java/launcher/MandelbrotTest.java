@@ -10,7 +10,7 @@ public class MandelbrotTest {
     public static void mandelbrotTest2(){
         Complex c = new Complex(-(0.8), 0.156);
         //ComplexRectangle cr = new ComplexRectangle(-1, 1, 1, -1);
-        ComplexRectangle cr = new ComplexRectangle(-2, 2, 2, -2);
+        ComplexRectangle cr = new ComplexRectangle(-2.0, 2.0, 2.0, -2.0);
         MandelbrotSet mandelbrotSet = new MandelbrotSet( cr, 0.001);
         mandelbrotSet.makeFractal();
         FractalConfig.Builder builder = new FractalConfig.Builder(mandelbrotSet);

@@ -24,12 +24,19 @@ public class FileData {
         }
     }
 
+    public static void createNecessaryDir(){
+        FileData.directoryExist("/data");
+        FileData.directoryExist("/data/fractal_config");
+        FileData.directoryExist("/data/fractal_image");
+    }
+
     /**
      * Recupere le nom du fichier le plus recent du repertoire.
      * @param path chemin du repertoire
      * @return retourne le nom de fichier
      */
     public static String getLastImageFileName(String path){
+        createNecessaryDir();
         File dir = new File(path);
         File[] files = dir.listFiles();
         int max = 0;

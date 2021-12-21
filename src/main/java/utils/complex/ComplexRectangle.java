@@ -3,10 +3,10 @@ package utils.complex;
 import org.apache.commons.math3.complex.Complex;
 
 public class ComplexRectangle {
-    private Complex pointA;
-    private Complex pointB;
+    private final Complex pointA;
+    private final Complex pointB;
 
-    public ComplexRectangle(Integer x1, Integer y1, Integer x2, Integer y2){
+    public ComplexRectangle(Double x1, Double y1, Double x2, Double y2){
         pointA = new Complex(x1, y1);
         pointB = new Complex(x2, y2);
     }

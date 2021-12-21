@@ -54,9 +54,6 @@ public class ImageConfig {
     public void saveFractal(){
         if(image == null) return;
         System.out.println("Generating image ...");
-        FileData.directoryExist("/data");
-        FileData.directoryExist("/data/fractal_config");
-        FileData.directoryExist("/data/fractal_image");
         File file = new File("./data/fractal_image/" +
                 FileData.giveNewFilename("./data/fractal_image") + ".png");
         try{

@@ -136,6 +136,7 @@ public class NewFractalController extends Controller {
         }
 
         assert fractal != null;
+        fractal.makeFractal();
         model.setFractal(fractal);
     }
 
@@ -193,7 +194,6 @@ public class NewFractalController extends Controller {
 
         newButton.setOnAction(event -> {
             boolean checkFormat = checkIfFieldsAreGoodFormat();
-            System.out.println(checkFormat);
             double value = (checkFormat)? Double.parseDouble(discretizationStape.getText()) : 0;
             int code = (checkFormat)? ParseArgs.checkRectanglePosInFunctionOfDiscretizationStape(makeRectangle(), value)
                     : 0;

@@ -57,7 +57,8 @@ public class ParseArgs {
      * false sinon
      */
     public static boolean pointsAreOpposite(ComplexRectangle complexRectangle){
-        return complexRectangle.getWidth() != 0 && complexRectangle.getHeight() != 0;
+        return complexRectangle.getWidth() != 0 && complexRectangle.getHeight() != 0
+                && complexRectangle.getWidth() == complexRectangle.getHeight();
     }
 
     /**
@@ -94,22 +95,22 @@ public class ParseArgs {
                                                                         ComplexRectangle complexRectangle,
                                                                         double discretizationStape){
         if(!pointsAreOpposite(complexRectangle)){
-            launcher.getGeneralView().displayError(4);
+            launcher.getGeneralView().displayError(5);
             System.exit(0);
 
         }else if(discretizationStape <= 0.1 && discretizationStape > 0.001
                 && !checkRectanglePosLimite(complexRectangle, 11)){
-            launcher.getGeneralView().displayError(5);
+            launcher.getGeneralView().displayError(6);
             System.exit(0);
 
         }else if(discretizationStape <= 0.01 && discretizationStape > 0.001
         && !checkRectanglePosLimite(complexRectangle, 6)){
-            launcher.getGeneralView().displayError(6);
+            launcher.getGeneralView().displayError(7);
             System.exit(0);
 
         }else if(discretizationStape <= 0.001 && discretizationStape > 0.0001
                 && !checkRectanglePosLimite(complexRectangle, 3)){
-            launcher.getGeneralView().displayError(7);
+            launcher.getGeneralView().displayError(8);
             System.exit(0);
         }
 
@@ -125,19 +126,19 @@ public class ParseArgs {
                                                                         double discretizationStape){
 
         if(!pointsAreOpposite(complexRectangle)){
-            return 4;
+            return 5;
 
         }else if(discretizationStape <= 0.1 && discretizationStape > 0.001
                 && !checkRectanglePosLimite(complexRectangle, 11)){
-            return 5;
+            return 6;
 
         }else if(discretizationStape <= 0.01 && discretizationStape > 0.001
                 && !checkRectanglePosLimite(complexRectangle, 6)){
-            return 6;
+            return 7;
 
         }else if(discretizationStape <= 0.001 && discretizationStape > 0.0001
                 && !checkRectanglePosLimite(complexRectangle, 3)){
-            return 7;
+            return 8;
         }
         return 0;
     }
