@@ -19,6 +19,9 @@ public class FractalConfig {
     public String setChoice;
 
     @JsonSerializable
+    public String colorChoice;
+
+    @JsonSerializable
     public Double constantX;
 
     @JsonSerializable
@@ -46,6 +49,7 @@ public class FractalConfig {
      */
     public static class Builder {
         private final String setChoice;
+        private final String colorChoice;
         private final Double constantX;
         private final Double constantY;
         private final Double pointAX;
@@ -54,7 +58,8 @@ public class FractalConfig {
         private final Double pointBY;
         private final Double discretizationStape;
 
-        public Builder(String setChoice, Complex c, ComplexRectangle rectangle, Double discretizationStape){
+        public Builder(String setChoice, String colorChoice, Complex c,
+                       ComplexRectangle rectangle, Double discretizationStape){
 
             this.constantX = c.getReal();
             this.constantY = c.getImaginary();
@@ -64,10 +69,12 @@ public class FractalConfig {
             this.pointBY = rectangle.getPointB().getImaginary();
             this.discretizationStape = discretizationStape;
             this.setChoice = setChoice;
+            this.colorChoice = colorChoice;
         }
 
         public Builder(Fractal fractal){
-            this(fractal.getSetChoice() ,fractal.getConstant(), fractal.getComplexRectangle(),
+            this(fractal.getSetChoice(), fractal.getColorChoice(),
+                    fractal.getConstant(), fractal.getComplexRectangle(),
                     fractal.getDiscretizationStape());
         }
 
@@ -101,6 +108,7 @@ public class FractalConfig {
         this.pointBY = builder.pointBY;
         this.discretizationStape = builder.discretizationStape;
         this.setChoice = builder.setChoice;
+        this.colorChoice = builder.colorChoice;
     }
 
     /**

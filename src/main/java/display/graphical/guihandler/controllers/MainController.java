@@ -34,6 +34,9 @@ public class MainController extends Controller {
     private Text setChoice;
 
     @FXML
+    private Text colorChoice;
+
+    @FXML
     private Text constanteX;
 
     @FXML
@@ -69,6 +72,7 @@ public class MainController extends Controller {
     private void displayFractalConfig(){
         FractalConfig config = model.getFractalConfig();
         setChoice.setText(config.setChoice);
+        colorChoice.setText(config.colorChoice);
         constanteX.setText(String.valueOf(config.constantX));
         constanteY.setText(String.valueOf(config.constantY));
         pointAX.setText(String.valueOf(config.pointAX));
@@ -84,6 +88,7 @@ public class MainController extends Controller {
      */
     private void clearTextField(){
         setChoice.setText("No Choosed");
+        colorChoice.setText("No Choosed");
         constanteX.setText("Undefined");
         constanteY.setText("Undefined");
         pointAX.setText("Undefined");

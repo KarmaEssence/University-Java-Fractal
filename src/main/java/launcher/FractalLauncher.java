@@ -16,7 +16,7 @@ public class FractalLauncher {
         ComplexRectangle cr = new ComplexRectangle(-1, 1, 1, -1);
         JuliaSet juliaSet = new JuliaSet(c, cr, 0.001);
         juliaSet.makeFractal();
-        FractalConfig.Builder builder = new FractalConfig.Builder("julia",c, cr, 0.001);
+        FractalConfig.Builder builder = new FractalConfig.Builder("julia", "orange",c, cr, 0.001);
         builder.buildAndSave();
     }
 
@@ -28,7 +28,7 @@ public class FractalLauncher {
         ComplexRectangle cr = new ComplexRectangle(-2, 2, 2, -2);
         JuliaSet juliaSet = new JuliaSet(c, cr, 0.001);
         juliaSet.makeFractal();
-        FractalConfig.Builder builder = new FractalConfig.Builder("julia",c, cr, 0.001);
+        FractalConfig.Builder builder = new FractalConfig.Builder("julia", "blue",c, cr, 0.001);
         builder.buildAndSave();
     }
 

@@ -9,6 +9,12 @@ public class MandelbrotSet extends Fractal{
         super.setChoice = "mandelbrot";
     }
 
+    public MandelbrotSet(String color, ComplexRectangle complexRectangle, Double discretizationStape) {
+        super("z^2 + c", new Complex(0,0), complexRectangle, discretizationStape);
+        super.setChoice = "mandelbrot";
+        super.colorChoice = color;
+    }
+
     /**
      * Construit la fractal s il y a un rectangle
      * et une fonction

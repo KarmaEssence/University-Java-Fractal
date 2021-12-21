@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.graphical.guihandler.controllers.NewFractalController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.graphical.guihandler.controllers.NewFractalController">
    <children>
       <Text layoutX="238.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make your Fractal :" textAlignment="CENTER" wrappingWidth="152.853515625">
          <font>
@@ -18,8 +18,8 @@
       <Label layoutX="158.0" layoutY="74.0" prefHeight="17.0" prefWidth="119.0" text="Your type of fractal :" />
       <CheckBox fx:id="juliaCheckbox" layoutX="314.0" layoutY="74.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="58.0" text="Julia" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="constantSection" layoutX="179.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your constante :" wrappingWidth="91.0" />
-      <Pane fx:id="constantBlock" layoutX="65.0" layoutY="142.0" prefHeight="70.0" prefWidth="496.0">
+      <Text fx:id="constantSection" layoutX="148.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your constante :" wrappingWidth="91.0" />
+      <Pane fx:id="constantBlock" layoutX="73.0" layoutY="174.0" prefHeight="70.0" prefWidth="496.0">
          <children>
             <Pane fx:id="constantRealBlock" layoutX="28.0" layoutY="12.0" prefHeight="47.0" prefWidth="153.0">
                <children>
@@ -35,8 +35,8 @@
             </Pane>
          </children>
       </Pane>
-      <Text layoutX="179.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your rectangle :" wrappingWidth="91.0" />
-      <Pane layoutX="66.0" layoutY="240.0" prefHeight="80.0" prefWidth="496.0">
+      <Text layoutX="148.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your rectangle :" wrappingWidth="91.0" />
+      <Pane layoutX="73.0" layoutY="260.0" prefHeight="80.0" prefWidth="496.0">
          <children>
             <Pane layoutX="26.0" layoutY="33.0" prefHeight="47.0" prefWidth="153.0">
                <children>
@@ -53,7 +53,7 @@
             <Text layoutX="17.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Point A :" />
          </children>
       </Pane>
-      <Pane layoutX="66.0" layoutY="320.0" prefHeight="80.0" prefWidth="496.0">
+      <Pane layoutX="73.0" layoutY="340.0" prefHeight="80.0" prefWidth="496.0">
          <children>
             <Pane layoutX="26.0" layoutY="33.0" prefHeight="47.0" prefWidth="153.0">
                <children>
@@ -70,12 +70,15 @@
             <Text layoutX="17.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Point B :" />
          </children>
       </Pane>
-      <Label layoutX="126.0" layoutY="414.0" prefHeight="17.0" prefWidth="144.0" text="Your discretization stape :" />
-      <TextField fx:id="discretizationStape" layoutX="315.0" layoutY="410.0" prefHeight="25.0" prefWidth="56.0" />
-      <Button fx:id="newButton" layoutX="159.0" layoutY="485.0" mnemonicParsing="false" text="New" />
-      <Button fx:id="clearFieldButton" layoutX="279.0" layoutY="485.0" mnemonicParsing="false" text="Clear field" />
-      <Text fx:id="errorMessage" fill="WHITE" layoutX="110.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="405.9366455078125" />
-      <Button fx:id="backButton" layoutX="418.0" layoutY="485.0" mnemonicParsing="false" text="Back " />
+      <Label layoutX="135.0" layoutY="446.0" prefHeight="17.0" prefWidth="144.0" text="Your discretization stape :" />
+      <TextField fx:id="discretizationStape" layoutX="315.0" layoutY="442.0" prefHeight="25.0" prefWidth="56.0" />
+      <Button fx:id="newButton" layoutX="159.0" layoutY="510.0" mnemonicParsing="false" text="New" />
+      <Button fx:id="clearFieldButton" layoutX="279.0" layoutY="510.0" mnemonicParsing="false" text="Clear field" />
+      <Text fx:id="errorMessage" fill="WHITE" layoutX="112.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="405.9366455078125" />
+      <Button fx:id="backButton" layoutX="419.0" layoutY="510.0" mnemonicParsing="false" text="Back " />
       <CheckBox fx:id="mandelbrotCheckbox" layoutX="389.0" layoutY="74.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="91.0" text="Mandelbrot" />
+      <Label layoutX="193.0" layoutY="116.0" prefHeight="17.0" prefWidth="77.0" text="Color choice : " />
+      <CheckBox fx:id="colorBlueCheckbox" layoutX="314.0" layoutY="116.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="58.0" text="Blue" />
+      <CheckBox fx:id="colorOrangeCheckbox" layoutX="390.0" layoutY="116.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="69.0" text="Orange" />
    </children>
 </Pane>

@@ -29,6 +29,12 @@ public class NewFractalController extends Controller {
     private CheckBox mandelbrotCheckbox;
 
     @FXML
+    private CheckBox colorBlueCheckbox;
+
+    @FXML
+    private CheckBox colorOrangeCheckbox;
+
+    @FXML
     private Pane constantBlock;
 
     @FXML
@@ -116,14 +122,15 @@ public class NewFractalController extends Controller {
      */
     private void makeFractal(){
         Fractal fractal = null;
+        String color = (colorBlueCheckbox.isSelected())? "blue" : "orange";
 
         if(juliaCheckbox.isSelected()){
-            fractal = new JuliaSet(makeConstante(),
+            fractal = new JuliaSet(color, makeConstante(),
                     makeRectangle(), Double.parseDouble(discretizationStape.getText()));
 
             juliaCheckbox.setSelected(false);
         }else if(mandelbrotCheckbox.isSelected()){
-            fractal = new MandelbrotSet(makeRectangle(),
+            fractal = new MandelbrotSet(color, makeRectangle(),
                     Double.parseDouble(discretizationStape.getText()));
             mandelbrotCheckbox.setSelected(false);
         }
@@ -140,6 +147,8 @@ public class NewFractalController extends Controller {
     private void clearFields(){
         juliaCheckbox.setSelected(false);
         mandelbrotCheckbox.setSelected(false);
+        colorBlueCheckbox.setSelected(false);
+        colorOrangeCheckbox.setSelected(false);
         constanteX.clear(); constanteY.clear();
         pointAX.clear(); pointAY.clear();
         pointBX.clear(); pointBY.clear();
@@ -172,6 +181,18 @@ public class NewFractalController extends Controller {
             }
         });
 
+        colorBlueCheckbox.setOnAction(event -> {
+            if(colorBlueCheckbox.isSelected()){
+                colorOrangeCheckbox.setSelected(false);
+            }
+        });
+
+        colorOrangeCheckbox.setOnAction(event -> {
+            if(colorOrangeCheckbox.isSelected()){
+                colorBlueCheckbox.setSelected(false);
+            }
+        });
+
         newButton.setOnAction(event -> {
             boolean checkFormat = checkIfFieldsAreGoodFormat();
             System.out.println(checkFormat);
@@ -179,7 +200,8 @@ public class NewFractalController extends Controller {
             int code = (checkFormat)? ParseArgs.checkRectanglePosInFunctionOfDiscretizationStape(makeRectangle(), value)
                     : 0;
             if(checkFormat && code == 0 && value > 0.0001 && value <= 0.1 &&
-                    (juliaCheckbox.isSelected() || mandelbrotCheckbox.isSelected())){
+                    (juliaCheckbox.isSelected() || mandelbrotCheckbox.isSelected()) &&
+                    (colorBlueCheckbox.isSelected() || colorOrangeCheckbox.isSelected())){
 
                 errorMessage.setText("");
                 makeFractal();
@@ -191,12 +213,14 @@ public class NewFractalController extends Controller {
             }else{
                 if(!juliaCheckbox.isSelected() && !mandelbrotCheckbox.isSelected())
                     errorInPage(1);
+                else if(!colorBlueCheckbox.isSelected() && !colorOrangeCheckbox.isSelected())
+                    errorInPage(2);
                 else if(!checkFormat)
                     errorInPage(0);
-                else if (value < 0.001)
-                    errorInPage(2);
-                else if (value > 0.1)
+                else if (value <= 0.0001)
                     errorInPage(3);
+                else if (value > 0.1)
+                    errorInPage(4);
                 else
                     errorInPage(code);
 
@@ -220,18 +244,20 @@ public class NewFractalController extends Controller {
     @Override
     public void errorInPage(int error) {
         if(error == 1)
-            errorMessage.setText("between julia and mandelbrot");
+            errorMessage.setText("Please select a set between julia and mandelbrot");
         else if(error == 2)
-            errorMessage.setText("You cannot choose an discretization stape inferior of 0.009");
+            errorMessage.setText("Please select a color between blue and orange");
         else if(error == 3)
-            errorMessage.setText("You cannot choose an discretization stape superior of 0.1");
+            errorMessage.setText("You cannot choose an discretization stape inferior of 0.009");
         else if(error == 4)
-            errorMessage.setText("Please choose two opposite points for the rectangle");
+            errorMessage.setText("You cannot choose an discretization stape superior of 0.1");
         else if(error == 5)
-            errorMessage.setText("To discretization stape inferior/equals of 0.1, max dimensions are 10 x 10");
+            errorMessage.setText("Please choose two opposite points for the rectangle");
         else if(error == 6)
-            errorMessage.setText("To discretization stape inferior/equals of 0.01, max dimensions are 5 x 5");
+            errorMessage.setText("To discretization stape inferior/equals of 0.1, max dimensions are 10 x 10");
         else if(error == 7)
+            errorMessage.setText("To discretization stape inferior/equals of 0.01, max dimensions are 5 x 5");
+        else if(error == 8)
             errorMessage.setText("To discretization stape inferior/equals of 0.01, max dimensions are 2 x 2");
         else
             errorMessage.setText("You cannot choose this!");

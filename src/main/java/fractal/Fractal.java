@@ -16,6 +16,7 @@ public abstract class Fractal {
     protected static final int RADIUS = 2;
 
     protected String setChoice;
+    protected String colorChoice;
     protected Complex constant;
     protected ComplexRectangle complexRectangle;
     protected Double discretizationStape;
@@ -52,6 +53,14 @@ public abstract class Fractal {
      */
     public void setSetChoice(String setChoice) {
         this.setChoice = setChoice;
+    }
+
+    /**
+     * Recupere la couleur
+     * @return la couleur
+     */
+    public String getColorChoice() {
+        return colorChoice;
     }
 
     /**
@@ -152,11 +161,16 @@ public abstract class Fractal {
         int color;
         //divergence
         if(index < MAX_ITER){
-            color = ((index % 256) << 16) | (((index + 85) % 256) << 8) | ((index + 170) % 256);
+            if(colorChoice.equals("orange")){
+                color = ((index % 256) << 16) | (((index - 170) % 256) << 8) | ((index - 80) % 256);
+            }else{
+                color = ((index % 256) << 16) | (((index + 85) % 256) << 8) | ((index + 170) % 256);
+            }
 
             //convergence
         }else{
-            color = (64 << 16) | (224 << 8) | 208;
+            //color = (64 << 16) | (224 << 8) | 208;
+            color = (10 << 16) | (120 << 8) | 2;
         }
         return color;
     }
