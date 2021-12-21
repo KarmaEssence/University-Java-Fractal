@@ -5,6 +5,9 @@ import javafx.stage.Stage;
 
 public class GuiView extends Application {
 
+    /**
+     * Lance l interface graphique
+     */
     @Override
     public void start(Stage primaryStage) {
         Model model = new Model();

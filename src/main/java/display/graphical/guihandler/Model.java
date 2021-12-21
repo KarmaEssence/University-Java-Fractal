@@ -38,6 +38,9 @@ public class Model {
 
     }
 
+    /**
+     * Ajoute les controllers a la liste de controller
+     */
     private void initController(){
         try{
             FXMLLoader mainLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("fxmldoc/main.fxml")));
@@ -60,34 +63,68 @@ public class Model {
         }
     }
 
+    /**
+     * Recupere la fractale
+     * @return la fractale
+     */
     public Fractal getFractal() {
         return fractal;
     }
 
+    /**
+     * Etablie la fractale
+     * @param fractal la fractale
+     */
     public void setFractal(Fractal fractal) {
         this.fractal = fractal;
     }
 
+    /**
+     * Recupere l image
+     * @return l image
+     */
     public Image getWishImg() {
         return wishImg;
     }
 
+    /**
+     * Etablie l image
+     * @param wishImg l image
+     */
     public void setWishImg(Image wishImg) {
         this.wishImg = wishImg;
     }
 
+    /**
+     * Recupere une scene
+     * @param name nom de la scene
+     * @return la scene
+     */
     public Scene getScene(String name){
         return listOfScene.get(name);
     }
 
+    /**
+     * Recupere une configuration
+     * @return une configuration
+     */
     public FractalConfig getFractalConfig() {
         return fractalConfig;
     }
 
+    /**
+     * Etablie une configuration
+     * @param fractalConfig une configuration
+     */
     public void setFractalConfig(FractalConfig fractalConfig) {
         this.fractalConfig = fractalConfig;
     }
 
+    /**
+     * Recupere un controller
+     * @param name nom du controller
+     * @return un controller
+     */
     public Controller getController(String name){
         if(name.equals("main"))
             return controllers.get(0);
@@ -98,14 +135,24 @@ public class Model {
         return null;
     }
 
+    /**
+     * Affiche la scene courante
+     */
     public void showScene(){
         currentStage.show();
     }
 
+    /**
+     * Ferme la scene courante
+     */
     public void closeScene(){
         currentStage.close();
     }
 
+    /**
+     * Change la scene courante
+     * @param name nom de la nouvelle scene
+     */
     public void changeScene(String name){
         scenes.add(currentStage.getScene());
         getController(name).initPage(this);
