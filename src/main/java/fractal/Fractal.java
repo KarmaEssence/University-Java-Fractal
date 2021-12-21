@@ -161,7 +161,7 @@ public abstract class Fractal {
         int color;
         //divergence
         if(index < MAX_ITER){
-            if(colorChoice.equals("orange")){
+            if(colorChoice.equals("heat")){
                 color = ((index % 256) << 16) | (((index - 170) % 256) << 8) | ((index - 80) % 256);
             }else{
                 color = ((index % 256) << 16) | (((index + 85) % 256) << 8) | ((index + 170) % 256);
@@ -169,8 +169,11 @@ public abstract class Fractal {
 
             //convergence
         }else{
-            //color = (64 << 16) | (224 << 8) | 208;
-            color = (10 << 16) | (120 << 8) | 2;
+            if(colorChoice.equals("heat")){
+                color = (255 << 16) | (87 << 8) | 81;
+            }else{
+                color = (64 << 16) | (224 << 8) | 208;
+            }
         }
         return color;
     }

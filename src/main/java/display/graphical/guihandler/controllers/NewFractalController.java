@@ -122,7 +122,7 @@ public class NewFractalController extends Controller {
      */
     private void makeFractal(){
         Fractal fractal = null;
-        String color = (colorBlueCheckbox.isSelected())? "blue" : "orange";
+        String color = (colorBlueCheckbox.isSelected())? "cold" : "heat";
 
         if(juliaCheckbox.isSelected()){
             fractal = new JuliaSet(color, makeConstante(),
