@@ -49,8 +49,6 @@ public class Launcher{
 
         assert fractal != null;
         fractal.makeFractal();
-        FractalConfig.Builder builder = new FractalConfig.Builder(fractal);
-        builder.buildAndSave();
         System.exit(0);
     }
 

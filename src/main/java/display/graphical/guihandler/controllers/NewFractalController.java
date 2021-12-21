@@ -136,8 +136,6 @@ public class NewFractalController extends Controller {
         }
 
         assert fractal != null;
-        fractal.saveFractalImage();
-        new FractalConfig.Builder(fractal).buildAndSave();
         model.setFractal(fractal);
     }
 

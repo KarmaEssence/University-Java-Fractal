@@ -66,5 +66,6 @@ public class ImageConfig {
         }
         System.out.println();
         System.out.println("The image has been generated");
+
     }
 }

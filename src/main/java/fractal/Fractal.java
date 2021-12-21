@@ -1,6 +1,7 @@
 package fractal;
 
 import utils.complex.ComplexOperation;
+import utils.config.FractalConfig;
 import utils.config.ImageConfig;
 import utils.complex.ComplexRectangle;
 import org.apache.commons.math3.complex.Complex;
@@ -194,6 +195,8 @@ public abstract class Fractal {
         System.out.println("Time to write information pixel per pixel : "
                 + Duration.between(start, end).getSeconds() + " seconds");
         image.saveFractal();
+        FractalConfig.Builder builder = new FractalConfig.Builder(this);
+        builder.buildAndSave();
     }
 
     /**
