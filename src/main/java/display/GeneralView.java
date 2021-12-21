@@ -8,11 +8,7 @@ import utils.complex.ComplexRectangle;
 
 import java.util.Scanner;
 
-/**
- * Permet de faire la liaison entre
- * la vue, le model et le joueur.
- * @version 1.0
- */
+
 public class GeneralView{
 	private final View view;
 
@@ -31,9 +27,16 @@ public class GeneralView{
 
 	}
 
+	/**
+	 * Affichage
+	 */
 	public void display(){
 		view.print();
 	}
+
+	/**
+	 * Affichage d une erreur
+	 */
 	public void displayError(int code){view.makeAnErrorMessage(code);}
 
 }

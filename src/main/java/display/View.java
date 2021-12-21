@@ -1,9 +1,5 @@
 package display;
 
-/**
- * Correspond au type d interface
- * choisie par l utilisateur.
- */
 public abstract class View{
 
 	/**
@@ -13,8 +9,7 @@ public abstract class View{
 	public abstract String typeOfView();
 
 	/**
-	 * Met a jour l affichage pour correspondre a celui
-	 * du plateau courant.
+	 * Affichage
 	 */
 	public abstract void print();
 

@@ -3,10 +3,6 @@ package display.textual;
 
 import display.View;
 
-/**
- * Affichage du jeu sur le terminal.
- * @version 1.0
- */
 public class TextualView extends View {
 
 	/**

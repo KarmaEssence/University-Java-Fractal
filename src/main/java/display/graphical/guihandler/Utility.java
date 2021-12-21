@@ -1,10 +1,9 @@
 package display.graphical.guihandler;
 
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class Utility {
 
