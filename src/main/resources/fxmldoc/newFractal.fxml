@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.graphical.guihandler.controllers.NewFractalController">
    <children>
-      <Text layoutX="238.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make your Fractal :" wrappingWidth="152.853515625">
+      <Text layoutX="238.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make your Fractal :" textAlignment="CENTER" wrappingWidth="152.853515625">
          <font>
             <Font size="18.0" />
          </font>

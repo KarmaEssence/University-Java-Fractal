@@ -160,6 +160,8 @@ public class NewFractalController extends Controller {
 
                 errorMessage.setText("");
                 makeFractal();
+                constantBlock.setVisible(true);
+                constantSection.setVisible(true);
                 clearFields();
                 model.changeScene("main");
 
@@ -193,7 +195,7 @@ public class NewFractalController extends Controller {
         if(error == 1)
             errorMessage.setText("Please select a set");
         else if(error == 2)
-            errorMessage.setText("You cannot choose an discretization stape inferior of 0.0009");
+            errorMessage.setText("You cannot choose an discretization stape inferior of 0.009");
         else if(error == 3)
             errorMessage.setText("You cannot choose an discretization stape superior of 0.1");
         else if(error == 4)
