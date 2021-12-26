@@ -54,15 +54,15 @@ public class ImageConfig {
     public void saveFractal(){
         if(image == null) return;
         System.out.println("Generating image ...");
-        File file = new File("./data/fractal_image/" +
-                FileData.giveNewFilename("./data/fractal_image") + ".png");
+        File file = new File("data/fractal_image/" +
+                FileData.giveNewFilename("data/fractal_image") + ".png");
         try{
             ImageIO.write(image, "PNG", file);
         }catch (IOException e){
             e.printStackTrace();
         }
         System.out.println();
-        System.out.println("The image has been generated");
+        System.out.println("The image has been generated in : " + file.getAbsolutePath());
 
     }
 }

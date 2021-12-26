@@ -15,42 +15,42 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Label layoutX="158.0" layoutY="74.0" prefHeight="17.0" prefWidth="119.0" text="Your type of fractal :" />
+      <Label layoutX="144.0" layoutY="74.0" prefHeight="17.0" prefWidth="133.0" text="Your type of fractal :" />
       <CheckBox fx:id="juliaCheckbox" layoutX="314.0" layoutY="74.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="58.0" text="Julia" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="constantSection" layoutX="148.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your constante :" wrappingWidth="91.0" />
+      <Text fx:id="constantSection" layoutX="145.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your constante :" wrappingWidth="144.0" />
       <Pane fx:id="constantBlock" layoutX="73.0" layoutY="174.0" prefHeight="70.0" prefWidth="496.0">
          <children>
             <Pane fx:id="constantRealBlock" layoutX="28.0" layoutY="12.0" prefHeight="47.0" prefWidth="153.0">
                <children>
                   <TextField fx:id="constanteX" layoutX="81.0" layoutY="11.0" prefHeight="25.0" prefWidth="56.0" />
-                  <Label layoutX="14.0" layoutY="15.0" text="Real part : " />
+                  <Label layoutX="1.0" layoutY="15.0" prefHeight="17.0" prefWidth="69.0" text="Real part : " />
                </children>
             </Pane>
             <Pane fx:id="constantImaginaryBlock" layoutX="270.0" layoutY="12.0" prefHeight="47.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="constanteY" layoutX="120.0" layoutY="11.0" prefHeight="25.0" prefWidth="56.0" />
-                  <Label layoutX="14.0" layoutY="15.0" text="Imaginary part : " />
+                  <Label layoutX="-5.0" layoutY="15.0" prefHeight="17.0" prefWidth="105.0" text="Imaginary part : " />
                </children>
             </Pane>
          </children>
       </Pane>
-      <Text layoutX="148.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your rectangle :" wrappingWidth="91.0" />
+      <Text layoutX="148.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your rectangle :" wrappingWidth="144.0" />
       <Pane layoutX="73.0" layoutY="260.0" prefHeight="80.0" prefWidth="496.0">
          <children>
             <Pane layoutX="26.0" layoutY="33.0" prefHeight="47.0" prefWidth="153.0">
                <children>
                   <TextField fx:id="pointAX" layoutX="81.0" layoutY="11.0" prefHeight="25.0" prefWidth="56.0" />
-                  <Label layoutX="14.0" layoutY="15.0" text="Real part : " />
+                  <Label layoutX="1.0" layoutY="15.0" prefHeight="17.0" prefWidth="69.0" text="Real part : " />
                </children>
             </Pane>
             <Pane layoutX="272.0" layoutY="33.0" prefHeight="47.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="pointAY" layoutX="120.0" layoutY="11.0" prefHeight="25.0" prefWidth="56.0" />
-                  <Label layoutX="14.0" layoutY="15.0" text="Imaginary part : " />
+                  <Label layoutX="-5.0" layoutY="15.0" prefHeight="17.0" prefWidth="105.0" text="Imaginary part : " />
                </children>
             </Pane>
-            <Text layoutX="17.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Point A :" />
+            <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Point A :" wrappingWidth="77.0" />
          </children>
       </Pane>
       <Pane layoutX="73.0" layoutY="340.0" prefHeight="80.0" prefWidth="496.0">
@@ -58,26 +58,26 @@
             <Pane layoutX="26.0" layoutY="33.0" prefHeight="47.0" prefWidth="153.0">
                <children>
                   <TextField fx:id="pointBX" layoutX="81.0" layoutY="11.0" prefHeight="25.0" prefWidth="56.0" />
-                  <Label layoutX="14.0" layoutY="15.0" text="Real part : " />
+                  <Label layoutX="1.0" layoutY="15.0" prefHeight="17.0" prefWidth="69.0" text="Real part : " />
                </children>
             </Pane>
             <Pane layoutX="272.0" layoutY="33.0" prefHeight="47.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="pointBY" layoutX="120.0" layoutY="11.0" prefHeight="25.0" prefWidth="56.0" />
-                  <Label layoutX="14.0" layoutY="15.0" text="Imaginary part : " />
+                  <Label layoutX="-5.0" layoutY="15.0" prefHeight="17.0" prefWidth="105.0" text="Imaginary part : " />
                </children>
             </Pane>
-            <Text layoutX="17.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Point B :" />
+            <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Point B :" wrappingWidth="69.0859375" />
          </children>
       </Pane>
-      <Label layoutX="135.0" layoutY="446.0" prefHeight="17.0" prefWidth="144.0" text="Your discretization stape :" />
-      <TextField fx:id="discretizationStape" layoutX="315.0" layoutY="442.0" prefHeight="25.0" prefWidth="56.0" />
+      <Label layoutX="111.0" layoutY="446.0" prefHeight="17.0" prefWidth="168.0" text="Your discretization stape :" />
+      <TextField fx:id="discretizationStape" layoutX="293.0" layoutY="442.0" prefHeight="25.0" prefWidth="56.0" />
       <Button fx:id="newButton" layoutX="159.0" layoutY="510.0" mnemonicParsing="false" text="New" />
       <Button fx:id="clearFieldButton" layoutX="279.0" layoutY="510.0" mnemonicParsing="false" text="Clear field" />
       <Text fx:id="errorMessage" fill="WHITE" layoutX="112.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="405.9366455078125" />
       <Button fx:id="backButton" layoutX="419.0" layoutY="510.0" mnemonicParsing="false" text="Back " />
       <CheckBox fx:id="mandelbrotCheckbox" layoutX="389.0" layoutY="74.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="91.0" text="Mandelbrot" />
-      <Label layoutX="193.0" layoutY="116.0" prefHeight="17.0" prefWidth="77.0" text="Color choice : " />
+      <Label layoutX="179.0" layoutY="116.0" prefHeight="17.0" prefWidth="91.0" text="Color choice : " />
       <CheckBox fx:id="colorBlueCheckbox" layoutX="314.0" layoutY="116.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="58.0" text="Cold" />
       <CheckBox fx:id="colorOrangeCheckbox" layoutX="390.0" layoutY="116.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="69.0" text="Heat" />
    </children>

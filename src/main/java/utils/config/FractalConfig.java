@@ -92,9 +92,12 @@ public class FractalConfig {
         public void buildAndSave(){
             FractalConfig fractalConfig = build();
             FileData.directoryExist("/data/fractal_config");
-            JsonWriter jsonWriter = new JsonWriter("./data/fractal_config/" +
-                    FileData.giveNewFilename("./data/fractal_config"));
+            JsonWriter jsonWriter = new JsonWriter("data/fractal_config/" +
+                    FileData.giveNewFilename("data/fractal_config"));
             jsonWriter.serializeObject(fractalConfig);
+            System.out.println("The fractal has been generated in : " +
+                    System.getProperty("user.dir") + jsonWriter.getFilePath());
+            System.out.println();
         }
 
     }
