@@ -54,7 +54,7 @@
       <menus>
         <Menu fx:id="fileOptions" mnemonicParsing="false" text="File">
           <items>
-            <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New" />
+            <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New Fractal" />
                   <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem fx:id="openFractal" mnemonicParsing="false" text="Open…" />
                   <SeparatorMenuItem mnemonicParsing="false" />
